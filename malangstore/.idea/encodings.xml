@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/malangstore-beans" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/malangstore-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/malangstore-controller" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/malangstore-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/malangstore-daoimple" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/malangstore-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/malangstore-serviceimple" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

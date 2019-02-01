@@ -1,0 +1,49 @@
+@font-face{
+  font-family:'NanumSquareEB';
+  src:url('./NanumSquareEB.eot');
+  src:url('./NanumSquareEB.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family:'NanumSquareB';
+  src:url('./NanumSquareB.eot');
+  src:url('./NanumSquareB.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family:'NanumSquareR';
+  src:url('./NanumSquareR.eot');
+  src:url('./NanumSquareR.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family:'NanumSquareL';
+  src:url('./NanumSquareL.eot');
+  src:url('./NanumSquareL.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family:'NanumBarunGothicB';
+  src:url('./NanumBarunGothicBold.eot');
+  src:url('./NanumBarunGothicBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family:'NanumBarunGothic';
+  src:url('./NanumBarunGothic.eot');
+  src:url('./NanumBarunGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body { font-family: "Helvetica Neue", Helvetica, Arial,"NanumSquareEB",  sans-serif; font-weight: bold; }

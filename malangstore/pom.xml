@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.malangstore</groupId>
+    <artifactId>malangstore</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.2.RELEASE</version>
+    </parent>
+
+    <properties>
+        <MALANG_RESTFUL_VERSION>1.0-SNAPSHOT</MALANG_RESTFUL_VERSION>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--
+                dependency modules
+            -->
+            <dependency>
+                <groupId>com.malangstore</groupId>
+                <artifactId>malangstore-beans</artifactId>
+                <version>${MALANG_RESTFUL_VERSION}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.malangstore</groupId>
+                <artifactId>malangstore-controller</artifactId>
+                <version>${MALANG_RESTFUL_VERSION}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.malangstore</groupId>
+                <artifactId>malangstore-service</artifactId>
+                <version>${MALANG_RESTFUL_VERSION}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.malangstore</groupId>
+                <artifactId>malangstore-serviceimple</artifactId>
+                <version>${MALANG_RESTFUL_VERSION}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.malangstore</groupId>
+                <artifactId>malangstore-dao</artifactId>
+                <version>${MALANG_RESTFUL_VERSION}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.malangstore</groupId>
+                <artifactId>malangstore-daoimple</artifactId>
+                <version>${MALANG_RESTFUL_VERSION}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.malangstore</groupId>
+                <artifactId>malangstore-common</artifactId>
+                <version>${MALANG_RESTFUL_VERSION}</version>
+            </dependency>
+
+
+            <!--
+                spring boot
+            -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>2.0.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>2.0.2.RELEASE</version>
+            </dependency>
+
+            <!--
+                jdbc, pool
+            -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>2.0.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>2.0.2.RELEASE</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>2.1.1</version>
+            </dependency>
+
+            <!--
+                myBatis
+            -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>1.3.1</version>
+            </dependency>
+
+            <!--
+                jsp setting / jasper -> ?
+            -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-jasper</artifactId>
+                <version>8.5.23</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+                <version>2.0.2.RELEASE</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+
+            <!--
+                Logger
+            -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.25</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.googlecode.log4jdbc</groupId>
+                <artifactId>log4jdbc</artifactId>
+                <version>1.2</version>
+            </dependency>
+
+            <!--
+                Spring boot Security
+            -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>2.0.2.RELEASE</version>
+            </dependency>
+
+            <!-- <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>3.1.3.RELEASE</version>
+            </dependency>-->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!--
+        modules
+    -->
+    <modules>
+        <module>./malangstore-controller</module>
+        <module>./malangstore-service</module>
+        <module>./malangstore-serviceimple</module>
+        <module>./malangstore-dao</module>
+        <module>./malangstore-daoimple</module>
+        <module>./malangstore-beans</module>
+        <module>./malangstore-common</module>
+    </modules>
+</project>

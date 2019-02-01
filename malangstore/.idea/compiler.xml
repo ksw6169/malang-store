@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="malangstore-beans" />
+        <module name="malangstore-common" />
+        <module name="malangstore-controller" />
+        <module name="malangstore-dao" />
+        <module name="malangstore-daoimple" />
+        <module name="malangstore-service" />
+        <module name="malangstore-serviceimple" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="malangstorecontroller" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="malangstore-beans" options="-parameters" />
+      <module name="malangstore-common" options="-parameters" />
+      <module name="malangstore-controller" options="-parameters" />
+      <module name="malangstore-dao" options="-parameters" />
+      <module name="malangstore-daoimple" options="-parameters" />
+      <module name="malangstore-service" options="-parameters" />
+      <module name="malangstore-serviceimple" options="-parameters" />
+    </option>
+  </component>
+</project>
