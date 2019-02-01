@@ -49,7 +49,7 @@
                     <div class="modal-content">
                         <div class="modal-body">
                             <div class="custom-modal-content">상품이 장바구니에 담겼습니다.</div>
-                            <div class="custom-modal-button center-block" data-dismiss="modal">장바구니 바로가기</div>
+                            <div class="custom-modal-button center-block" onclick="cartView()" data-dismiss="modal">장바구니 바로가기</div>
                         </div>
                     </div>
                 </div>
@@ -123,9 +123,7 @@
                 str += "<div class='col-md-12 product_price'>"+list[i].product_price+"원</div>";
                 str += "<div class='col-md-12' style='padding: 0px;'>";
 
-
-                // todo - test(modal)
-                str += "<div class='col-md-6 cart_btn'  data-toggle='modal' data-target='#cartModal' ><a href='#' style='color: #e72e71; text-decoration: none;'>장바구니</a></div>";
+                str += "<div class='col-md-6 cart_btn' onclick='insertCart("+list[i].product_no+")' data-toggle='modal' data-target='#cartModal'><a href='#' style='color: #e72e71; text-decoration: none;'>장바구니</a></div>";
                 str += "<div class='col-md-6 order_btn'><a href='#' style='color: white; text-decoration: none;'>주문하기</a></div>";
                 str += "</div></div></div>";
             }
@@ -232,6 +230,30 @@
                     console.log(error);
                 }
             });
+        }
+
+        function insertCart(product_no) {
+            console.log("장바구니에 담기");
+
+            $.ajax({
+                type : "get",
+                url : "./insertCart",
+                data : {
+                    id : "${sessionScope.loginId}",     // 현재 ID
+                    product_no : product_no             // 상품 번호
+                },
+                dataType : "json",
+                success : function(data) {
+                    console.log(data);
+                },
+                error : function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        function cartView() {
+            location.href = "./cartView";
         }
     </script>
 </html>

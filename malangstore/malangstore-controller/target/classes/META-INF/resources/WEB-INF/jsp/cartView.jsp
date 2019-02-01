@@ -20,70 +20,48 @@
         <div class="container">
             <h1 class="text-header-custom">장바구니</h1>
             <hr style="padding: 1px; margin: 0px 0px 50px 0px;">
-                <!-- table 1-->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="table-header"><input type="checkbox" onclick="allCheck(this)"/></th>
-                            <th class="table-header">상품명</th>
-                            <th class="table-header">수량</th>
-                            <th class="table-header">배송비</th>
-                            <th class="table-header">금액</th>
-                            <th class="table-header"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-data-group">
-                        <tr>
-                            <td class="table-data"><input type="checkbox" name="rowCheck" /></td>
-                            <td class="table-data"><a href="#">test</a></td>
-                            <td class="table-data">1</td>
-                            <td class="table-data">2,500원</td>
-                            <td class="table-data">15,000원</td>
-                            <td class="table-data cart_delete_btn">제거</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- // table1 -->
 
+            <!-- table 1-->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="table-header"><input type="checkbox" onclick="allCheck(this)"/></th>
+                        <th class="table-header">상품명</th>
+                        <th class="table-header">수량</th>
+                        <th class="table-header">배송비</th>
+                        <th class="table-header">금액</th>
+                        <th class="table-header"></th>
+                    </tr>
+                </thead>
+                <tbody class="addContext1">
+                    <!--
+                        append Data
+                    -->
+                </tbody>
+            </table>
+            <!-- // table1 -->
 
-                <!-- pagination -->
-                <div class="row">
-                    <div class="text-center">
-                      <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">◀</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">▶</a></li>
-                      </ul>
-                    </div>
-                </div>
-                <!-- // pagination -->
+            <div class="order-delete-btn pull-right" onclick="selectOrderDelete()">선택삭제</div>
 
+            <!-- table2 -->
+            <table class="table" style="margin-top: 100px;">
+                <thead>
+                    <tr>
+                        <th class="table-header">총 상품 가격</th>
+                        <th class="table-header">총 배송비</th>
+                        <th class="table-header">총 주문 금액</th>
+                    </tr>
+                </thead>
+                <tbody class="addContext2">
+                    <!--
+                        append Data
+                    -->
+                </tbody>
+            </table>
+            <!-- // table2 -->
 
-                <!-- table2 -->
-                <table class="table detailView">
-                    <thead>
-                        <tr>
-                            <th class="table-header">총 상품 가격</th>
-                            <th class="table-header">총 배송비</th>
-                            <th class="table-header">총 주문 금액</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-data-group">
-                        <tr>
-                            <td class="table-data">15,000원</td>
-                            <td class="table-data">2,500원</td>
-                            <td class="table-data">17,500원</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- // table2 -->
-
-                <!-- button -->
-                <div class="col-md-push-4 col-md-4 direct_order_btn">주문하기</div>
+            <!-- button -->
+            <div class="col-md-push-4 col-md-4 direct_order_btn">주문하기</div>
         </div>
     </body>
 
@@ -93,13 +71,31 @@
 
 
     <script>
+        var product_price_sum = 0;
+        var product_delivery_sum = 0;
+
+        $(document).ready(function() {
+            $.ajax({
+                type : "get",
+                url : "./cartList",
+                data : {
+                    id : "${sessionScope.loginId}"
+                },
+                dataType : "json",
+                success : function(data) {
+                    orderlistPrint(data.list);
+                },
+                error : function(error) {
+                    console.log(error);
+                }
+            });
+        });
+
         // 체크박스 전체 선택(완)
         function allCheck(obj) {
             var chkObj = $("input[name='rowCheck']");
             var rowCnt = chkObj.length - 1; //상단에 있는 갯수 -1
             var check = obj.checked;
-
-            console.log(rowCnt);
 
             if(check) {
                 for (var i=0; i<=rowCnt; i++) {
@@ -114,6 +110,79 @@
                     }
                 }
             }
+        }
+
+        function orderlistPrint(list) {
+            var str = "";
+
+            for(var i=0; i<list.length; i++) {
+                product_delivery_sum = list[i].product_delivery;    // todo - 배송비
+                product_price_sum += list[i].product_price;
+
+                str += "<tr id='order-data"+list[i].orderlist_no+"'>";
+                str += "<td class='table-data'><input type='checkbox' name='rowCheck' id='row"+list[i].orderlist_no+"'/></td>";
+                str += "<td class='table-data'><a href='#'>"+list[i].product_name+"</a></td>";
+                str += "<td class='table-data'>"+list[i].orderlist_count+"</td>";
+                str += "<td class='table-data' id='row_delivery"+list[i].orderlist_no+"'>"+list[i].product_delivery+"원</td>";
+                str += "<td class='table-data' id='row_price"+list[i].orderlist_no+"'>"+list[i].product_price+"원</td>";
+                str += "<td class='table-data cart_delete_btn' onclick='deleteOrder("+list[i].orderlist_no+", "+list[i].product_price+", "+list[i].product_delivery+")'>삭제</td>";
+                str += "</tr>";
+            }
+
+            $(".addContext1").append(str);
+
+            orderlistAllPrint(product_price_sum, product_delivery_sum);
+        }
+
+
+        function orderlistAllPrint(price_sum, delivery_sum) {
+            var str = "";
+
+            str += "<tr id='order-data-all'>";
+            str += "<td class='table-data'>"+product_price_sum+"원</td>";
+            str += "<td class='table-data'>"+product_delivery_sum+"원</td>";
+            str += "<td class='table-data'>"+(product_price_sum + product_delivery_sum)+"원</td>";
+            str += "</tr>";
+
+            $(".addContext2").append(str);
+        }
+
+
+        function deleteOrder(orderlist_no, price, delivery) {
+            $.ajax({
+                type : "get",
+                url : "./deleteOrder",
+                data : {
+                    orderlist_no : orderlist_no
+                },
+                dataType : "json",
+                success : function(data) {
+                    console.log(data);
+                },
+                error : function(error) {
+                    console.log(error);
+                }
+            });
+
+            $("#order-data"+orderlist_no).remove();
+            $("#order-data-all").remove();
+            orderlistAllPrint(product_price_sum - price, product_delivery_sum - delivery);
+        }
+
+        // 선택 삭제(완)
+        function selectOrderDelete() {
+            $("input[name=rowCheck]:checked").each(function() {
+                var orderlist_no = $(this).attr("id").substring(3);
+
+                console.log(orderlist_no);
+
+                var delivery = $("#row_delivery"+orderlist_no).text();
+                var price = $("#row_price"+orderlist_no).text();
+                delivery = delivery.substring(0, delivery.length-1);
+                price = delivery.substring(0, price.length-1);
+
+                deleteOrder(orderlist_no, price, delivery);
+            });
         }
     </script>
 </html>

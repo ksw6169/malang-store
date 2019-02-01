@@ -83,7 +83,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="dropbtn">장바구니</a>
+                        <a href="./cartView" class="dropbtn">장바구니</a>
                     </li>
                 </ul>
             </div>
