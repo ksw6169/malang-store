@@ -9,6 +9,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link href="./res/css/main.css" rel="stylesheet">
+
+        <style>
+            #cartModal { top: 30%; }
+            .custom-modal-content { text-align: center; font-family: 'NanumsquareR'; font-weight: 600; font-size: 18px; padding: 30px 15px 30px 15px; margin: 0px; }
+            .custom-modal-button { text-align: center; font-family: 'NanumsquareR'; font-weight: 600; font-size: 15px; background-color: white; border: 0.1px solid #e72e71; color: #e72e71; padding: 20px; margin: 0px 0px 30px 0px; width: 200px; line-height: 0px; cursor: pointer; }
+        </style>
     </head>
     <body>
         <jsp:include page="nav-bar.jsp" flush="false"/>
@@ -35,6 +41,22 @@
                   </ul>
                 </div>
             </div>
+
+
+            <!-- Modal -->
+            <div class="modal" id="cartModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="custom-modal-content">상품이 장바구니에 담겼습니다.</div>
+                            <div class="custom-modal-button center-block" data-dismiss="modal">장바구니 바로가기</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // Modal -->
+
+
         </div>
     </body>
 
@@ -100,7 +122,10 @@
                 str += "<div class='col-md-12 product_name'>"+list[i].product_name+"</div>";
                 str += "<div class='col-md-12 product_price'>"+list[i].product_price+"원</div>";
                 str += "<div class='col-md-12' style='padding: 0px;'>";
-                str += "<div class='col-md-6 cart_btn'><a href='#' style='color: #e72e71; text-decoration: none;'>장바구니</a></div>";
+
+
+                // todo - test(modal)
+                str += "<div class='col-md-6 cart_btn'  data-toggle='modal' data-target='#cartModal' ><a href='#' style='color: #e72e71; text-decoration: none;'>장바구니</a></div>";
                 str += "<div class='col-md-6 order_btn'><a href='#' style='color: white; text-decoration: none;'>주문하기</a></div>";
                 str += "</div></div></div>";
             }
