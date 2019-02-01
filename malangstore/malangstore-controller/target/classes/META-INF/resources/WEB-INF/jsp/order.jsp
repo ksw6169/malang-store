@@ -101,8 +101,6 @@
             var rowCnt = chkObj.length - 1; //상단에 있는 갯수 -1
             var check = obj.checked;
 
-            console.log(rowCnt);
-
             if(check) {
                 for (var i=0; i<=rowCnt; i++) {
                     if(chkObj[i].type == "checkbox") {

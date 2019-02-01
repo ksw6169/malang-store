@@ -233,7 +233,6 @@
         }
 
         function insertCart(product_no) {
-            console.log("장바구니에 담기");
 
             $.ajax({
                 type : "get",

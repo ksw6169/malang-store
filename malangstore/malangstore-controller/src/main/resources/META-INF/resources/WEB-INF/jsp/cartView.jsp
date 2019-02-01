@@ -139,9 +139,9 @@
             var str = "";
 
             str += "<tr id='order-data-all'>";
-            str += "<td class='table-data'>"+product_price_sum+"원</td>";
-            str += "<td class='table-data'>"+product_delivery_sum+"원</td>";
-            str += "<td class='table-data'>"+(product_price_sum + product_delivery_sum)+"원</td>";
+            str += "<td class='table-data'>"+price_sum+"원</td>";
+            str += "<td class='table-data'>"+delivery_sum+"원</td>";
+            str += "<td class='table-data'>"+(price_sum + delivery_sum)+"원</td>";
             str += "</tr>";
 
             $(".addContext2").append(str);
@@ -149,6 +149,7 @@
 
 
         function deleteOrder(orderlist_no, price, delivery) {
+
             $.ajax({
                 type : "get",
                 url : "./deleteOrder",
@@ -166,7 +167,14 @@
 
             $("#order-data"+orderlist_no).remove();
             $("#order-data-all").remove();
-            orderlistAllPrint(product_price_sum - price, product_delivery_sum - delivery);
+
+            product_price_sum = product_price_sum - price;
+
+            if($(".addContext1").children().size() == 0) {
+                product_delivery_sum = product_delivery_sum - delivery;
+            }
+
+            orderlistAllPrint(product_price_sum, product_delivery_sum);
         }
 
         // 선택 삭제(완)
@@ -174,12 +182,10 @@
             $("input[name=rowCheck]:checked").each(function() {
                 var orderlist_no = $(this).attr("id").substring(3);
 
-                console.log(orderlist_no);
-
                 var delivery = $("#row_delivery"+orderlist_no).text();
                 var price = $("#row_price"+orderlist_no).text();
                 delivery = delivery.substring(0, delivery.length-1);
-                price = delivery.substring(0, price.length-1);
+                price = price.substring(0, price.length-1);
 
                 deleteOrder(orderlist_no, price, delivery);
             });

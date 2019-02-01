@@ -15,13 +15,11 @@ import java.util.HashMap;
 @Controller
 public class ProductController {
 
-
     private final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     ProductService productService;
 
-    // 완
     @RequestMapping(value="/categories")
     public String categories() {
         logger.info("request url: /categories");
@@ -29,7 +27,6 @@ public class ProductController {
         return "categories";
     }
 
-    // TODO: 2019-01-30 상품 조회 기능(진행중)
     @RequestMapping(value="/productList")
     public @ResponseBody HashMap<String, Object> productList(@RequestParam HashMap<String, Object> map) {
         logger.info("request url: /productList");

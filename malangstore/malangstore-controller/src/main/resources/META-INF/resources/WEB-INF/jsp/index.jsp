@@ -50,7 +50,6 @@
     </footer>
     <script>
         var msg = "${msg}";
-        console.log("msg: "+msg);
 
         $(document).ready(function() {
             if(msg != "") {
