@@ -33,6 +33,10 @@ public class MemberDaoImple implements MemberDao {
 
         String member_pw = sqlSession.selectOne(NAMESPACE+".login", paramMap);
 
+        if(member_pw == null) {
+        	return false;
+        }
+
         return passwordEncoder.matches(member.getMember_pw(), member_pw);
     }
 
