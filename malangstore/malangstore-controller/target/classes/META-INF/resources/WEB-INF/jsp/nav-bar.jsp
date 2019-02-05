@@ -56,7 +56,7 @@
                                 <div class="dropdown-subcontent3">
                                     <a href="./categories?subcategory=7" class="dropbtn">리빙 1</a><hr>
                                     <a href="./categories?subcategory=8" class="dropbtn">리빙 2</a><hr>
-                                    <a href="./categories?subcategory=9" class="dropbtn">리빙 3</a><hr>
+                                    <a href="./categories?subcategory=9" class="dropbtn">리빙 3</a>
                                 </div>
                             </div>
                         </div>
@@ -76,14 +76,15 @@
                     <li class="dropdown">
                         <a href="#" class="dropbtn">마이페이지</a>
                         <div class="dropdown-content">
-                            <a id="login_column" href="./loginForm">로그인</a><hr>
-                            <a id="logout_column" href="#">로그아웃</a><hr>
-                            <a href="#">회원정보수정</a><hr>
-                            <a href="#">주문조회</a><hr>
+                            <a id="login_column" href="./loginForm">로그인</a>
+                            <a id="logout_column" href="#">로그아웃</a>
                         </div>
                     </li>
                     <li>
                         <a href="./cartView" class="dropbtn">장바구니</a>
+                    </li>
+                    <li>
+                        <a href="./moveOrderView" class="dropbtn">주문조회</a>
                     </li>
                 </ul>
             </div>

@@ -8,7 +8,9 @@ import com.malangstore.service.OrderlistService;
 import com.malangstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,4 +56,39 @@ public class OrderlistServiceImple implements OrderlistService {
 
         return resultMap;
     }
+
+	@Override
+	public List<Orderlist> order(List<Integer> orderlist) {
+    	return orderlistDao.order(orderlist);
+	}
+
+
+	@Override
+	public int directOrder(List<Integer> orderlist) {
+		return orderlistDao.directOrder(orderlist);
+	}
+
+	@Override
+	public HashMap<String, Object> orderView(HashMap<String, Object> map) {
+		List<Orderlist> orderlist = orderlistDao.orderView(String.valueOf(map.get("id")));
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("orderlist", orderlist);
+
+    	return resultMap;
+	}
+
+	@Override
+	public ModelAndView orderCancel(List<Integer> orderlist) {
+    	ModelAndView mav = new ModelAndView();
+
+    	String msg = "주문 취소에 실패했습니다.";
+		if(orderlistDao.orderCancel(orderlist) != 0) {
+			msg = "주문 취소가 완료되었습니다.";
+		}
+		mav.setViewName("orderView");
+		mav.addObject("msg", msg);
+
+    	return mav;
+	}
 }

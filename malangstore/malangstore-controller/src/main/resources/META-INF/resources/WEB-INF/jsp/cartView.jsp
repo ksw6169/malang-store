@@ -22,23 +22,27 @@
             <hr style="padding: 1px; margin: 0px 0px 50px 0px;">
 
             <!-- table 1-->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="table-header"><input type="checkbox" onclick="allCheck(this)"/></th>
-                        <th class="table-header">상품명</th>
-                        <th class="table-header">수량</th>
-                        <th class="table-header">배송비</th>
-                        <th class="table-header">금액</th>
-                        <th class="table-header"></th>
-                    </tr>
-                </thead>
-                <tbody class="addContext1">
-                    <!--
-                        append Data
-                    -->
-                </tbody>
-            </table>
+            <form id="orderForm" action="./order" method="post">
+	            <table class="table">
+	                <thead>
+	                    <tr>
+	                        <th class="table-header"><input type="checkbox" onclick="allCheck(this)"/></th>
+	                        <th class="table-header">상품명</th>
+	                        <th class="table-header">수량</th>
+	                        <th class="table-header">배송비</th>
+	                        <th class="table-header">금액</th>
+	                        <th class="table-header"></th>
+	                    </tr>
+	                </thead>
+
+                    <tbody class="addContext1">
+	                    <!--
+	                        append Data
+	                    -->
+                    </tbody>
+                    <input name="id" type="hidden" value="${sessionScope.loginId}"/>
+	            </table>
+            </form>
             <!-- // table1 -->
 
             <div class="order-delete-btn pull-right" onclick="selectOrderDelete()">선택삭제</div>
@@ -61,7 +65,7 @@
             <!-- // table2 -->
 
             <!-- button -->
-            <div class="col-md-push-4 col-md-4 direct_order_btn">주문하기</div>
+            <div class="col-md-push-4 col-md-4 direct_order_btn" onclick="order()">주문하기</div>
         </div>
     </body>
 
@@ -120,7 +124,7 @@
                 product_price_sum += list[i].product_price;
 
                 str += "<tr id='order-data"+list[i].orderlist_no+"'>";
-                str += "<td class='table-data'><input type='checkbox' name='rowCheck' id='row"+list[i].orderlist_no+"'/></td>";
+                str += "<td class='table-data'><input type='checkbox' name='rowCheck' value='"+list[i].orderlist_no+"'/></td>";
                 str += "<td class='table-data'><a href='#'>"+list[i].product_name+"</a></td>";
                 str += "<td class='table-data'>"+list[i].orderlist_count+"</td>";
                 str += "<td class='table-data' id='row_delivery"+list[i].orderlist_no+"'>"+list[i].product_delivery+"원</td>";
@@ -180,7 +184,7 @@
         // 선택 삭제(완)
         function selectOrderDelete() {
             $("input[name=rowCheck]:checked").each(function() {
-                var orderlist_no = $(this).attr("id").substring(3);
+                var orderlist_no = $(this).attr("value");
 
                 var delivery = $("#row_delivery"+orderlist_no).text();
                 var price = $("#row_price"+orderlist_no).text();
@@ -189,6 +193,23 @@
 
                 deleteOrder(orderlist_no, price, delivery);
             });
+        }
+
+
+        function order() {
+
+			var orderlist = [];
+
+			$("input[name=rowCheck]:checked").each(function() {
+				orderlist.push($(this).attr("value"));
+			});
+
+			if(orderlist.length == 0) {
+				alert("주문할 상품을 선택해주세요.");
+			} else {
+				// 전송(강제 form submit) - test
+				$("#orderForm").submit();
+			}
         }
     </script>
 </html>

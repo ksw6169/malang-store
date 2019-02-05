@@ -1,7 +1,13 @@
 package com.malangstore.service;
 
 
+import com.malangstore.beans.Orderlist;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public interface OrderlistService {
     /*public HashMap<String, Object> productList(HashMap<String, Object> map);*/
@@ -11,4 +17,12 @@ public interface OrderlistService {
     public HashMap<String, Object> cartList(HashMap<String, String> map);
 
     public HashMap<String, Integer> deleteOrder(HashMap<String, Object> map);
+
+    public List<Orderlist> order(List<Integer> orderlist);
+
+	public int directOrder(List<Integer> orderlist);
+
+	public HashMap<String, Object> orderView(HashMap<String, Object> map);
+
+	public ModelAndView orderCancel(List<Integer> orderlist);
 }

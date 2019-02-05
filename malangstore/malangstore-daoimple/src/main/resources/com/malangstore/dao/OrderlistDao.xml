@@ -10,18 +10,48 @@
     </select>
 
     <insert id="insertCart" parameterType="map">
-        INSERT INTO orderlist(orderlist_no, member_id, product_name, product_no, product_price, product_delivery, orderlist_check, orderlist_date, orderlist_count)
-            VALUES (NEXTVAL('seq_orderlist_no'), #{member_id}, #{product.product_name}, #{product.product_no}, #{product.product_price}, #{product.product_delivery}, 'n', CURRENT_TIMESTAMP(0), 1)
+        INSERT INTO orderlist(orderlist_no, member_id, product_name, product_no, product_price, product_delivery, orderlist_check, orderlist_count)
+            VALUES (NEXTVAL('seq_orderlist_no'), #{member_id}, #{product.product_name}, #{product.product_no}, #{product.product_price}, #{product.product_delivery}, 'n', 1)
     </insert>
 
     <select id="cartList" parameterType="String" resultType="com.malangstore.beans.Orderlist">
         SELECT * FROM orderlist
-            WHERE member_id = #{member_id}
-                ORDER BY orderlist_date DESC
+            WHERE member_id = #{member_id} AND orderlist_check = 'n'
     </select>
 
     <delete id="deleteOrder" parameterType="int">
         DELETE FROM orderlist
             WHERE orderlist_no = #{orderlist_no}
     </delete>
+
+	<select id="order" parameterType="java.util.List" resultType="com.malangstore.beans.Orderlist">
+		SELECT * FROM orderlist
+			WHERE orderlist_no IN
+			<foreach collection="orderlist" item="item" index="index" separator="," open="(" close=")">
+				#{item}
+			</foreach>
+	</select>
+
+	<update id="directOrder" parameterType="java.util.List">
+		UPDATE orderlist
+			SET orderlist_check = 'y', orderlist_date = CURRENT_TIMESTAMP(0)
+				WHERE orderlist_no IN
+				<foreach collection="orderlist" item="item" index="index" separator="," open="(" close=")">
+					#{item}
+				</foreach>
+	</update>
+
+	<select id="orderView" parameterType="String" resultType="com.malangstore.beans.Orderlist">
+		SELECT * FROM orderlist
+			WHERE member_id = #{member_id} AND orderlist_check = 'y'
+				ORDER BY orderlist_date DESC
+	</select>
+
+	<delete id="orderCancel" parameterType="int">
+		DELETE FROM orderlist
+			WHERE orderlist_no IN
+			<foreach collection="orderlist" item="item" index="index" separator="," open="(" close=")">
+				#{item}
+			</foreach>
+	</delete>
 </mapper>
