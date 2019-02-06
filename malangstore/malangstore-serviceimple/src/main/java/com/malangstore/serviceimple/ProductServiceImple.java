@@ -1,5 +1,6 @@
 package com.malangstore.serviceimple;
 
+import com.malangstore.beans.Category;
 import com.malangstore.beans.Product;
 import com.malangstore.dao.ProductDao;
 import com.malangstore.service.ProductService;

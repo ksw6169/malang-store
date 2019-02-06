@@ -18,7 +18,9 @@
         <jsp:include page="nav-bar.jsp" flush="false"/>
 
         <div class="container">
-            <h1 class="text-header">상품 등록</h1><hr>
+            <h1 class="text-header-custom">상품 등록</h1>
+            <hr style="padding: 1px; margin: 0px 0px 50px 0px;">
+
             <div class="col-md-12">
                 <!-- product_name -->
                 <div class="row" style="margin-bottom: 30px;">
@@ -70,10 +72,10 @@
                         <b class="product-header">1차 분류</b>
                     </span>
                     <span class="col-md-10">
-                        <select name="first_category">
-                            <option value="11" selected>1차카테고리-1</option>
-                            <option value="22">1차카테고리-2</option>
-                            <option value="33">1차카테고리-3</option>
+                        <select id="category" onchange="selectCategory()">
+                            <option value="1" selected>의류</option>
+                            <option value="2">인형/피규어</option>
+                            <option value="3">리빙</option>
                         </select>
                     </span>
                 </div>
@@ -85,10 +87,10 @@
                         <b class="product-header">2차 분류</b>
                     </span>
                     <span class="col-md-10">
-                        <select name="second_category">
-                            <option value="11" selected>2차카테고리-1</option>
-                            <option value="22">2차카테고리-2</option>
-                            <option value="33">2차카테고리-3</option>
+                        <select id="subcategory">
+                            <!--
+                                append Data
+                            -->
                         </select>
                     </span>
                 </div>
@@ -174,6 +176,9 @@
 
         // todo 작업중(다중 파일 업로드)
         $(document).ready(function() {
+            selectCategory();
+
+
             //submit 등록. 실제로 submit type은 아니다.
             $('.submit a').on('click',function() {
                 var form = $('#uploadForm')[0];
@@ -245,5 +250,41 @@
                 alert("상품 대표 사진을 첨부해주세요. (최소 1장)");
             }
         }
+
+
+        // 1차 카테고리를 선택했을 때 작업(완)
+		function selectCategory() {
+			$("#subcategory option").remove();  // 기존 옵션 삭제
+
+			$.ajax({
+                type : "post",
+                url : "./selectCategory",
+                data : {
+                    category_no : $("#category option:selected").val()
+                },
+                dataType : "json",
+                success : function(data) {
+                    printCategory(data.list);
+                },
+                error : function(error) {
+                    console.log(error);
+                }
+            });
+		}
+
+		function printCategory(list) {
+			var str = "";
+
+            for(var i=0; i<list.length; i++) {
+                if(i==0) {
+                    str += "<option value='"+list[i].subcategory_no+"' selected>"+list[i].subcategory_name+"</option>";
+                } else {
+                    str += "<option value='"+list[i].subcategory_no+"'>"+list[i].subcategory_name+"</option>";
+                }
+            }
+
+            $("#subcategory").append(str);
+		}
+
     </script>
 </html>

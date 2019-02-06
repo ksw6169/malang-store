@@ -7,6 +7,7 @@
 		<mapper resource="com/malangstore/dao/MemberDao.xml"></mapper>
 		<mapper resource="com/malangstore/dao/ProductDao.xml"></mapper>
 		<mapper resource="com/malangstore/dao/OrderlistDao.xml"></mapper>
+		<mapper resource="com/malangstore/dao/CategoryDao.xml"></mapper>
 	</mappers>
 
 </configuration>
