@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -39,5 +42,14 @@ public class ProductController {
 		logger.info("request url: /writeProduct");
 
 		return "writeProducts";
+	}
+
+	@RequestMapping(value="/registProduct")
+	public @ResponseBody HashMap<String, Object> registProduct(@RequestParam("files") List<MultipartFile> images, HttpSession session, @RequestParam HashMap<String, Object> map) {
+		logger.info("request url: /registProduct");
+
+		String root = session.getServletContext().getRealPath("/");
+
+		return productService.registProduct(root, images, map);
 	}
 }

@@ -53,6 +53,11 @@
                 </div>
                 <!-- // Preview Area -->
 
+				<!-- multipart Form-->
+				<form id="uploadForm" style="display: none;"></form>
+				<!-- // multipart Form -->
+
+
                 <!-- product_content -->
                 <div class="row" style="margin-bottom: 40px;">
                     <span class="col-md-2 input-title">
@@ -110,15 +115,28 @@
         var files = {};
         var previewIndex = 0;
 
-        // image Preview 기능
+		// 완
+		$(document).ready(function() {
+            selectCategory();
+        });
+
+		// 파일 첨부 시 동작(완)
+		$('input[type=file]').change(function() {
+            $("#preview").css("display", "block");  // display none -> block
+            addPreview($(this)); // preview에 사진 추가
+        });
+
+        // image Preview 기능(완)
         function addPreview(input) {
             if (input[0].files) {
                 // 파일 선택이 여러 개라면,
                 for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
                     var file = input[0].files[fileIndex];
 
-                    if (validation(file.name))
+					// 파일 이름 유효성 검사
+                    if (validation(file.name)) {
                         continue;
+                    }
 
                     var reader = new FileReader();
 
@@ -143,11 +161,10 @@
             }
         }
 
-        // preview 영역에서 삭제 버튼 클릭 시 해당 미리보기 이미지 및 이미지 영역 삭제
+        // preview 영역에서 삭제 버튼 클릭 시 해당 미리보기 이미지 및 이미지 영역 삭제(완)
         function deletePreview(obj) {
             var imgNum = obj.attributes['value'].value;
             delete files[imgNum];
-
 
             $("#preview .preview-box[value=" + imgNum + "]").remove();
             previewIndex--;
@@ -157,78 +174,18 @@
             }
         }
 
-        // client-side validation
-        // always server-side validation required
+		// 파일 이름 유효성 검사(완)
         function validation(fileName) {
             fileName = fileName + "";
             var fileNameExtensionIndex = fileName.lastIndexOf('.') + 1;
-            var fileNameExtension = fileName.toLowerCase().substring(
-                    fileNameExtensionIndex, fileName.length);
-            if (!((fileNameExtension === 'jpg')
-                    || (fileNameExtension === 'gif') || (fileNameExtension === 'png'))) {
+            var fileNameExtension = fileName.toLowerCase().substring(fileNameExtensionIndex, fileName.length);
+            if (!((fileNameExtension === 'jpg') || (fileNameExtension === 'gif') || (fileNameExtension === 'png'))) {
                 alert('jpg, gif, png 확장자만 업로드 가능합니다.');
                 return true;
             } else {
                 return false;
             }
         }
-
-
-        // todo 작업중(다중 파일 업로드)
-        $(document).ready(function() {
-            selectCategory();
-
-
-            //submit 등록. 실제로 submit type은 아니다.
-            $('.submit a').on('click',function() {
-                var form = $('#uploadForm')[0];
-                var formData = new FormData(form);
-
-                for (var index = 0; index < Object.keys(files).length; index++) {
-                    //formData 공간에 files라는 이름으로 파일을 추가한다.
-                    //동일명으로 계속 추가할 수 있다.
-                    formData.append('files',files[index]);
-                }
-
-                //ajax 통신으로 multipart form을 전송한다.
-                $.ajax({
-                    type : 'POST',
-                    enctype : 'multipart/form-data',
-                    processData : false,
-                    contentType : false,
-                    cache : false,
-                    timeout : 600000,
-                    url : '/imageupload',
-                    dataType : 'JSON',
-                    data : formData,
-                    success : function(result) {
-                        //이 부분을 수정해서 다양한 행동을 할 수 있으며,
-                        //여기서는 데이터를 전송받았다면 순수하게 OK 만을 보내기로 하였다.
-                        //-1 = 잘못된 확장자 업로드, -2 = 용량초과, 그외 = 성공(1)
-                        if (result === -1) {
-                            alert('jpg, gif, png, bmp 확장자만 업로드 가능합니다.');
-                            // 이후 동작 ...
-                        } else if (result === -2) {
-                            alert('파일이 10MB를 초과하였습니다.');
-                            // 이후 동작 ...
-                        } else {
-                            alert('이미지 업로드 성공');
-                            // 이후 동작 ...
-                        }
-                    }
-                    //전송실패에대한 핸들링은 고려하지 않음
-                });
-            });
-
-
-            // 파일 첨부 시 동작
-            $('input[type=file]').change(function() {
-                $("#preview").css("display", "block");  // display none -> block
-
-                addPreview($(this)); // preview에 사진 추가
-            });
-        });
-
 
         // textarea 글자수 제한(완)
         function lenCheck() {
@@ -242,17 +199,55 @@
             }
         }
 
-        // todo - 상품 등록 버튼을 눌렀을 때(작업중)
+        // ★ todo - 상품 등록 버튼을 눌렀을 때(작업중)
         function registProduct() {
+
+            // 1. 유효성 검사
             if($("input[name='product_name']").val() == "") {
                 alert("상품명을 입력해주세요.");
             } else if(previewIndex == 0) {
                 alert("상품 대표 사진을 첨부해주세요. (최소 1장)");
+            } else {
+                // 2. ajax 전송
+				var form = $('#uploadForm')[0];
+                var formData = new FormData(form);
+
+                for (var index = 0; index < Object.keys(files).length; index++) {
+                    // formData 공간에 files라는 이름으로 파일을 추가한다.
+                    // 동일명으로 계속 추가할 수 있다.
+                    formData.append("files",files[index]);
+                }
+
+                formData.append("product_name", $("input[name='product_name']").val());     // 상품명
+                formData.append("product_detail",  $("#writeContent").val());               // 상품 상세 내용
+                formData.append("subcategory_no", $("#subcategory option:selected").val()); // 서브 카테고리 번호
+
+                // ajax 통신으로 multipart form을 전송한다.
+                $.ajax({
+                    type : 'post',
+                    enctype : 'multipart/form-data',
+                    processData : false,
+                    contentType : false,
+                    url : '/registProduct',
+                    dataType : 'JSON',
+                    data : formData,
+                    success : function(data) {
+						console.log(data);
+                    },
+                    error : function(error) {
+                        console.log(error);
+                    }
+                });
             }
+
+			// 2. 담음
+
+            // todo - ajax로 전송!
+
         }
 
 
-        // 1차 카테고리를 선택했을 때 작업(완)
+        // 1차 카테고리를 선택했을 때 2차 카테고리 추가(완)
 		function selectCategory() {
 			$("#subcategory option").remove();  // 기존 옵션 삭제
 
@@ -272,6 +267,7 @@
             });
 		}
 
+		// 카테고리 추가(완)
 		function printCategory(list) {
 			var str = "";
 
