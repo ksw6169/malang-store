@@ -22,7 +22,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-2 col-md-8" style="margin-top: 100px; padding: 50px 0px 50px 0px; border: 0.25px solid #dddddd; ">
+                <div class="col-md-offset-2 col-md-8" style="padding: 50px 0px 50px 0px; border: 0.25px solid #dddddd;">
                     <div class="col-md-offset-2 col-md-8">
                         <h1 class="text-header">로그인</h1>
 

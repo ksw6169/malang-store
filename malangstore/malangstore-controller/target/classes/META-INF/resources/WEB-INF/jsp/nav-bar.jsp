@@ -77,7 +77,8 @@
                         <a href="#" class="dropbtn">마이페이지</a>
                         <div class="dropdown-content">
                             <a id="login_column" href="./loginForm">로그인</a>
-                            <a id="logout_column" href="#">로그아웃</a>
+                            <a id="join_column" href="./joinForm">회원가입</a>
+                            <a id="logout_column" href="./logout">로그아웃</a>
                         </div>
                     </li>
                     <li>
@@ -97,15 +98,13 @@
         $(document).ready(function() {
             if(loginId == "") {
                 $("#login_column").css("display", "block");
+                $("#join_column").css("display", "block");
                 $("#logout_column").css("display", "none");
             } else {
                 $("#login_column").css("display", "none");
+                $("#join_column").css("display", "none");
                 $("#logout_column").css("display", "block");
             }
-
-            $("#logout_column").click(function() {
-                location.href = "/logout";
-            });
         });
     </script>
 </html>

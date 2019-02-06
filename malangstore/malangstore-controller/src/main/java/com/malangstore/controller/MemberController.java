@@ -47,10 +47,10 @@ public class MemberController {
 
     // 완
     @RequestMapping(value="/logout")
-    public ModelAndView logout() {
+    public ModelAndView logout(HttpSession session) {
         logger.info("request url : /logout");
 
-        // session.removeAttribute("loginId");
+        session.removeAttribute("loginId");
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("msg", "로그아웃 되었습니다.");

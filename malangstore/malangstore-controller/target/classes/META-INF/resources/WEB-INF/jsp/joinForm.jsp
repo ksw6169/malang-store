@@ -20,7 +20,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-1 col-md-10" style="margin-top: 100px; padding: 50px 0px 50px 0px; border: 0.25px solid #dddddd; ">
+                <div class="col-md-offset-1 col-md-10" style="padding: 50px 0px 50px 0px; border: 0.25px solid #dddddd; ">
                     <div class="col-md-offset-2 col-md-8">
                         <h1 class="text-header">회원가입</h1>
 
@@ -145,32 +145,36 @@
 
         // ID 중복 체크(완)
         function isDuplicate() {
-            var userId = $("#userId").val();
-            var msg = $("#userIdMsg");
+            if(idCheck == true) {
+	            var userId = $("#userId").val();
+	            var msg = $("#userIdMsg");
 
-            $.ajax({
-                type : "post",
-                url : "./isDuplicate",
-                data : { id : userId },
-                dataType : "json",
-                success : function(data) {
-                    console.log(data);
-                    duplicateCheck = data.isDuplicate;
+	            $.ajax({
+	                type : "post",
+	                url : "./isDuplicate",
+	                data : { id : userId },
+	                dataType : "json",
+	                success : function(data) {
+	                    console.log(data);
+	                    duplicateCheck = data.isDuplicate;
 
-                    if(duplicateCheck) {
-                        msg.html("중복된 아이디입니다.");
-                        msg.css("color", "red");
-                        alert("중복된 아이디입니다.");
-                    } else {
-                        msg.html("사용 가능한 아이디입니다.");
-                        msg.css("color", "green");
-                        alert("사용 가능한 아이디입니다.");
-                    }
-                },
-                error : function(error) {
-                    console.log(error);
-                }
-            });
+	                    if(duplicateCheck) {
+	                        msg.html("중복된 아이디입니다.");
+	                        msg.css("color", "red");
+	                        alert("중복된 아이디입니다.");
+	                    } else {
+	                        msg.html("사용 가능한 아이디입니다.");
+	                        msg.css("color", "green");
+	                        alert("사용 가능한 아이디입니다.");
+	                    }
+	                },
+	                error : function(error) {
+	                    console.log(error);
+	                }
+	            });
+            } else {
+				alert("아이디가 올바르지 않습니다. 다시 입력해주세요.");
+            }
         }
 
         // 비밀번호 유효성 체크(완)

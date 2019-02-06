@@ -33,4 +33,11 @@ public class ProductController {
 
         return productService.productList(map);
     }
+
+	@RequestMapping(value="/writeProduct")
+	public String writeProduct() {
+		logger.info("request url: /writeProduct");
+
+		return "writeProducts";
+	}
 }
