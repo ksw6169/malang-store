@@ -2,7 +2,7 @@ package com.malangstore.beans;
 
 public class Photo {
     private int photo_no;
-    private String photo_path;
+    private String photo_name;
     private int product_no;
 
     public int getPhoto_no() {
@@ -13,12 +13,12 @@ public class Photo {
         this.photo_no = photo_no;
     }
 
-    public String getPhoto_path() {
-        return photo_path;
+    public String getPhoto_name() {
+        return photo_name;
     }
 
-    public void setPhoto_path(String photo_path) {
-        this.photo_path = photo_path;
+    public void setPhoto_name(String photo_name) {
+        this.photo_name = photo_name;
     }
 
     public int getProduct_no() {

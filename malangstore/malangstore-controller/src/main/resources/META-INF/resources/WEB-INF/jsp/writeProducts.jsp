@@ -233,7 +233,7 @@
             }
         }
 
-        // ★ todo - 상품 등록 버튼을 눌렀을 때(작업중)
+        // 상품 등록 버튼을 눌렀을 때(완)
         function registProduct() {
 
             // 1. 유효성 검사
@@ -255,7 +255,7 @@
                 for (var index = 0; index < Object.keys(files).length; index++) {
                     // formData 공간에 files라는 이름으로 파일을 추가한다.
                     // 동일명으로 계속 추가할 수 있다.
-                    formData.append("files",files[index]);
+                    formData.append("files", files[index]);
                 }
 
                 formData.append("product_name", $("input[name='product_name']").val());         // 상품명
@@ -275,7 +275,9 @@
                     dataType : 'JSON',
                     data : formData,
                     success : function(data) {
-						console.log(data);
+                        if(data.success == 1) {
+                            alert("상품 등록에 성공했습니다.");
+                        }
                     },
                     error : function(error) {
                         console.log(error);

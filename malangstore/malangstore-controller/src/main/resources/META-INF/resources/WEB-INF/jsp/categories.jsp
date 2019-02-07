@@ -89,7 +89,7 @@
                         maxPage = parseInt(count/20)+1;
                     }
 
-                    boardPrint(data.productList);
+                    boardPrint(data);
                     pagingBtnPrint(currentPage);
 
                     $("#preBtn").addClass("disabled");      // 진입했을 때, 이전 페이지 버튼은 비활성화
@@ -105,7 +105,9 @@
         });
 
         // 게시글 그리기(완)
-        function boardPrint(list) {
+        function boardPrint(data) {
+            var list = data.productList;
+            var photoList = data.photoList;
             var str = "";
 
             for(var i=0; i<list.length; i++) {
@@ -117,7 +119,7 @@
                 str += "<div class='thumbnail'>";
                 str += "<div class='img-div'>";
                 str += "<a href='#'>";
-                str += "<img src='/res/img/slide1.png' alt='...' style='width: 100%; height: 100%;'>";
+                str += "<img src='/res/img/"+photoList[i].photo_name+"' alt='...' style='width: 100%; height: 100%;'>";
                 str += "</a></div>";
                 str += "<div class='col-md-12 product_name'>"+list[i].product_name+"</div>";
                 str += "<div class='col-md-12 product_price'>"+list[i].product_price+"원</div>";
@@ -224,7 +226,7 @@
                 },
                 dataType : "json",
                 success : function(data) {
-                    boardPrint(data.productList);
+                    boardPrint(data);
                 },
                 error : function(error) {
                     console.log(error);

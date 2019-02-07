@@ -24,14 +24,37 @@ public class ProductDaoImple implements ProductDao {
     SqlSessionTemplate sqlSession;
 
     @Override
-    public List<Product> productList(int subcategory_no, int page) {
+    public HashMap<String, Object> productList(int subcategory_no, int page) {
         Map<String, Integer> paramMap = new HashMap<String, Integer>();
         paramMap.put("subcategory_no", subcategory_no);
         paramMap.put("page", page);
 
-        System.out.println("★ productList page 확인! :"+page);
+        List<Product> list = sqlSession.selectList(NAMESPACE+".productList", paramMap);
 
-        return sqlSession.selectList(NAMESPACE+".productList", paramMap);
+        List<Photo> photoList = new ArrayList<Photo>();
+
+        /* 대표 사진 한 장 가져오기(getPhoto) - 각 상품 별로 ! */
+        for(int i=0; i<list.size(); i++) {
+            Photo photo = getPhoto(list.get(i).getProduct_no());
+
+            photoList.add(photo);
+        }
+
+        HashMap<String, Object> resultMap = new HashMap<String, Object>();
+
+        resultMap.put("productList", list);
+        resultMap.put("photoList", photoList);
+
+        return resultMap;
+    }
+
+    @Override
+    public Photo getPhoto(int product_no) {
+
+        HashMap<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("product_no", product_no);
+
+        return sqlSession.selectOne(NAMESPACE+".getPhoto", paramMap);
     }
 
     @Override
@@ -51,7 +74,7 @@ public class ProductDaoImple implements ProductDao {
         for(int i=1; i<=imageLen; i++) {
             Photo photo = new Photo();
             photo.setProduct_no(product_no);
-            photo.setPhoto_path(String.valueOf(map.get("path"+i)));
+            photo.setPhoto_name(String.valueOf(map.get("photo_name"+i)));
 
             list.add(photo);
         }
