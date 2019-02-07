@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -45,11 +46,9 @@ public class ProductController {
 	}
 
 	@RequestMapping(value="/registProduct")
-	public @ResponseBody HashMap<String, Object> registProduct(@RequestParam("files") List<MultipartFile> images, HttpSession session, @RequestParam HashMap<String, Object> map) {
+	public @ResponseBody HashMap<String, Object> registProduct(@RequestParam("files") List<MultipartFile> images, @RequestParam HashMap<String, Object> map) {
 		logger.info("request url: /registProduct");
 
-		String root = session.getServletContext().getRealPath("/");
-
-		return productService.registProduct(root, images, map);
+		return productService.registProduct(images, map);
 	}
 }

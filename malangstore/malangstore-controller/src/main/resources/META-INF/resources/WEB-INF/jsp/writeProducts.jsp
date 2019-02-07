@@ -64,12 +64,46 @@
                         <b class="product-header">내용</b>
                     </span>
                     <span class="col-md-10">
-                        <textarea id="writeContent" class="writeContentArea" onKeyUp="lenCheck()"></textarea>
+                        <textarea id="writeContent" class="writeContentArea" onkeyup="lenCheck()"></textarea>
                     </span>
                 </div>
                 <!-- // product-content -->
 
                 <div style="margin-bottom: 40px;"></div>
+
+                <!-- 상품 판매가 -->
+                <div class="row" style="margin-bottom: 30px;">
+                    <span class="col-md-2 input-title">
+                        <b class="product-header">상품 판매 가격</b>
+                    </span>
+                    <span class="col-md-10">
+                        <input class="inputBox" name="product_price" type="text" maxlength="8" numberonly />
+                    </span>
+                </div>
+                <!-- // 상품 판매가 -->
+
+                <!-- 상품 배송비 -->
+                <div class="row" style="margin-bottom: 30px;">
+                    <span class="col-md-2 input-title">
+                        <b class="product-header">배송비</b>
+                    </span>
+                    <span class="col-md-10">
+                        <input class="inputBox" name="product_delivery" type="text" maxlength="6" numberonly />
+                    </span>
+                </div>
+                <!-- // 상품 배송비 -->
+
+                <!-- 상품 수량 -->
+                <div class="row" style="margin-bottom: 30px;">
+                    <span class="col-md-2 input-title">
+                        <b class="product-header">상품 수량</b>
+                    </span>
+                    <span class="col-md-10">
+                        <input class="inputBox" name="product_count" type="text" maxlength="8" numberonly />
+                    </span>
+                </div>
+                <!-- // 상품 수량 -->
+
 
                 <!-- product_category 1 -->
                 <div class="row" style="margin-bottom: 30px;">
@@ -207,6 +241,12 @@
                 alert("상품명을 입력해주세요.");
             } else if(previewIndex == 0) {
                 alert("상품 대표 사진을 첨부해주세요. (최소 1장)");
+            } else if($("input[name='product_price']").val() == "") {
+                alert("상품 판매가를 입력해주세요.");
+            } else if($("input[name='product_delivery']").val() == "") {
+                alert("배송비를 입력해주세요.");
+            } else if($("input[name='product_count']").val() == "") {
+                alert("상품 수량을 입력해주세요.");
             } else {
                 // 2. ajax 전송
 				var form = $('#uploadForm')[0];
@@ -218,9 +258,12 @@
                     formData.append("files",files[index]);
                 }
 
-                formData.append("product_name", $("input[name='product_name']").val());     // 상품명
-                formData.append("product_detail",  $("#writeContent").val());               // 상품 상세 내용
-                formData.append("subcategory_no", $("#subcategory option:selected").val()); // 서브 카테고리 번호
+                formData.append("product_name", $("input[name='product_name']").val());         // 상품명
+                formData.append("product_detail",  $("#writeContent").val());                   // 상품 상세 내용
+                formData.append("product_price", $("input[name='product_price']").val());       // 상품 판매가
+                formData.append("product_delivery", $("input[name='product_delivery']").val()); // 상품 배송비
+                formData.append("product_count", $("input[name='product_count']").val());       // 상품 수량
+                formData.append("subcategory_no", $("#subcategory option:selected").val());     // 서브 카테고리 번호
 
                 // ajax 통신으로 multipart form을 전송한다.
                 $.ajax({
@@ -282,5 +325,10 @@
             $("#subcategory").append(str);
 		}
 
+        // ref : https://hihoyeho.tistory.com/entry/%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%B0%95%EC%8A%A4input-text%EC%97%90-%EC%88%AB%EC%9E%90%EB%A7%8C-%EC%9E%85%EB%A0%A5-%EA%B0%80%EB%8A%A5%ED%95%98%EB%8F%84%EB%A1%9D-%EC%84%A4%EC%A0%95
+        // 숫자가 아닌 나머지 문자를 공백으로 처리(완)
+        $("input:text[numberOnly]").on("keyup", function() {
+            $(this).val($(this).val().replace(/[^0-9]/g,""));
+        });
     </script>
 </html>

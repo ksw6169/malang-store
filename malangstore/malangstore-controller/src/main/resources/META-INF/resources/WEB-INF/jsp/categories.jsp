@@ -77,7 +77,7 @@
                 url : "./productList",
                 data : {
                     subcategory_no : subcategory,
-                    page : currentPage
+                    page : 0
                 },
                 dataType : "json",
                 success : function(data) {

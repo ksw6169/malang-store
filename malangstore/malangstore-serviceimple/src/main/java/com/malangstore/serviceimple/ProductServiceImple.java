@@ -23,6 +23,11 @@ public class ProductServiceImple implements ProductService {
     @Autowired
     ProductDao productDao;
 
+	// TODO: 2019-02-07 파일 경로 직접 설정(임시)
+	private static final String SAVE_PATH = "C:/Users/USER/Desktop/malangstore-upload";
+
+	private HashMap<String, String> fileList = new HashMap<String, String>();
+
     @Override
     public HashMap<String, Object> productList(HashMap<String, Object> map) {
 
@@ -37,29 +42,50 @@ public class ProductServiceImple implements ProductService {
     }
 
 	@Override
-	public HashMap<String, Object> registProduct(String root, List<MultipartFile> images, HashMap<String, Object> map) {
+	public HashMap<String, Object> registProduct(List<MultipartFile> images, HashMap<String, Object> map) {
 
-		System.out.println("service / product_name : "+map.get("product_name"));
-		System.out.println("service / product_detail : "+map.get("product_detail"));
-		System.out.println("service / subcategory_no : "+map.get("subcategory_no"));
+		// 폴더가 없을 경우 폴더 생성
+		File dir = new File(SAVE_PATH);
 
-    	long sizeSum = 0;
+		if(!dir.exists()) {
+			System.out.println("폴더 없음 - 폴더 생성");
+			dir.mkdir();
+		}
+
+		int imageLen = 0;
+		long sizeSum = 0;
+
 		for(MultipartFile image : images) {
-			String originalFileName = image.getOriginalFilename();
+			String originalFileName = image.getOriginalFilename();	// 파일명 추출
 
-			System.out.println("service / fileName: "+originalFileName);
-
-			// 1. 확장자 검사
+			// 파일명 확장자 검사
 			/*if(!isValidExtension(originalFileName)) {
 
 			}*/
 
-			// 2. 용량 검사
+			// 파일 용량 검사
 			/*sizeSum += image.getSize();
 			if(sizeSum >= 10*1024*1024) {   // 10MB가 넘을 경우
 
 			}*/
+
+			String newFileName = System.currentTimeMillis()+originalFileName.substring(originalFileName.lastIndexOf("."));	// 새 파일명 추출
+
+			imageLen++;
+
+			// 파일 추출
+			try {
+				byte[] bytes = image.getBytes();									// MultipartFile에서 바이트 추출
+				Path filePath = Paths.get(SAVE_PATH+"/"+newFileName);			// 파일 생성 경로 추출
+				Files.write(filePath,  bytes);										// 새 경로에 해당 파일 생성
+				fileList.put(newFileName, originalFileName);						// 새 경로, 원 경로 담음
+				map.put("path"+imageLen, SAVE_PATH+"/"+newFileName);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+
+		productDao.registProduct(map, imageLen);
 
     	return null;
 	}
