@@ -22,21 +22,15 @@
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
 
                         <!-- Carousel items -->
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="/res/img/slide1.png" alt="First slide" class="img-fluid img-responsive main-slide" style="height: 100%;"/>
-                            </div>
-                            <div class="item">
-                                <img src="/res/img/slide2.png" alt="Second slide" class="img-fluid img-responsive main-slide" style="height: 100%;"/>
-                            </div>
-                            <div class="item">
-                                <img src="/res/img/slide3.png" alt="Third slide" class="img-fluid img-responsive main-slide" style="height: 100%;"/>
-                            </div>
+                            <!--
+                                Append Data
+
+                                밑에 src delete 해놓음
+                            -->
                         </div>
 
                         <!-- todo : Controls(Prev, Next) -->
@@ -44,8 +38,8 @@
 
                     <!-- thumbnail -->
                     <div class="product_thumbnail">
-                        <div class="col-md-12 product_name">말랑말랑피규어</div>
-                        <div class="col-md-12 product_price">10000원</div>
+                        <div class="col-md-12 product_name"></div>
+                        <div class="col-md-12 product_price"></div>
                         <div class="col-md-12 product_quantity_div">
                             <span class="col-md-2 quantity_minus">-</span>
                             <span class="col-md-8 quantity_input">1</span>
@@ -77,25 +71,73 @@
     <script>
         $('.carousel').carousel();
 
-        // 체크박스 전체 선택(완)
-        function allCheck(obj) {
-            var chkObj = $("input[name='rowCheck']");
-            var rowCnt = chkObj.length - 1; //상단에 있는 갯수 -1
-            var check = obj.checked;
 
-            if(check) {
-                for (var i=0; i<=rowCnt; i++) {
-                    if(chkObj[i].type == "checkbox") {
-                        chkObj[i].checked = true;
-                    }
+        // ajax 2번 -> 1번으로 수정(이전과 같이 한꺼번에 불러오는 식으로)
+        $(document).ready(function() {
+            var product_no = "${param.product_no}";
+
+            $.ajax({
+                type : "get",
+                url : "./productDetail",
+                data : {
+                    product_no : product_no
+                },
+                dataType : "json",
+                success : function(data) {
+                    console.log(data);
+                    printProduct(data.product);
+                },
+                error : function(error) {
+                    console.log(error);
                 }
-            } else {
-                for (var i=0; i<=rowCnt; i++) {
-                    if(chkObj[i].type == "checkbox"){
-                        chkObj[i].checked = false;
-                    }
+            });
+
+            $.ajax({
+                type : "get",
+                url : "./getPhotoList",
+                data : {
+                    product_no : product_no
+                },
+                dataType : "json",
+                success : function(data) {
+                    console.log(data);
+                    printPhotoList(data.photoList);
+                },
+                error : function(error) {
+                    console.log(error);
                 }
-            }
+            });
+        });
+
+
+        // 상품 정보 출력(완)
+        function printProduct(product) {
+            $(".product_name").text(product.product_name);
+            $(".product_price").text(product.product_price);
+            $(".product_content").text(product.product_detail);
+        }
+
+
+        // 사진 리스트 출력(완)
+        function printPhotoList(photoList) {
+            console.log(photoList);
+            var str1 = "";
+            var str2 = "";
+
+            photoList.forEach(function(item, i, array) {
+                if(i == 0) {
+                    str1 += "<div class='item active'>";
+                } else {
+                    str1 += "<div class='item'>";
+                    str2 += "<li data-target='#carousel-example-generic' data-slide-to='"+i+"'></li>";
+                }
+
+                str1 += "<img src='/res/img/"+item.photo_name+"' alt='First slide' class='img-fluid img-responsive main-slide img1' style='height: 100%;'/>";
+                str1 += "</div>";
+            });
+
+            $(".carousel-indicators").append(str2);
+            $(".carousel-inner").append(str1);
         }
     </script>
 </html>

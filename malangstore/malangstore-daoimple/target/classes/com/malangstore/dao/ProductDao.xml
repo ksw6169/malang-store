@@ -10,11 +10,17 @@
     </select>
 
     <!-- todo foreach 수정 고려 -->
+    <!-- todo getPhotoList와 통합 고려 -->
     <select id="getPhoto" parameterType="int" resultType="com.malangstore.beans.Photo">
         SELECT * FROM photo
             WHERE product_no = #{product_no} LIMIT 1
     </select>
-    
+
+    <select id="getPhotoList" parameterType="int" resultType="com.malangstore.beans.Photo">
+        SELECT * FROM photo
+            WHERE product_no = #{product_no}
+    </select>
+
     <select id="productListCount" parameterType="int" resultType="int">
         SELECT COUNT(*) FROM product
             WHERE subcategory_no = #{subcategory_no}
@@ -31,4 +37,9 @@
                 (NEXTVAL('seq_photo_no'), #{item.photo_name}, #{item.product_no})
             </foreach>
     </insert>
+
+    <select id="productDetail" parameterType="int" resultType="com.malangstore.beans.Product">
+        SELECT * FROM product
+            WHERE product_no = #{product_no}
+    </select>
 </mapper>

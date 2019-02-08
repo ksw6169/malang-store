@@ -277,6 +277,9 @@
                     success : function(data) {
                         if(data.success == 1) {
                             alert("상품 등록에 성공했습니다.");
+                            location.href = "./";     // todo 작업중
+                        } else {
+                            alert("상품 등록에 실패했습니다.");
                         }
                     },
                     error : function(error) {
@@ -284,11 +287,6 @@
                     }
                 });
             }
-
-			// 2. 담음
-
-            // todo - ajax로 전송!
-
         }
 
 

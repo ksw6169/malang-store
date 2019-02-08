@@ -29,9 +29,6 @@ public class OrderlistController {
     public @ResponseBody HashMap<String, Integer> insertCart(@RequestParam HashMap<String, String> map) {
         logger.info("request url : /insertCart");
 
-        logger.info("param id: "+map.get("id"));
-        logger.info("param product_no: "+map.get("product_no"));
-
         return orderlistService.insertCart(map);
     }
 

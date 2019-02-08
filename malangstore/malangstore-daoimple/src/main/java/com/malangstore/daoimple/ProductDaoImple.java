@@ -58,6 +58,15 @@ public class ProductDaoImple implements ProductDao {
     }
 
     @Override
+    public List<Photo> getPhotoList(int product_no) {
+
+        HashMap<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("product_no", product_no);
+
+        return sqlSession.selectList(NAMESPACE+".getPhotoList", paramMap);
+    }
+
+    @Override
     public int productListCount(int subcategory_no) {
         Map<String, Integer> paramMap = new HashMap<String, Integer>();
         paramMap.put("subcategory_no", subcategory_no);
@@ -83,7 +92,7 @@ public class ProductDaoImple implements ProductDao {
     }
 
     @Override
-    public int registProduct(HashMap<String, Object> map, int imageLen) {
+    public HashMap<String, Object> registProduct(HashMap<String, Object> map, int imageLen) {
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
 
         // 1. 상품 등록 먼저
@@ -95,14 +104,30 @@ public class ProductDaoImple implements ProductDao {
         product.setProduct_count(Integer.valueOf(String.valueOf(map.get("product_count"))));
         product.setSubcategory_no(Integer.valueOf(String.valueOf(map.get("subcategory_no"))));
 
+        HashMap<String, Object> resultMap = new HashMap<String, Object>();
+        int success = 0;
+
         // useGeneratedKey를 이용해 insert 후 product_no 값을 Product 객체에 담음
         if(sqlSession.insert(NAMESPACE+".registProduct", product) > 0) {
             // 2. 사진 등록
             if(insertPhoto(product.getProduct_no(), map, imageLen) > 0) {
-                return 1;   // success - 1
+                success = 1;
+                resultMap.put("product_no", product.getProduct_no());
             }
         }
 
-        return 0;   // failure - 0
+        resultMap.put("success", success);
+
+        return resultMap;
+    }
+
+    @Override
+    public Product productDetail(int product_no) {
+
+        HashMap<String, Object> paramMap = new HashMap<String, Object>();
+
+        paramMap.put("product_no", product_no);
+
+        return sqlSession.selectOne(NAMESPACE+".productDetail", paramMap);
     }
 }

@@ -14,9 +14,13 @@ public interface ProductDao {
 
     public Photo getPhoto(int product_no);
 
+    public List<Photo> getPhotoList(int product_no);
+
     public int productListCount(int subcategory_no);
 
     public int insertPhoto(int product_no, HashMap<String, Object> map, int imageLen);
 
-    public int registProduct(HashMap<String, Object> map, int imageLen);
+    public HashMap<String, Object> registProduct(HashMap<String, Object> map, int imageLen);
+
+    public Product productDetail(int product_no);
 }

@@ -1,6 +1,7 @@
 package com.malangstore.serviceimple;
 
 import com.malangstore.beans.Category;
+import com.malangstore.beans.Photo;
 import com.malangstore.beans.Product;
 import com.malangstore.dao.ProductDao;
 import com.malangstore.service.ProductService;
@@ -87,15 +88,38 @@ public class ProductServiceImple implements ProductService {
 				map.put("photo_name"+imageLen, newFileName);
 			}
 
-			success = productDao.registProduct(map, imageLen);
+			resultMap = productDao.registProduct(map, imageLen);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		resultMap.put("success", success);
+    	return resultMap;
+	}
+
+
+	@Override
+	public HashMap<String, Object> productDetail(HashMap<String, Object> map) {
+
+    	Product product = productDao.productDetail(Integer.valueOf(String.valueOf(map.get("product_no"))));
+
+    	HashMap<String, Object> resultMap = new HashMap<String, Object>();
+
+    	resultMap.put("product", product);
 
     	return resultMap;
+	}
+
+	@Override
+	public HashMap<String, Object> getPhotoList(HashMap<String, Object> map) {
+
+    	List<Photo> list = productDao.getPhotoList(Integer.valueOf(String.valueOf(map.get("product_no"))));
+
+    	HashMap<String, Object> resultMap = new HashMap<String, Object>();
+
+    	resultMap.put("photoList", list);
+
+		return resultMap;
 	}
 
 
