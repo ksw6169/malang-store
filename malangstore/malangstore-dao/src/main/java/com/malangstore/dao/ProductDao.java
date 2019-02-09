@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface ProductDao {
-    public HashMap<String, Object> productList(int subcategory_no, int page);
+    public List<Product> productList(int subcategory_no, int page);
 
-    public Photo getPhoto(int product_no);
+    public List<Photo> getPhoto(List<Product> productList);
 
     public List<Photo> getPhotoList(int product_no);
 
@@ -20,7 +20,7 @@ public interface ProductDao {
 
     public int insertPhoto(int product_no, HashMap<String, Object> map, int imageLen);
 
-    public HashMap<String, Object> registProduct(HashMap<String, Object> map, int imageLen);
+    public HashMap<String, Object> newProduct(HashMap<String, Object> map, int imageLen);
 
     public Product productDetail(int product_no);
 }

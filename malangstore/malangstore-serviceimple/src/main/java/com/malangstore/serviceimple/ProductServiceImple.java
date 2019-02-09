@@ -3,6 +3,7 @@ package com.malangstore.serviceimple;
 import com.malangstore.beans.Category;
 import com.malangstore.beans.Photo;
 import com.malangstore.beans.Product;
+import com.malangstore.dao.CategoryDao;
 import com.malangstore.dao.ProductDao;
 import com.malangstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +29,35 @@ public class ProductServiceImple implements ProductService {
     @Autowired
     ProductDao productDao;
 
+    @Autowired
+	CategoryDao categoryDao;
+
 	private HashMap<String, String> fileList = new HashMap<String, String>();
+
 
     @Override
     public HashMap<String, Object> productList(HashMap<String, Object> map) {
 
-        HashMap<String, Object> resultMap = productDao.productList(Integer.valueOf(String.valueOf(map.get("subcategory_no"))), Integer.valueOf(String.valueOf(map.get("page"))));
-        int count = productDao.productListCount(Integer.valueOf(String.valueOf(map.get("subcategory_no"))));
+    	int subCategoryNo = Integer.valueOf(String.valueOf(map.get("subcategory_no")));
+		int pageNo = Integer.valueOf(String.valueOf(map.get("page")));
 
-        resultMap.put("productListCount", count);
+		List<Product> productList = productDao.productList(subCategoryNo, pageNo);
+	    int count = productDao.productListCount(subCategoryNo);
+	    List<Photo> photoList = productDao.getPhoto(productList);
+	    String subCategoryName = categoryDao.getCategoryName(subCategoryNo);
+
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("productList", productList);
+	    resultMap.put("productListCount", count);
+	    resultMap.put("photoList", photoList);
+	    resultMap.put("subCategoryName", subCategoryName);
 
         return resultMap;
     }
 
+
 	@Override
-	public HashMap<String, Object> registProduct(List<MultipartFile> images, HashMap<String, Object> map) {
+	public HashMap<String, Object> newProduct(List<MultipartFile> images, HashMap<String, Object> map) {
 
     	HashMap<String, Object> resultMap = new HashMap<String, Object>();
     	int success = 0;
@@ -88,7 +103,7 @@ public class ProductServiceImple implements ProductService {
 				map.put("photo_name"+imageLen, newFileName);
 			}
 
-			resultMap = productDao.registProduct(map, imageLen);
+			resultMap = productDao.newProduct(map, imageLen);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -101,25 +116,17 @@ public class ProductServiceImple implements ProductService {
 	@Override
 	public HashMap<String, Object> productDetail(HashMap<String, Object> map) {
 
-    	Product product = productDao.productDetail(Integer.valueOf(String.valueOf(map.get("product_no"))));
+    	int product_no = Integer.valueOf(String.valueOf(map.get("product_no")));
+
+    	Product product = productDao.productDetail(product_no);
 
     	HashMap<String, Object> resultMap = new HashMap<String, Object>();
-
     	resultMap.put("product", product);
 
+    	List<Photo> photolist = productDao.getPhotoList(product_no);
+		resultMap.put("photoList", photolist);
+
     	return resultMap;
-	}
-
-	@Override
-	public HashMap<String, Object> getPhotoList(HashMap<String, Object> map) {
-
-    	List<Photo> list = productDao.getPhotoList(Integer.valueOf(String.valueOf(map.get("product_no"))));
-
-    	HashMap<String, Object> resultMap = new HashMap<String, Object>();
-
-    	resultMap.put("photoList", list);
-
-		return resultMap;
 	}
 
 

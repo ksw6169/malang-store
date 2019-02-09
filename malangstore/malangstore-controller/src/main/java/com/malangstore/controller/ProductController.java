@@ -23,51 +23,45 @@ public class ProductController {
 
     @RequestMapping(value="/categories")
     public String categories() {
-        logger.info("request url: /categories");
+        logger.info("request url : /categories");
 
         return "categories";
     }
 
     @RequestMapping(value="/productList")
     public @ResponseBody HashMap<String, Object> productList(@RequestParam HashMap<String, Object> map) {
-        logger.info("request url: /productList");
+        logger.info("request url : /productList");
 
         return productService.productList(map);
     }
 
-	@RequestMapping(value="/writeProduct")
-	public String writeProduct() {
-		logger.info("request url: /writeProduct");
+	@RequestMapping(value="/registProducts")
+	public String registProducts() {
+		logger.info("request url : /registProduct");
 
-		return "writeProducts";
+		return "registProducts";
 	}
 
-	@RequestMapping(value="/registProduct")
-	public @ResponseBody HashMap<String, Object> registProduct(@RequestParam("files") List<MultipartFile> images, @RequestParam HashMap<String, Object> map) {
-		logger.info("request url: /registProduct");
+	@RequestMapping(value="/newProduct")
+	public @ResponseBody HashMap<String, Object> newProduct(@RequestParam("files") List<MultipartFile> images, @RequestParam HashMap<String, Object> map) {
+		logger.info("request url : /newProduct");
 
-		return productService.registProduct(images, map);
+		// TODO: 2019-02-08 경로 확인
+
+		return productService.newProduct(images, map);
 	}
 
     @RequestMapping(value="/products")
     public String products() {
-        logger.info("request url: /products");
+        logger.info("request url : /products");
 
         return "products";
     }
 
     @RequestMapping(value="/productDetail")
     public @ResponseBody HashMap<String, Object> productDetail(@RequestParam HashMap<String, Object> map) {
-        logger.info("request url: /productDetail");
+        logger.info("request url : /productDetail");
 
         return productService.productDetail(map);
     }
-
-    @RequestMapping(value="/getPhotoList")
-    public @ResponseBody HashMap<String, Object> getPhotoList(@RequestParam HashMap<String, Object> map) {
-        logger.info("request url: /getPhotoList");
-
-        return productService.getPhotoList(map);
-    }
-
 }

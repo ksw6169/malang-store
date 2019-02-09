@@ -21,8 +21,7 @@
             <h1 class="text-header-custom">장바구니</h1>
             <hr style="padding: 1px; margin: 0px 0px 50px 0px;">
 
-            <!-- table 1-->
-            <form id="orderForm" action="./order" method="post">
+            <form id="order-form" action="./order" method="post">
 	            <table class="table">
 	                <thead>
 	                    <tr>
@@ -35,19 +34,17 @@
 	                    </tr>
 	                </thead>
 
-                    <tbody class="addContext1">
-	                    <!--
-	                        append Data
-	                    -->
+                    <tbody class="first-context">
+                        <!--
+                            append Data
+                        -->
                     </tbody>
                     <input name="id" type="hidden" value="${sessionScope.loginId}"/>
 	            </table>
             </form>
-            <!-- // table1 -->
 
-            <div class="order-delete-btn pull-right" onclick="selectOrderDelete()">선택삭제</div>
+            <div class="order-delete-btn pull-right" onclick="selectedOrderDelete()">선택삭제</div>
 
-            <!-- table2 -->
             <table class="table" style="margin-top: 100px;">
                 <thead>
                     <tr>
@@ -56,16 +53,14 @@
                         <th class="table-header">총 주문 금액</th>
                     </tr>
                 </thead>
-                <tbody class="addContext2">
+                <tbody class="second-context">
                     <!--
                         append Data
                     -->
                 </tbody>
             </table>
-            <!-- // table2 -->
 
-            <!-- button -->
-            <div class="col-md-push-4 col-md-4 direct_order_btn" onclick="order()">주문하기</div>
+            <div class="col-md-push-4 col-md-4 direct-order-btn" onclick="order()">주문하기</div>
         </div>
     </body>
 
@@ -75,8 +70,9 @@
 
 
     <script>
-        var product_price_sum = 0;
-        var product_delivery_sum = 0;
+        var productPriceSum = 0;        // 상품 가격 합계
+        var deliveryChargeSum = 0;      // 배송비 합계
+
 
         $(document).ready(function() {
             $.ajax({
@@ -87,7 +83,7 @@
                 },
                 dataType : "json",
                 success : function(data) {
-                    orderlistPrint(data.list);
+                    appendOrderlist(data.list);
                 },
                 error : function(error) {
                     console.log(error);
@@ -95,70 +91,71 @@
             });
         });
 
-        // 체크박스 전체 선택(완)
-        function allCheck(obj) {
-            var chkObj = $("input[name='rowCheck']");
-            var rowCnt = chkObj.length - 1; //상단에 있는 갯수 -1
-            var check = obj.checked;
 
-            if(check) {
-                for (var i=0; i<=rowCnt; i++) {
-                    if(chkObj[i].type == "checkbox") {
-                        chkObj[i].checked = true;
+        /* 체크박스 전체 선택 */
+        function allCheck(obj) {
+            var checkObj = $("input[name='row-check']");
+            var rowCnt = checkObj.length - 1;
+            var isChecked = obj.checked;
+
+			for(var i=0; i<=rowCnt; i++) {
+				if(isChecked) {
+					if(checkObj[i].type == "checkbox") {
+                        checkObj[i].checked = true;
                     }
-                }
-            } else {
-                for (var i=0; i<=rowCnt; i++) {
-                    if(chkObj[i].type == "checkbox"){
-                        chkObj[i].checked = false;
-                    }
-                }
-            }
+				} else {
+					if(checkObj[i].type == "checkbox") {
+                        checkObj[i].checked = false;
+					}
+				}
+			}
         }
 
-        function orderlistPrint(list) {
+		/* 장바구니 항목 추가 */
+        function appendOrderlist(list) {
             var str = "";
 
             for(var i=0; i<list.length; i++) {
-                product_delivery_sum = list[i].product_delivery;    // todo - 배송비
-                product_price_sum += list[i].product_price;
+                deliveryChargeSum = list[i].product_delivery;
+                productPriceSum += list[i].product_price;
 
                 str += "<tr id='order-data"+list[i].orderlist_no+"'>";
-                str += "<td class='table-data'><input type='checkbox' name='rowCheck' value='"+list[i].orderlist_no+"'/></td>";
+                str += "<td class='table-data'><input type='checkbox' name='row-check' value='"+list[i].orderlist_no+"'/></td>";
                 str += "<td class='table-data'><a href='#'>"+list[i].product_name+"</a></td>";
                 str += "<td class='table-data'>"+list[i].orderlist_count+"</td>";
-                str += "<td class='table-data' id='row_delivery"+list[i].orderlist_no+"'>"+list[i].product_delivery+"원</td>";
-                str += "<td class='table-data' id='row_price"+list[i].orderlist_no+"'>"+list[i].product_price+"원</td>";
-                str += "<td class='table-data cart_delete_btn' onclick='deleteOrder("+list[i].orderlist_no+", "+list[i].product_price+", "+list[i].product_delivery+")'>삭제</td>";
+                str += "<td class='table-data' id='row-delivery"+list[i].orderlist_no+"'>"+list[i].product_delivery+"원</td>";
+                str += "<td class='table-data' id='row-price"+list[i].orderlist_no+"'>"+list[i].product_price+"원</td>";
+                str += "<td class='table-data cart-delete-btn' onclick='deleteOrder("+list[i].orderlist_no+", "+list[i].product_price+", "+list[i].product_delivery+")'>삭제</td>";
                 str += "</tr>";
             }
 
-            $(".addContext1").append(str);
+            $(".first-context").append(str);
 
-            orderlistAllPrint(product_price_sum, product_delivery_sum);
+            appendOrderlistAll(productPriceSum, deliveryChargeSum);
         }
 
 
-        function orderlistAllPrint(price_sum, delivery_sum) {
+		/* 최종 가격 항목 추가 */
+        function appendOrderlistAll(priceSum, deliverySum) {
             var str = "";
 
             str += "<tr id='order-data-all'>";
-            str += "<td class='table-data'>"+price_sum+"원</td>";
-            str += "<td class='table-data'>"+delivery_sum+"원</td>";
-            str += "<td class='table-data'>"+(price_sum + delivery_sum)+"원</td>";
+            str += "<td class='table-data'>"+priceSum+"원</td>";
+            str += "<td class='table-data'>"+deliverySum+"원</td>";
+            str += "<td class='table-data'>"+(priceSum + deliverySum)+"원</td>";
             str += "</tr>";
 
-            $(".addContext2").append(str);
+            $(".second-context").append(str);
         }
 
 
-        function deleteOrder(orderlist_no, price, delivery) {
-
+		/* 장바구니 내역 삭제 */
+        function deleteOrder(orderlistNo, productPrice, deliveryCharge) {
             $.ajax({
                 type : "get",
                 url : "./deleteOrder",
                 data : {
-                    orderlist_no : orderlist_no
+                    orderlist_no : orderlistNo
                 },
                 dataType : "json",
                 success : function(data) {
@@ -169,46 +166,46 @@
                 }
             });
 
-            $("#order-data"+orderlist_no).remove();
+            $("#order-data"+orderlistNo).remove();
             $("#order-data-all").remove();
 
-            product_price_sum = product_price_sum - price;
+            productPriceSum = productPriceSum - productPrice;
 
-            if($(".addContext1").children().size() == 0) {
-                product_delivery_sum = product_delivery_sum - delivery;
+            if($(".first-context").children().size() == 0) {
+                deliveryChargeSum = deliveryChargeSum - deliveryCharge;
             }
 
-            orderlistAllPrint(product_price_sum, product_delivery_sum);
+            appendOrderlistAll(productPriceSum, deliveryChargeSum);
         }
 
-        // 선택 삭제(완)
-        function selectOrderDelete() {
-            $("input[name=rowCheck]:checked").each(function() {
-                var orderlist_no = $(this).attr("value");
 
-                var delivery = $("#row_delivery"+orderlist_no).text();
-                var price = $("#row_price"+orderlist_no).text();
-                delivery = delivery.substring(0, delivery.length-1);
-                price = price.substring(0, price.length-1);
+        /* 선택 삭제 */
+        function selectedOrderDelete() {
+            $("input[name=row-check]:checked").each(function() {
+                var orderlistNo = $(this).attr("value");
+                var productPrice = $("#row-price"+orderlistNo).text();
+                var deliveryCharge = $("#row-delivery"+orderlistNo).text();
 
-                deleteOrder(orderlist_no, price, delivery);
+                productPrice = productPrice.substring(0, productPrice.length-1);
+                deliveryCharge = deliveryCharge.substring(0, deliveryCharge.length-1);
+
+                deleteOrder(orderlistNo, productPrice, deliveryCharge);
             });
         }
 
 
+		/* 주문하기 */
         function order() {
-
 			var orderlist = [];
 
-			$("input[name=rowCheck]:checked").each(function() {
+			$("input[name=row-check]:checked").each(function() {
 				orderlist.push($(this).attr("value"));
 			});
 
 			if(orderlist.length == 0) {
 				alert("주문할 상품을 선택해주세요.");
 			} else {
-				// 전송(강제 form submit) - test
-				$("#orderForm").submit();
+				$("#order-form").submit();
 			}
         }
     </script>

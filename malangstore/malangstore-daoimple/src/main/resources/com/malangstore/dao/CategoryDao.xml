@@ -9,5 +9,8 @@
 				WHERE category_no = #{category_no};
 	</select>
 
-
+	<select id="getCategoryName" parameterType="int" resultType="String">
+		SELECT subcategory_name FROM subcategory
+			WHERE subcategory_no = #{subcategory_no}
+	</select>
 </mapper>

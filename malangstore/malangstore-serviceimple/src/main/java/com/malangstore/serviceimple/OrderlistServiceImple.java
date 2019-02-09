@@ -27,7 +27,6 @@ public class OrderlistServiceImple implements OrderlistService {
         Product product = orderlistDao.getProduct(Integer.valueOf(map.get("product_no")));
 
         HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
-
         resultMap.put("success", orderlistDao.insertCart(product, String.valueOf(map.get("id"))));
 
         return resultMap;
@@ -36,10 +35,9 @@ public class OrderlistServiceImple implements OrderlistService {
     @Override
     public HashMap<String, Object> cartList(HashMap<String, String> map) {
 
-        HashMap<String, Object> resultMap = new HashMap<String, Object>();
-
         List<Orderlist> list = orderlistDao.cartList(map.get("id"));
 
+        HashMap<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("list", list);
 
         return resultMap;
@@ -48,24 +46,53 @@ public class OrderlistServiceImple implements OrderlistService {
     @Override
     public HashMap<String, Integer> deleteOrder(HashMap<String, Object> map) {
 
-        HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
-
         int success = orderlistDao.deleteOrder(Integer.valueOf(String.valueOf(map.get("orderlist_no"))));
 
+	    HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
         resultMap.put("success", success);
 
         return resultMap;
     }
 
 	@Override
-	public List<Orderlist> order(List<Integer> orderlist) {
-    	return orderlistDao.order(orderlist);
+	public ModelAndView order(String[] rowCheck) {
+
+    	List<Integer> list = new ArrayList<Integer>();
+
+    	for(int i=0; i<rowCheck.length; i++) {
+			list.add(Integer.valueOf(rowCheck[i]));
+	    }
+
+    	List<Orderlist> orderlist = orderlistDao.order(list);
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("orderlist", orderlist);
+		mav.setViewName("order");
+
+		return mav;
 	}
 
-
 	@Override
-	public int directOrder(List<Integer> orderlist) {
-		return orderlistDao.directOrder(orderlist);
+	public ModelAndView directOrder(String[] rowCheck) {
+
+		List<Integer> list = new ArrayList<Integer>();
+
+		for(int i=0; i<rowCheck.length; i++) {
+			list.add(Integer.valueOf(rowCheck[i]));
+		}
+
+		ModelAndView mav = new ModelAndView();
+
+		String msg = "상품 주문에 실패했습니다.";
+		mav.setViewName("redirect:/");
+		if(orderlistDao.directOrder(list) != 0) {
+			msg = "주문이 완료되었습니다.";
+			mav.setViewName("orderView");
+		}
+
+		mav.addObject("msg", msg);
+
+    	return mav;
 	}
 
 	@Override

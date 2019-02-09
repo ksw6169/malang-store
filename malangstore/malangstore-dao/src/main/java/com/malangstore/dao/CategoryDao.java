@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface CategoryDao {
 	public List<Subcategory> selectCategory(HashMap<String, Object> map);
+
+	public String getCategoryName(int subCategoryNo);
 }

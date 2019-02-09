@@ -15,7 +15,6 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
     </head>
     <body>
         <jsp:include page="nav-bar.jsp" flush="false"/>
@@ -26,28 +25,25 @@
                     <div class="col-md-offset-2 col-md-8">
                         <h1 class="text-header">로그인</h1>
 
-                        <form action="./login" method="post">
-                            <!-- input id -->
+                        <form id="login-form" action="./login" method="post">
                             <div class="row">
                                 <div class="col-md-12">
                                     <input name="id" class="inputBox" type="text" placeholder="ID"/>
                                 </div>
                             </div>
 
-                            <!-- input password -->
                             <div class="row">
                                 <div class="col-md-12">
                                     <input name="pw" class="inputBox" type="password" placeholder="Password"/>
                                 </div>
                             </div>
-
-                            <!-- button -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button class="btn-custom">로그인</button>
-                                </div>
-                            </div>
                         </form>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn-custom" onclick="login()">로그인</button>
+                            </div>
+                        </div>
 
                         <hr style="padding: 0px; margin: 20px 0px 20px 0px;">
                         <div class="row">
@@ -61,15 +57,38 @@
         </div>
     </body>
     <script>
-        var msg = "${msg}";
-
-        if(msg != "") {
-            alert(msg);
-            msg = "";
-        }
-
         $(document).ready(function() {
+            var msg = "${msg}";
+
+            if(msg != "") {
+                alert(msg);
+            }
+
             $("input[name='id']").focus();
         });
+
+
+		/* enter 키 감지 */
+		$(document).keypress(function(event) {
+			var keyCode = event.keyCode || event.which;
+			if(keyCode == '13') {
+				login();
+			}
+		});
+
+
+		/* 로그인 */
+        function login() {
+			var userId = $("input[name='id']").val();
+			var userPw = $("input[name='pw']").val();
+
+            if(userId == "") {
+				alert("아이디를 입력해주세요.");
+            } else if(userPw == "") {
+				alert("비밀번호를 입력해주세요.");
+            } else {
+				$("#login-form").submit();
+            }
+        }
     </script>
 </html>

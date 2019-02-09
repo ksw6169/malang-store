@@ -1,6 +1,5 @@
 package com.malangstore.controller;
 
-import com.malangstore.beans.Orderlist;
 import com.malangstore.service.OrderlistService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import sun.misc.Request;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -22,7 +20,6 @@ public class OrderlistController {
 
     @Autowired
     OrderlistService orderlistService;
-
 
 
     @RequestMapping(value="/insertCart")
@@ -53,26 +50,11 @@ public class OrderlistController {
         return orderlistService.deleteOrder(map);
     }
 
-
-
 	@RequestMapping(value="/order", method=RequestMethod.POST)
 	public ModelAndView order(HttpServletRequest request) {
 		logger.info("request url : /order");
 
-		List<Integer> orderlist = new ArrayList<Integer>();
-
-		for(int i=0; i<request.getParameterValues("rowCheck").length; i++) {
-			orderlist.add(Integer.valueOf(request.getParameterValues("rowCheck")[i]));
-		}
-
-		List<Orderlist> list = orderlistService.order(orderlist);
-
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("id", request.getParameter("id"));
-		mav.addObject("orderlist", list);
-		mav.setViewName("order");
-
-		return mav;
+		return orderlistService.order(request.getParameterValues("row-check"));
 	}
 
 
@@ -80,24 +62,7 @@ public class OrderlistController {
 	public ModelAndView directOrder(HttpServletRequest request) {
 		logger.info("request url : /directOrder");
 
-		List<Integer> orderlist = new ArrayList<Integer>();
-
-		for(int i=0; i<request.getParameterValues("rowCheck").length; i++) {
-			orderlist.add(Integer.valueOf(request.getParameterValues("rowCheck")[i]));
-		}
-
-		ModelAndView mav = new ModelAndView();
-
-		String msg = "상품 주문에 실패했습니다.";
-		mav.setViewName("redirect:/");
-		if(orderlistService.directOrder(orderlist) != 0) {
-			msg = "주문이 완료되었습니다.";
-			mav.setViewName("orderView");
-		}
-
-		mav.addObject("msg", msg);
-
-		return mav;
+		return orderlistService.directOrder(request.getParameterValues("row-check"));
 	}
 
 	@RequestMapping(value="/orderView", method=RequestMethod.GET)
@@ -108,7 +73,7 @@ public class OrderlistController {
 	}
 
 	@RequestMapping(value="/moveOrderView", method=RequestMethod.GET)
-	public String moveOrderView() {
+	public String orderView() {
 		logger.info("request url : /moveOrderView");
 
 		return "orderView";
@@ -120,8 +85,8 @@ public class OrderlistController {
 
 		List<Integer> orderlist = new ArrayList<Integer>();
 
-		for(int i=0; i<request.getParameterValues("rowCheck").length; i++) {
-			orderlist.add(Integer.valueOf(request.getParameterValues("rowCheck")[i]));
+		for(int i=0; i<request.getParameterValues("row-check").length; i++) {
+			orderlist.add(Integer.valueOf(request.getParameterValues("row-check")[i]));
 		}
 
 		return orderlistService.orderCancel(orderlist);

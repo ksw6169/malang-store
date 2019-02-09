@@ -11,9 +11,7 @@ import java.util.List;
 public interface ProductService {
     public HashMap<String, Object> productList(HashMap<String, Object> map);
 
-    public HashMap<String, Object> registProduct(List<MultipartFile> images, HashMap<String, Object> map);
+    public HashMap<String, Object> newProduct(List<MultipartFile> images, HashMap<String, Object> map);
 
     public HashMap<String, Object> productDetail(HashMap<String, Object> map);
-
-    public HashMap<String, Object> getPhotoList(HashMap<String, Object> map);
 }

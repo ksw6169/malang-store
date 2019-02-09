@@ -24,80 +24,60 @@
                     <div class="col-md-offset-2 col-md-8">
                         <h1 class="text-header">회원가입</h1>
 
-                        <!-- id -->
                         <div class="row">
                             <span class="col-md-3 input-title">
                                 <b class="join-header">아이디</b>
                             </span>
                             <span class="col-md-7">
-                                <input id="userId" class="inputBox" type="text" placeholder="아이디 입력 (영문, 숫자 혼합 4~12자 입력)" onkeyup="idChk()"/>
-                                <span id="userIdMsg" class="warn">　</span>
+                                <input id="user-id" class="inputBox" type="text" placeholder="아이디 입력 (영문, 숫자 혼합 4~12자 입력)" onkeyup="checkId()"/>
+                                <span id="user-id-msg" class="warn">　</span>
                             </span>
                             <span class="col-md-2" style="padding-left: 0px;">
                                 <button class="btn-custom" onclick="isDuplicate()">중복 체크</button>
                             </span>
                         </div>
 
-                        <!-- pw -->
                         <div class="row">
                             <span class="col-md-3 input-title">
                                 <b class="join-header">비밀번호</b>
                             </span>
                             <span class="col-md-9">
-                                <input id="userPw" class="inputBox" type="password" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 혼합 6~15자 입력)" onkeyup="pwChk()"/>
-                                <span id="userPwMsg" class="warn">　</span>
+                                <input id="user-pw" class="inputBox" type="password" placeholder="비밀번호 입력 (영문, 숫자, 특수문자 혼합 6~15자 입력)" onkeyup="checkPw()"/>
+                                <span id="user-pw-msg" class="warn">　</span>
                             </span>
                         </div>
 
-                        <!-- pw confirm -->
                         <div class="row">
                             <span class="col-md-3 input-title">
                                 <b class="join-header">비밀번호 재확인</b>
                             </span>
                             <span class="col-md-9">
-                                <input id="userPwConfirm" class="inputBox" type="password" placeholder="비밀번호 재입력" onkeyup="pwConfirmChk()"/>
-                                <span id="userPwConfirmMsg" class="warn">　</span>
+                                <input id="user-pw-confirm" class="inputBox" type="password" placeholder="비밀번호 재입력" onkeyup="checkPwConfirm()"/>
+                                <span id="user-pw-confirm-msg" class="warn">　</span>
                             </span>
                         </div>
 
-                        <!-- name -->
                         <div class="row">
                             <span class="col-md-3 input-title">
                                 <b class="join-header">이름</b>
                             </span>
                             <span class="col-md-9">
-                                <input id="userName" class="inputBox" type="text" placeholder="이름 입력" onkeyup="nameChk()"/>
-                                <span id="userNameMsg" class="warn">　</span>
+                                <input id="user-name" class="inputBox" type="text" placeholder="이름 입력" onkeyup="checkName()"/>
+                                <span id="user-name-msg" class="warn">　</span>
                             </span>
                         </div>
 
-                        <!-- email -->
                         <div class="row">
                             <span class="col-md-3 input-title">
                                 <b class="join-header">이메일</b>
                             </span>
                             <span class="col-md-9">
-                                <input id="userEmail" class="inputBox" type="text" placeholder="이메일 입력" onkeyup="emailChk()"/>
-                                <span id="userEmailMsg" class="warn">　</span>
+                                <input id="user-email" class="inputBox" type="text" placeholder="이메일 입력" onkeyup="checkEmail()"/>
+                                <span id="user-email-msg" class="warn">　</span>
                             </span>
                         </div>
-
-                        <!-- 인증번호 -->
-                        <!-- <div class="row">
-                            <span class="col-md-3 input-title">
-                                <b class="join-header">인증번호</b>
-                            </span>
-                            <span class="col-md-7">
-                                <input class="inputBox" type="text" placeholder="인증번호 입력"/>
-                                <span id="userAuthMsg" class="warn">　</span>
-                            </span>
-                            <span class="col-md-2" style="padding-left: 0px;">
-                                <button class="btn-custom">인증</button>
-                            </span>
-                        </div> -->
                         <br/>
 
-                        <!-- button -->
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn-custom" onclick="join()">회원가입</button>
@@ -109,23 +89,25 @@
         </div>
     </body>
     <script>
-        var msg = "${msg}";
-		var idCheck = false;
-		var duplicateCheck = true;
-        var pwCheck = false;
-        var pwConfirmCheck = false;
-        var nameCheck = false;
-        var emailCheck = false;
+        var msg = "${msg}";         // 메시지
+		var idCheck = false;        // ID 유효성 여부
+		var duplicateCheck = true;  // 중복 여부
+        var pwCheck = false;        // 비밀번호 유효성 여부
+        var pwConfirmCheck = false; // 비밀번호 확인 유효성 여부
+        var nameCheck = false;      // 이름 유효성 여부
+        var emailCheck = false;     // 이메일 유효성 여부
+
 
         if(msg != "") {
             alert(msg);
             msg = "";
         }
 
-        // ID 유효성 검사(완)
-        function idChk() {
-            var userId = $("#userId").val();
-            var msg = $("#userIdMsg");
+
+        /* ID 유효성 검사 */
+        function checkId() {
+            var userId = $("#user-id").val();
+            var msg = $("#user-id-msg");
             var idReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,12}$/;
             duplicateCheck = true;
             idCheck = false;
@@ -143,11 +125,12 @@
             }
         }
 
-        // ID 중복 체크(완)
+
+        /* ID 중복 체크 */
         function isDuplicate() {
             if(idCheck == true) {
-	            var userId = $("#userId").val();
-	            var msg = $("#userIdMsg");
+	            var userId = $("#user-id").val();
+	            var msg = $("#user-id-msg");
 
 	            $.ajax({
 	                type : "post",
@@ -177,10 +160,11 @@
             }
         }
 
-        // 비밀번호 유효성 체크(완)
-        function pwChk(){
-            var userPw = $("#userPw").val();
-            var msg = $("#userPwMsg");
+
+        /* 비밀번호 유효성 검사 */
+        function checkPw(){
+            var userPw = $("#user-pw").val();
+            var msg = $("#user-pw-msg");
             var pwReg = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
             pwCheck = false;
 
@@ -200,11 +184,12 @@
             }
         }
 
-        // 비밀번호 확인 체크(완)
-        function pwConfirmChk(){
-            var userPw = $("#userPw").val();
-            var userPwConfirm = $("#userPwConfirm").val();
-            var msg = $("#userPwConfirmMsg");
+
+        /* 비밀번호 확인 유효성 검사 */
+        function checkPwConfirm(){
+            var userPw = $("#user-pw").val();
+            var userPwConfirm = $("#user-pw-confirm").val();
+            var msg = $("#user-pw-confirm-msg");
             pwConfirmCheck = false;
 
             if (userPw != userPwConfirm){
@@ -217,11 +202,12 @@
             }
         }
 
-        // 이름 체크(완)
-        function nameChk() {
-            var userName = $("#userName").val();
+
+        /* 이름 유효성 검사 */
+        function checkName() {
+            var userName = $("#user-name").val();
             var nameReg = /^[가-힣]+$/;
-            var msg = $("#userNameMsg");
+            var msg = $("#user-name-msg");
             nameCheck = false;
 
             if(userName == "") {
@@ -240,10 +226,11 @@
             }
         }
 
-        // 이메일 체크(완)
-        function emailChk() {
-            var email = $("#userEmail").val();
-            var msg = $("#userEmailMsg");
+
+        /* 이메일 체크 */
+        function checkEmail() {
+            var email = $("#user-email").val();
+            var msg = $("#user-email-msg");
             var emailReg = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
             emailCheck = false;
 
@@ -257,35 +244,36 @@
             }
         }
 
-        // 회원가입(완)
+
+        /* 회원가입 */
         function join() {
             if(!idCheck) {
                 alert("아이디가 올바르지 않습니다.");
-                $("#userId").focus();
+                $("#user-id").focus();
             } else if(duplicateCheck) {
                 alert("아이디 중복 체크를 해주세요.");
-                $("#userId").focus();
+                $("#user-id").focus();
             } else if(!pwCheck) {
                 alert("비밀번호가 올바르지 않습니다.");
-                $("#userPw").focus();
+                $("#user-pw").focus();
             } else if(!pwConfirmCheck) {
                 alert("비밀번호 확인이 올바르지 않습니다.");
-                $("#userPwConfirm").focus();
+                $("#user-pw-confirm").focus();
             } else if(!nameCheck) {
                 alert("이름이 올바르지 않습니다.");
-                $("#userName").focus();
+                $("#user-name").focus();
             } else if(!emailCheck) {
                 alert("이메일이 올바르지 않습니다.");
-                $("#userEmail").focus();
+                $("#user-email").focus();
             } else {
                 $.ajax({
                     type : "post",
                     url : "./join",
                     data : {
-                        id : $("#userId").val(),
-                        pw : $("#userPw").val(),
-                        email : $("#userEmail").val(),
-                        name : $("#userName").val()
+                        id : $("#user-id").val(),
+                        pw : $("#user-pw").val(),
+                        email : $("#user-email").val(),
+                        name : $("#user-name").val()
                     },
                     dataType : "json",
                     success : function(data) {

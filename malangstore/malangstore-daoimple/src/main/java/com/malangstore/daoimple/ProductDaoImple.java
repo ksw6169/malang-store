@@ -1,13 +1,10 @@
 package com.malangstore.daoimple;
 
-import com.malangstore.beans.Member;
 import com.malangstore.beans.Photo;
 import com.malangstore.beans.Product;
-import com.malangstore.dao.MemberDao;
 import com.malangstore.dao.ProductDao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -24,37 +21,26 @@ public class ProductDaoImple implements ProductDao {
     SqlSessionTemplate sqlSession;
 
     @Override
-    public HashMap<String, Object> productList(int subcategory_no, int page) {
-        Map<String, Integer> paramMap = new HashMap<String, Integer>();
+    public List<Product> productList(int subcategory_no, int page) {
+
+    	Map<String, Integer> paramMap = new HashMap<String, Integer>();
         paramMap.put("subcategory_no", subcategory_no);
         paramMap.put("page", page);
 
-        List<Product> list = sqlSession.selectList(NAMESPACE+".productList", paramMap);
-
-        List<Photo> photoList = new ArrayList<Photo>();
-
-        /* 대표 사진 한 장 가져오기(getPhoto) - 각 상품 별로 ! */
-        for(int i=0; i<list.size(); i++) {
-            Photo photo = getPhoto(list.get(i).getProduct_no());
-
-            photoList.add(photo);
-        }
-
-        HashMap<String, Object> resultMap = new HashMap<String, Object>();
-
-        resultMap.put("productList", list);
-        resultMap.put("photoList", photoList);
-
-        return resultMap;
+        return sqlSession.selectList(NAMESPACE+".productList", paramMap);
     }
 
     @Override
-    public Photo getPhoto(int product_no) {
+    public List<Photo> getPhoto(List<Product> productList) {
 
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
-        paramMap.put("product_no", product_no);
+        paramMap.put("productList", productList);
 
-        return sqlSession.selectOne(NAMESPACE+".getPhoto", paramMap);
+        if(productList.size() == 0) {
+        	return null;
+        }
+
+        return sqlSession.selectList(NAMESPACE+".getPhoto", paramMap);
     }
 
     @Override
@@ -68,6 +54,7 @@ public class ProductDaoImple implements ProductDao {
 
     @Override
     public int productListCount(int subcategory_no) {
+
         Map<String, Integer> paramMap = new HashMap<String, Integer>();
         paramMap.put("subcategory_no", subcategory_no);
 
@@ -76,7 +63,6 @@ public class ProductDaoImple implements ProductDao {
 
     @Override
     public int insertPhoto(int product_no, HashMap<String, Object> map, int imageLen) {
-        HashMap<String, Object> paramMap = new HashMap<String, Object>();
 
         List<Photo> list = new ArrayList<Photo>();
 
@@ -92,7 +78,7 @@ public class ProductDaoImple implements ProductDao {
     }
 
     @Override
-    public HashMap<String, Object> registProduct(HashMap<String, Object> map, int imageLen) {
+    public HashMap<String, Object> newProduct(HashMap<String, Object> map, int imageLen) {
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
 
         // 1. 상품 등록 먼저
@@ -108,7 +94,7 @@ public class ProductDaoImple implements ProductDao {
         int success = 0;
 
         // useGeneratedKey를 이용해 insert 후 product_no 값을 Product 객체에 담음
-        if(sqlSession.insert(NAMESPACE+".registProduct", product) > 0) {
+        if(sqlSession.insert(NAMESPACE+".newProduct", product) > 0) {
             // 2. 사진 등록
             if(insertPhoto(product.getProduct_no(), map, imageLen) > 0) {
                 success = 1;
@@ -125,9 +111,10 @@ public class ProductDaoImple implements ProductDao {
     public Product productDetail(int product_no) {
 
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
-
         paramMap.put("product_no", product_no);
 
         return sqlSession.selectOne(NAMESPACE+".productDetail", paramMap);
     }
+
+
 }

@@ -22,8 +22,7 @@
             <h1 class="text-header-custom">상품 주문</h1>
             <hr style="padding: 1px; margin: 0px 0px 50px 0px;">
 
-			<form id="orderForm" action="./directOrder" method="post">
-	            <!-- table 1-->
+			<form id="order-form" action="./directOrder" method="post">
 	            <table class="table">
 	                <thead>
 	                    <tr>
@@ -35,18 +34,16 @@
 	                        <th class="table-header"></th>
 	                    </tr>
 	                </thead>
-	                <tbody class="addContext1">
+	                <tbody class="first-context">
 	                    <!--
 	                        append Data
 	                    -->
 	                </tbody>
 	            </table>
             </form>
-            <!-- // table1 -->
 
-			<div class="order-delete-btn pull-right" onclick="selectOrderDelete()">선택삭제</div>
+			<div class="order-delete-btn pull-right" onclick="selectedOrderDelete()">선택삭제</div>
 
-            <!-- table2 -->
             <table class="table" style="margin-top: 100px;">
                 <thead>
                     <tr>
@@ -55,22 +52,14 @@
                         <th class="table-header">총 주문 금액</th>
                     </tr>
                 </thead>
-                <tbody class="addContext2">
+                <tbody class="second-context">
                     <!--
                         append data
                     -->
-
-                    <!-- <tr>
-                        <td class="table-data">15,000원</td>
-                        <td class="table-data">2,500원</td>
-                        <td class="table-data">17,500원</td>
-                    </tr> -->
                 </tbody>
             </table>
-            <!-- // table2 -->
 
-            <!-- button -->
-            <div class="col-md-push-4 col-md-4 direct_order_btn" onclick="order()">주문하기</div>
+            <div class="col-md-push-4 col-md-4 direct-order-btn" onclick="order()">주문하기</div>
         </div>
     </body>
 
@@ -78,120 +67,123 @@
             All contents copyright&#169; 2019 sungwon.kim
     </footer>
 
-
     <script>
-		var msg = "${msg}";
-
-        var product_price_sum = 0;
-        var product_delivery_sum = 0;
+        var productPriceSum = 0;    // 상품 가격 합계
+        var deliveryChargeSum = 0;  // 배송비 합계
 
 
         $(document).ready(function() {
+            var msg = "${msg}";
+
             if(msg != "") {
                 alert(msg);
-                msg = "";
             }
 
-            var id = "${id}";
-			var str = "";
-
-            <c:forEach items="${orderlist}" var="item">
-                product_delivery_sum = Number("${item.product_delivery}");
-                product_price_sum += Number("${item.product_price}");
-
-                str += "<tr id='order-data${item.orderlist_no}'>";
-                str += "<td class='table-data'><input type='checkbox' name='rowCheck' value='${item.orderlist_no}'/></td>";
-                str += "<td class='table-data'><a href='#'>${item.product_name}</a></td>";
-                str += "<td class='table-data'>${item.orderlist_count}</td>";
-                str += "<td class='table-data' id='row_delivery${item.orderlist_no}'>${item.product_delivery}원</td>";
-                str += "<td class='table-data' id='row_price${item.orderlist_no}'>${item.product_price}원</td>";
-                str += "<td class='table-data cart_delete_btn' onclick='deleteOrder(${item.orderlist_no}, ${item.product_price}, ${item.product_delivery})'>삭제</td>";
-                str += "</tr>";
-            </c:forEach>
-
-			$(".addContext1").append(str);
-
-			orderlistAllPrint(product_price_sum, product_delivery_sum);
+			appendOrderlist();
         });
 
 
-        // 체크박스 전체 선택(완)
-        function allCheck(obj) {
-            var chkObj = $("input[name='rowCheck']");
-            var rowCnt = chkObj.length - 1; //상단에 있는 갯수 -1
-            var check = obj.checked;
+        /* 체크박스 전체 선택 */
+		function allCheck(obj) {
+            var checkObj = $("input[name='row-check']");
+            var rowCnt = checkObj.length - 1;
+            var isChecked = obj.checked;
 
-            if(check) {
-                for (var i=0; i<=rowCnt; i++) {
-                    if(chkObj[i].type == "checkbox") {
-                        chkObj[i].checked = true;
+            for(var i=0; i<=rowCnt; i++) {
+                if(isChecked) {
+                    if(checkObj[i].type == "checkbox") {
+                        checkObj[i].checked = true;
                     }
-                }
-            } else {
-                for (var i=0; i<=rowCnt; i++) {
-                    if(chkObj[i].type == "checkbox"){
-                        chkObj[i].checked = false;
+                } else {
+                    if(checkObj[i].type == "checkbox") {
+                        checkObj[i].checked = false;
                     }
                 }
             }
         }
 
-		// 완
-		function orderlistAllPrint(price_sum, delivery_sum) {
+
+		/* 주문 내역 추가 */
+		function appendOrderlist() {
+            var str = "";
+
+			<c:forEach items="${orderlist}" var="item">
+				productPriceSum += Number(${item.product_delivery});
+                deliveryChargeSum = Number(${item.product_price});
+
+				str += "<tr id='order-data${item.orderlist_no}'>";
+                str += "<td class='table-data'><input type='checkbox' name='row-check' value='${item.orderlist_no}'/></td>";
+                str += "<td class='table-data'><a href='#'>${item.product_name}</a></td>";
+                str += "<td class='table-data'>${item.orderlist_count}</td>";
+                str += "<td class='table-data' id='row-delivery${item.orderlist_no}'>${item.product_delivery}원</td>";
+                str += "<td class='table-data' id='row-price${item.orderlist_no}'>${item.product_price}원</td>";
+                str += "<td class='table-data cart-delete-btn' onclick='deleteOrder(${item.orderlist_no}, ${item.product_price}, ${item.product_delivery})'>삭제</td>";
+                str += "</tr>";
+			</c:forEach>
+
+            $(".first-context").append(str);
+
+            appendOrderlistAll(productPriceSum, deliveryChargeSum);
+		}
+
+
+		/* 최종 가격 항목 추가 */
+		function appendOrderlistAll(priceSum, deliverySum) {
             var str = "";
 
             str += "<tr id='order-data-all'>";
-            str += "<td class='table-data'>"+price_sum+"원</td>";
-            str += "<td class='table-data'>"+delivery_sum+"원</td>";
-            str += "<td class='table-data'>"+(price_sum + delivery_sum)+"원</td>";
+            str += "<td class='table-data'>"+priceSum+"원</td>";
+            str += "<td class='table-data'>"+deliverySum+"원</td>";
+            str += "<td class='table-data'>"+(priceSum + deliverySum)+"원</td>";
             str += "</tr>";
 
-            $(".addContext2").append(str);
+            $(".second-context").append(str);
         }
 
 
-		// 선택 삭제(완)
-        function selectOrderDelete() {
-            $("input[name=rowCheck]:checked").each(function() {
-                var orderlist_no = $(this).attr("value");
+		/* 선택 삭제 */
+        function selectedOrderDelete() {
+            $("input[name=row-check]:checked").each(function() {
+                var orderlistNo = $(this).attr("value");
 
-                var delivery = $("#row_delivery"+orderlist_no).text();
-                var price = $("#row_price"+orderlist_no).text();
-                delivery = delivery.substring(0, delivery.length-1);
+                var price = $("#row-price"+orderlistNo).text();
+                var delivery = $("#row-delivery"+orderlistNo).text();
+
                 price = price.substring(0, price.length-1);
+                delivery = delivery.substring(0, delivery.length-1);
 
-                deleteOrder(orderlist_no, price, delivery);
+                deleteOrder(orderlistNo, price, delivery);
             });
         }
 
-		// todo - cartView의 deleteOrder와 다름(ajax 호출 X - 장바구니 목록에서 제거하는 게 아니기 때문)
-		function deleteOrder(orderlist_no, price, delivery) {
-            $("#order-data"+orderlist_no).remove();
+
+		/* 주문 내역 삭제(UI만 제거) */
+		function deleteOrder(orderlistNo, price, delivery) {
+            $("#order-data"+orderlistNo).remove();
             $("#order-data-all").remove();
 
-            product_price_sum = product_price_sum - price;
+            productPriceSum = productPriceSum - price;
 
-            if($(".addContext1").children().size() == 0) {
-                product_delivery_sum = product_delivery_sum - delivery;
+            if($(".first-context").children().size() == 0) {
+                deliveryChargeSum = deliveryChargeSum - delivery;
             }
 
-            orderlistAllPrint(product_price_sum, product_delivery_sum);
+            appendOrderlistAll(productPriceSum, deliveryChargeSum);
         }
 
 
-		// 완
+		/* 주문하기 */
 		function order() {
-
             var orderlist = [];
 
-            $("input[name=rowCheck]:checked").each(function() {
+            $("input[name=row-check]:checked").each(function() {
                 orderlist.push($(this).attr("value"));
             });
 
             if(orderlist.length == 0) {
                 alert("주문할 상품을 선택해주세요.");
             } else {
-                $("#orderForm").submit();
+                $("#order-form").submit();
             }
         }
     </script>

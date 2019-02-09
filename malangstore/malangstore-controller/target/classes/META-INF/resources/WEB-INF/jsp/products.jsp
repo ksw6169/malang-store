@@ -15,48 +15,38 @@
         <jsp:include page="nav-bar.jsp" flush="false"/>
         <div class="container">
             <div class="row">
-                <!-- start -->
                 <div class="col-md-push-1 col-md-10">
                     <div class="carousel slide">
 
-                        <!-- Indicators -->
                         <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                         </ol>
 
-                        <!-- Carousel items -->
                         <div class="carousel-inner">
                             <!--
                                 Append Data
-
-                                밑에 src delete 해놓음
                             -->
                         </div>
 
-                        <!-- todo : Controls(Prev, Next) -->
+                        <!-- todo - 추후, Controls(Prev, Next) -->
                     </div>
 
-                    <!-- thumbnail -->
-                    <div class="product_thumbnail">
-                        <div class="col-md-12 product_name"></div>
-                        <div class="col-md-12 product_price"></div>
-                        <div class="col-md-12 product_quantity_div">
-                            <span class="col-md-2 quantity_minus">-</span>
-                            <span class="col-md-8 quantity_input">1</span>
-                            <span class="col-md-2 quantity_plus">+</span>
+                    <div class="product-thumbnail">
+                        <div class="col-md-12 product-name"></div>
+                        <div class="col-md-12 product-price"></div>
+                        <div class="col-md-12 product-quantity-div">
+                            <span class="col-md-2 quantity-minus">-</span>
+                            <span class="col-md-8 quantity-input">1</span>
+                            <span class="col-md-2 quantity-plus">+</span>
                         </div>
-                        <div class="col-md-12 product_btn_group" style="margin: 0px; padding: 0px;">
-                            <div class="col-md-6 cart_btn">장바구니</div>
-                            <div class="col-md-6 order_btn">주문하기</div>
+                        <div class="col-md-12 product-btn-group" style="margin: 0px; padding: 0px;">
+                            <div class="col-md-6 cart-btn">장바구니</div>
+                            <div class="col-md-6 order-btn">주문하기</div>
                         </div>
                     </div>
 
-
-                    <!-- product_content -->
-                    <div class="product_content">
-                        <div class="col-md-12">
-                            내용
-                        </div>
+                    <div class="product-content">
+                        <div class="col-md-12"></div>
                     </div>
                 </div>
             </div>
@@ -72,36 +62,19 @@
         $('.carousel').carousel();
 
 
-        // ajax 2번 -> 1번으로 수정(이전과 같이 한꺼번에 불러오는 식으로)
         $(document).ready(function() {
-            var product_no = "${param.product_no}";
+            var productNo = "${param.product_no}";
 
             $.ajax({
                 type : "get",
                 url : "./productDetail",
                 data : {
-                    product_no : product_no
+                    product_no : productNo
                 },
                 dataType : "json",
                 success : function(data) {
-                    console.log(data);
-                    printProduct(data.product);
-                },
-                error : function(error) {
-                    console.log(error);
-                }
-            });
-
-            $.ajax({
-                type : "get",
-                url : "./getPhotoList",
-                data : {
-                    product_no : product_no
-                },
-                dataType : "json",
-                success : function(data) {
-                    console.log(data);
-                    printPhotoList(data.photoList);
+                    appendProduct(data.product);
+                    appendPhotoList(data.photoList);
                 },
                 error : function(error) {
                     console.log(error);
@@ -110,17 +83,16 @@
         });
 
 
-        // 상품 정보 출력(완)
-        function printProduct(product) {
-            $(".product_name").text(product.product_name);
-            $(".product_price").text(product.product_price);
-            $(".product_content").text(product.product_detail);
+        /* 상품 정보 추가 */
+        function appendProduct(product) {
+            $(".product-name").text(product.product_name);
+            $(".product-price").text(product.product_price);
+            $(".product-content").text(product.product_detail);
         }
 
 
-        // 사진 리스트 출력(완)
-        function printPhotoList(photoList) {
-            console.log(photoList);
+        /* 사진 리스트 추가 */
+        function appendPhotoList(photoList) {
             var str1 = "";
             var str2 = "";
 
@@ -136,8 +108,8 @@
                 str1 += "</div>";
             });
 
-            $(".carousel-indicators").append(str2);
             $(".carousel-inner").append(str1);
+            $(".carousel-indicators").append(str2);
         }
     </script>
 </html>

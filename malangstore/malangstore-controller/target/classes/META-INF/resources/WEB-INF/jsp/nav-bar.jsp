@@ -20,90 +20,77 @@
         </style>
     </head>
     <body>
-        <!-- navbar -->
         <nav class="navbar navbar-fixed-top" role="navigation" style="border-bottom: 0.25px solid #ddd;">
-            <!-- logo -->
             <div class="navbar-header">
                 <a class="navbar-brand" href="./">말랑말랑스토어</a>
             </div>
-            <!-- // logo -->
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropbtn">카테고리</a>
+                        <a href="#" class="drop-btn">카테고리</a>
                         <div class="dropdown-content">
-                            <div class="dropdown-sub1">
+                            <div class="dropdown-sub">
                                 <a href="#" class="dropdown-sub">의류</a><hr>
-                                <div class="dropdown-subcontent1">
-                                    <a href="./categories?subcategory=1" class="dropbtn">의류 1</a><hr>
-                                    <a href="./categories?subcategory=2" class="dropbtn">의류 2</a><hr>
-                                    <a href="./categories?subcategory=3" class="dropbtn">의류 3</a><hr>
+                                <div class="dropdown-subcontent">
+                                    <a href="./categories?subcategory=1" class="drop-btn">의류 1</a><hr>
+                                    <a href="./categories?subcategory=2" class="drop-btn">의류 2</a><hr>
+                                    <a href="./categories?subcategory=3" class="drop-btn">의류 3</a><hr>
                                 </div>
                             </div>
 
-                            <div class="dropdown-sub2">
+                            <div class="dropdown-sub">
                                 <a href="#">인형/피규어</a><hr>
-                                <div class="dropdown-subcontent2">
-                                    <a href="./categories?subcategory=4" class="dropbtn">인형/피규어 1</a><hr>
-                                    <a href="./categories?subcategory=5" class="dropbtn">인형/피규어 2</a><hr>
-                                    <a href="./categories?subcategory=6" class="dropbtn">인형/피규어 3</a><hr>
+                                <div class="dropdown-subcontent">
+                                    <a href="./categories?subcategory=4" class="drop-btn">인형/피규어 1</a><hr>
+                                    <a href="./categories?subcategory=5" class="drop-btn">인형/피규어 2</a><hr>
+                                    <a href="./categories?subcategory=6" class="drop-btn">인형/피규어 3</a><hr>
                                 </div>
                             </div>
 
-                            <div class="dropdown-sub3">
+                            <div class="dropdown-sub">
                                 <a href="#">리빙</a><hr>
-                                <div class="dropdown-subcontent3">
-                                    <a href="./categories?subcategory=7" class="dropbtn">리빙 1</a><hr>
-                                    <a href="./categories?subcategory=8" class="dropbtn">리빙 2</a><hr>
-                                    <a href="./categories?subcategory=9" class="dropbtn">리빙 3</a>
+                                <div class="dropdown-subcontent">
+                                    <a href="./categories?subcategory=7" class="drop-btn">리빙 1</a><hr>
+                                    <a href="./categories?subcategory=8" class="drop-btn">리빙 2</a><hr>
+                                    <a href="./categories?subcategory=9" class="drop-btn">리빙 3</a>
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
 
-                <!-- search -->
-                <!--<form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="검색">
-                    </div>
-                    <button type="submit" class="btn btn-default">검색</button>
-                </form>-->
-                <!-- // search -->
-
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropbtn">마이페이지</a>
+                        <a href="#" class="drop-btn">마이페이지</a>
                         <div class="dropdown-content">
-                            <a id="login_column" href="./loginForm">로그인</a>
-                            <a id="join_column" href="./joinForm">회원가입</a>
-                            <a id="logout_column" href="./logout">로그아웃</a>
+                            <a id="login-column" href="./loginForm">로그인</a>
+                            <a id="join-column" href="./joinForm">회원가입</a>
+                            <a id="logout-column" href="./logout">로그아웃</a>
                         </div>
                     </li>
                     <li>
-                        <a href="./cartView" class="dropbtn">장바구니</a>
+                        <a href="./cartView" class="drop-btn">장바구니</a>
                     </li>
                     <li>
-                        <a href="./moveOrderView" class="dropbtn">주문조회</a>
+                        <a href="./moveOrderView" class="drop-btn">주문조회</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <!-- // navbar -->
     </body>
     <script>
         var loginId = "${sessionScope.loginId}";
 
         $(document).ready(function() {
             if(loginId == "") {
-                $("#login_column").css("display", "block");
-                $("#join_column").css("display", "block");
-                $("#logout_column").css("display", "none");
+                $("#login-column").css("display", "block");
+                $("#join-column").css("display", "block");
+                $("#logout-column").css("display", "none");
             } else {
-                $("#login_column").css("display", "none");
-                $("#join_column").css("display", "none");
-                $("#logout_column").css("display", "block");
+                $("#login-column").css("display", "none");
+                $("#join-column").css("display", "none");
+                $("#logout-column").css("display", "block");
             }
         });
     </script>

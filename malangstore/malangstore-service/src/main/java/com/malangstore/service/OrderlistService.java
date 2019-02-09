@@ -18,9 +18,9 @@ public interface OrderlistService {
 
     public HashMap<String, Integer> deleteOrder(HashMap<String, Object> map);
 
-    public List<Orderlist> order(List<Integer> orderlist);
+    public ModelAndView order(String[] rowCheck);
 
-	public int directOrder(List<Integer> orderlist);
+	public ModelAndView directOrder(String[] rowCheck);
 
 	public HashMap<String, Object> orderView(HashMap<String, Object> map);
 

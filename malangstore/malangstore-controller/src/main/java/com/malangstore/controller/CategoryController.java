@@ -23,7 +23,7 @@ public class CategoryController {
 	@RequestMapping(value="/selectCategory", method= RequestMethod.POST)
 	public @ResponseBody
 	HashMap<String, Object> selectCategory(@RequestParam HashMap<String, Object> map) {
-		logger.info("request url: /selectCategory");
+		logger.info("request url : /selectCategory");
 
 		return categoryService.selectCategory(map);
 	}
