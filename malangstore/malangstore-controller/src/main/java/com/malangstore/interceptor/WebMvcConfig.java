@@ -27,6 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addPathPatterns("/registProducts/**");
 		registry.addInterceptor(loginInterceptor)
 				.addPathPatterns("/**")
-				.excludePathPatterns("/res/**", "/", "/joinForm/**", "/join/**", "/isDuplicate/**", "/loginForm/**", "/login/**", "/logout/**", "/categories/**", "/productList/**", "/products/**", "/productDetail/**");
+				.excludePathPatterns("/res/**", "/", "/joinForm/**", "/join/**", "/isDuplicate/**", "/loginForm/**",
+						"/login/**", "/logout/**", "/categories/**", "/productList/**", "/products/**", "/productDetail/**");
 	}
 }

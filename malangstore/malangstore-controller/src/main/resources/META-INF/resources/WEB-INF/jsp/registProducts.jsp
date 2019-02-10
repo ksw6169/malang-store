@@ -83,7 +83,7 @@
                         <b class="product-header">1차 분류</b>
                     </span>
                     <span class="col-md-10">
-                        <select id="category" onchange="selectCategory()">
+                        <select id="category" onchange="getSubCategories()">
                             <option value="1" selected>의류</option>
                             <option value="2">인형/피규어</option>
                             <option value="3">리빙</option>
@@ -119,7 +119,7 @@
 
 
 		$(document).ready(function() {
-            selectCategory();
+            getSubCategories();
         });
 
 
@@ -229,7 +229,7 @@
                     success : function(data) {
                         if(data.success == 1) {
                             alert("상품 등록에 성공했습니다.");
-                            location.href = "./";       // todo - 이동 페이지 고려
+                            location.href = "./";
                         } else {
                             alert("상품 등록에 실패했습니다.");
                         }
@@ -243,12 +243,12 @@
 
 
         /* 1차 카테고리를 선택했을 때 2차 카테고리 추가 */
-		function selectCategory() {
+		function getSubCategories() {
 			$("#subcategory option").remove();  // 기존 2차 카테고리 제거
 
 			$.ajax({
                 type : "post",
-                url : "./selectCategory",
+                url : "./getSubCategories",
                 data : {
                     category_no : $("#category option:selected").val()
                 },

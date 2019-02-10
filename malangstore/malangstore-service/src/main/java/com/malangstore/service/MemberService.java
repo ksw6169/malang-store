@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public interface MemberService {
-
     public ModelAndView login(HashMap<String, Object> map, HttpSession session);
 
     public HashMap<String, Integer> join(HashMap<String, Object> map);

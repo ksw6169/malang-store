@@ -17,16 +17,26 @@ public class CategoryDaoImple implements CategoryDao {
     @Autowired
     SqlSessionTemplate sqlSession;
 
+
+	/**
+	 *  서브 카테고리 가져오기
+	 */
 	@Override
-	public List<Subcategory> selectCategory(HashMap<String, Object> map) {
+	public List<Subcategory> getSubCategories(HashMap<String, Object> map) {
+
 		HashMap<String, Integer> paramMap = new HashMap<String, Integer>();
 		paramMap.put("category_no", Integer.valueOf(String.valueOf(map.get("category_no"))));
 
-		return sqlSession.selectList(NAMESPACE+".selectCategory", paramMap);
+		return sqlSession.selectList(NAMESPACE+".getSubCategories", paramMap);
 	}
 
+
+	/**
+	 *  카테고리 이름 가져오기
+	 */
 	@Override
 	public String getCategoryName(int subCategoryNo) {
+
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subcategory_no", subCategoryNo);
 

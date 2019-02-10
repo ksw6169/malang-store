@@ -21,20 +21,32 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping(value="/categories")
+
+	/**
+	 *  categories 페이지로 이동
+	 */
+	@RequestMapping(value="/categories")
     public String categories() {
         logger.info("request url : /categories");
 
         return "categories";
     }
 
-    @RequestMapping(value="/productList")
+
+	/**
+	 *  상품 리스트 가져오기
+	 */
+	@RequestMapping(value="/productList")
     public @ResponseBody HashMap<String, Object> productList(@RequestParam HashMap<String, Object> map) {
         logger.info("request url : /productList");
 
         return productService.productList(map);
     }
 
+
+	/**
+	 *  상품 등록 페이지로 이동
+	 */
 	@RequestMapping(value="/registProducts")
 	public String registProducts() {
 		logger.info("request url : /registProducts");
@@ -42,6 +54,10 @@ public class ProductController {
 		return "registProducts";
 	}
 
+
+	/**
+	 *  상품 등록
+	 */
 	@RequestMapping(value="/newProduct")
 	public @ResponseBody HashMap<String, Object> newProduct(@RequestParam("files") List<MultipartFile> images, @RequestParam HashMap<String, Object> map) {
 		logger.info("request url : /newProduct");
@@ -51,6 +67,10 @@ public class ProductController {
 		return productService.newProduct(images, map);
 	}
 
+
+	/**
+	 *  products 페이지로 이동
+	 */
     @RequestMapping(value="/products")
     public String products() {
         logger.info("request url : /products");
@@ -58,7 +78,11 @@ public class ProductController {
         return "products";
     }
 
-    @RequestMapping(value="/productDetail")
+
+	/**
+	 *  상품 정보 가져오기(1개)
+	 */
+	@RequestMapping(value="/productDetail")
     public @ResponseBody HashMap<String, Object> productDetail(@RequestParam HashMap<String, Object> map) {
         logger.info("request url : /productDetail");
 

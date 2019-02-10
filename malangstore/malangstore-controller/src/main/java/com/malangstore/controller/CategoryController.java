@@ -20,12 +20,16 @@ public class CategoryController {
 	@Autowired
 	CategoryService categoryService;
 
-	@RequestMapping(value="/selectCategory", method= RequestMethod.POST)
-	public @ResponseBody
-	HashMap<String, Object> selectCategory(@RequestParam HashMap<String, Object> map) {
-		logger.info("request url : /selectCategory");
 
-		return categoryService.selectCategory(map);
+	/**
+	 *  서브 카테고리 가져오기
+	 */
+	@RequestMapping(value="/getSubCategories", method= RequestMethod.POST)
+	public @ResponseBody
+	HashMap<String, Object> getSubCategories(@RequestParam HashMap<String, Object> map) {
+		logger.info("request url : /getSubCategories");
+
+		return categoryService.getSubCategories(map);
 	}
 
 }

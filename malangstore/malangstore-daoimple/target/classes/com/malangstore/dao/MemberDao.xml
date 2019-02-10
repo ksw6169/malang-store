@@ -4,7 +4,9 @@
 <mapper namespace="com.malangstore.dao.MemberDao">
 
     <select id="login" parameterType="String" resultType="com.malangstore.beans.Member">
-        SELECT member_pw, member_authority FROM member WHERE member_id = #{member_id}
+        SELECT member_pw, member_authority
+	        FROM member
+	            WHERE member_id = #{member_id}
     </select>
 
     <insert id="join" parameterType="com.malangstore.beans.Member">
@@ -14,7 +16,9 @@
     </insert>
 
     <select id="isDuplicate" parameterType="String" resultType="int">
-        SELECT COUNT(*) FROM member
-            WHERE member_id = #{member_id}
+        SELECT COUNT(*)
+	        FROM member
+                WHERE member_id = #{member_id}
     </select>
+
 </mapper>

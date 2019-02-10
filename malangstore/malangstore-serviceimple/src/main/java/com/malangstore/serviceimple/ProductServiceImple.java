@@ -1,6 +1,5 @@
 package com.malangstore.serviceimple;
 
-import com.malangstore.beans.Category;
 import com.malangstore.beans.Photo;
 import com.malangstore.beans.Product;
 import com.malangstore.dao.CategoryDao;
@@ -9,11 +8,8 @@ import com.malangstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +31,9 @@ public class ProductServiceImple implements ProductService {
 	private HashMap<String, String> fileList = new HashMap<String, String>();
 
 
+	/**
+	 *  상품 리스트 가져오기
+	 */
     @Override
     public HashMap<String, Object> productList(HashMap<String, Object> map) {
 
@@ -56,6 +55,9 @@ public class ProductServiceImple implements ProductService {
     }
 
 
+	/**
+	 *  상품 등록
+	 */
 	@Override
 	public HashMap<String, Object> newProduct(List<MultipartFile> images, HashMap<String, Object> map) {
 
@@ -113,6 +115,9 @@ public class ProductServiceImple implements ProductService {
 	}
 
 
+	/**
+	 *  상품 정보 가져오기(1개)
+	 */
 	@Override
 	public HashMap<String, Object> productDetail(HashMap<String, Object> map) {
 
@@ -130,7 +135,11 @@ public class ProductServiceImple implements ProductService {
 	}
 
 
+	/**
+	 *  파일 확장자 검사
+	 */
 	private boolean isValidExtension(String originalFileName) {
+
 		String originalFileNameExtension = originalFileName.substring(originalFileName.lastIndexOf(".")+1);
 
 		switch (originalFileNameExtension) {

@@ -13,7 +13,6 @@ import java.util.Map;
 @Repository("memberDao")
 public class MemberDaoImple implements MemberDao {
 
-
     private final String NAMESPACE = MemberDao.class.getName();
 
     @Autowired
@@ -22,13 +21,16 @@ public class MemberDaoImple implements MemberDao {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Override
+
+	/**
+	 *  로그인
+	 */
+	@Override
     public HashMap<String, Object> login(HashMap<String, Object> map) {
 
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("member_id", map.get("id"));
-
-	    Member member = sqlSession.selectOne(NAMESPACE+".login", paramMap);     // id에 해당하는 비밀번호, 권한 가져옴
+	    Member member = sqlSession.selectOne(NAMESPACE+".login", paramMap);
 
 	    boolean loginSuccess;
 		String authority = null;
@@ -47,7 +49,11 @@ public class MemberDaoImple implements MemberDao {
 		return resultMap;
     }
 
-    @Override
+
+	/**
+	 *  회원가입
+	 */
+	@Override
     public int join(Member member) {
 
         Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -57,8 +63,13 @@ public class MemberDaoImple implements MemberDao {
         return result;
     }
 
-    @Override
+
+	/**
+	 *  ID 중복 검사
+	 */
+	@Override
     public int isDuplicate(String id) {
+
         Map<String, String> paramMap = new HashMap<String, String>();
         paramMap.put("member_id", id);
 

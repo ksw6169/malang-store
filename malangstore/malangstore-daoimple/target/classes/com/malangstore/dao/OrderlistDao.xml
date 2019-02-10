@@ -3,26 +3,29 @@
 
 <mapper namespace="com.malangstore.dao.OrderlistDao">
 
-
     <select id="getProduct" parameterType="int" resultType="com.malangstore.beans.Product">
-        SELECT product_no, product_price, product_delivery, product_name FROM product
-            WHERE product_no = #{product_no}
+        SELECT product_no, product_price, product_delivery, product_name
+	        FROM product
+                WHERE product_no = #{product_no}
     </select>
 
     <insert id="insertCart" parameterType="map">
-        INSERT INTO orderlist(orderlist_no, member_id, product_name, product_no, product_price, product_delivery, orderlist_check, orderlist_count)
-            VALUES (NEXTVAL('seq_orderlist_no'), #{member_id}, #{product.product_name}, #{product.product_no}, #{product.product_price}, #{product.product_delivery}, 'n', #{orderlist_count})
+        INSERT INTO orderlist
+	        (orderlist_no, member_id, product_name, product_no, product_price, product_delivery, orderlist_check, orderlist_count)
+                VALUES (NEXTVAL('seq_orderlist_no'), #{member_id}, #{product.product_name}, #{product.product_no}, #{product.product_price}, #{product.product_delivery}, 'n', #{orderlist_count})
     </insert>
 
     <select id="cartList" parameterType="String" resultType="com.malangstore.beans.Orderlist">
-        SELECT * FROM orderlist
-            WHERE member_id = #{member_id} AND orderlist_check = 'n'
+        SELECT *
+	        FROM orderlist
+                WHERE member_id = #{member_id} AND orderlist_check = 'n'
     </select>
 
 	<select id="getOrderlistNo" parameterType="map" resultType="int">
-		SELECT orderlist_no FROM orderlist
-			WHERE product_no = #{product_no} AND member_id = #{member_id}
-				ORDER BY orderlist_no DESC LIMIT 1
+		SELECT orderlist_no
+			FROM orderlist
+				WHERE product_no = #{product_no} AND member_id = #{member_id}
+					ORDER BY orderlist_no DESC LIMIT 1
 	</select>
 
     <delete id="deleteOrder" parameterType="int">
@@ -31,16 +34,18 @@
     </delete>
 
 	<select id="order" parameterType="java.util.List" resultType="com.malangstore.beans.Orderlist">
-		SELECT * FROM orderlist
-			WHERE orderlist_no IN
-			<foreach collection="orderlist" item="item" index="index" separator="," open="(" close=")">
-				#{item}
-			</foreach>
+		SELECT *
+			FROM orderlist
+				WHERE orderlist_no IN
+				<foreach collection="orderlist" item="item" index="index" separator="," open="(" close=")">
+					#{item}
+				</foreach>
 	</select>
 
 	<select id="getOrderlist" parameterType="int" resultType="com.malangstore.beans.Orderlist">
-		SELECT * FROM orderlist
-			WHERE orderlist_no = #{orderlistNo}
+		SELECT *
+			FROM orderlist
+				WHERE orderlist_no = #{orderlistNo}
 	</select>
 	
 	<update id="directOrder" parameterType="java.util.List">
@@ -65,4 +70,5 @@
 				#{item}
 			</foreach>
 	</delete>
+
 </mapper>

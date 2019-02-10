@@ -3,9 +3,7 @@ package com.malangstore.serviceimple;
 import com.malangstore.beans.Orderlist;
 import com.malangstore.beans.Product;
 import com.malangstore.dao.OrderlistDao;
-import com.malangstore.dao.ProductDao;
 import com.malangstore.service.OrderlistService;
-import com.malangstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +19,10 @@ public class OrderlistServiceImple implements OrderlistService {
     OrderlistDao orderlistDao;
 
 
-    @Override
+	/**
+	 *  장바구니 담기
+	 */
+	@Override
     public HashMap<String, Object> insertCart(HashMap<String, String> map) {
 
         Product product = orderlistDao.getProduct(Integer.valueOf(map.get("product_no")));
@@ -36,7 +37,11 @@ public class OrderlistServiceImple implements OrderlistService {
         return resultMap;
     }
 
-    @Override
+
+	/**
+	 *  장바구니 내역 가져오기
+	 */
+	@Override
     public HashMap<String, Object> cartList(HashMap<String, String> map) {
 
         List<Orderlist> list = orderlistDao.cartList(map.get("id"));
@@ -47,7 +52,11 @@ public class OrderlistServiceImple implements OrderlistService {
         return resultMap;
     }
 
-    @Override
+
+	/**
+	 *  주문 내역 삭제(1개)
+	 */
+	@Override
     public HashMap<String, Integer> deleteOrder(HashMap<String, Object> map) {
 
         int success = orderlistDao.deleteOrder(Integer.valueOf(String.valueOf(map.get("orderlist_no"))));
@@ -58,6 +67,10 @@ public class OrderlistServiceImple implements OrderlistService {
         return resultMap;
     }
 
+
+	/**
+	 *  주문하기(cartView.jsp)
+	 */
 	@Override
 	public ModelAndView order(String[] rowCheck) {
 
@@ -76,8 +89,13 @@ public class OrderlistServiceImple implements OrderlistService {
 		return mav;
 	}
 
+
+	/**
+	 *  주문할 내역 가져오기(order.jsp)
+	 */
 	@Override
 	public HashMap<String, Object> getOrderlist(HashMap<String, Object> map) {
+
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 
 		int orderlistNo = Integer.valueOf(String.valueOf(map.get("orderlist_no")));
@@ -88,6 +106,10 @@ public class OrderlistServiceImple implements OrderlistService {
     	return resultMap;
 	}
 
+
+	/**
+	 *  주문하기
+	 */
 	@Override
 	public ModelAndView directOrder(String[] rowCheck) {
 
@@ -111,8 +133,13 @@ public class OrderlistServiceImple implements OrderlistService {
     	return mav;
 	}
 
+
+	/**
+	 *  주문 조회
+	 */
 	@Override
 	public HashMap<String, Object> orderView(HashMap<String, Object> map) {
+
 		List<Orderlist> orderlist = orderlistDao.orderView(String.valueOf(map.get("id")));
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -121,8 +148,13 @@ public class OrderlistServiceImple implements OrderlistService {
     	return resultMap;
 	}
 
+
+	/**
+	 *  주문 취소
+	 */
 	@Override
 	public ModelAndView orderCancel(List<Integer> orderlist) {
+
     	ModelAndView mav = new ModelAndView();
 
     	String msg = "주문 취소에 실패했습니다.";

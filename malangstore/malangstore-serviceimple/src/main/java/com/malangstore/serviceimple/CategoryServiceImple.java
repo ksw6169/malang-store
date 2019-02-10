@@ -15,11 +15,15 @@ public class CategoryServiceImple implements CategoryService {
     @Autowired
     CategoryDao categoryDao;
 
+
+	/**
+	 *  서브 카테고리 가져오기
+	 */
 	@Override
-	public HashMap<String, Object> selectCategory(HashMap<String, Object> map) {
+	public HashMap<String, Object> getSubCategories(HashMap<String, Object> map) {
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Subcategory> list = categoryDao.selectCategory(map);
+		List<Subcategory> list = categoryDao.getSubCategories(map);
 		resultMap.put("list", list);
 
 		return resultMap;

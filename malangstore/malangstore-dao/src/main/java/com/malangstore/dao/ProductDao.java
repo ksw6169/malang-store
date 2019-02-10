@@ -1,11 +1,8 @@
 package com.malangstore.dao;
 
-import com.malangstore.beans.Category;
-import com.malangstore.beans.Member;
 import com.malangstore.beans.Photo;
 import com.malangstore.beans.Product;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 

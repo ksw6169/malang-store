@@ -20,7 +20,11 @@ public class ProductDaoImple implements ProductDao {
     @Autowired
     SqlSessionTemplate sqlSession;
 
-    @Override
+
+	/**
+	 *  상품 리스트 가져오기
+	 */
+	@Override
     public List<Product> productList(int subcategory_no, int page) {
 
     	Map<String, Integer> paramMap = new HashMap<String, Integer>();
@@ -30,7 +34,11 @@ public class ProductDaoImple implements ProductDao {
         return sqlSession.selectList(NAMESPACE+".productList", paramMap);
     }
 
-    @Override
+
+	/**
+	 *  사진 리스트 가져오기(상품 리스트로)
+	 */
+	@Override
     public List<Photo> getPhoto(List<Product> productList) {
 
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
@@ -43,7 +51,11 @@ public class ProductDaoImple implements ProductDao {
         return sqlSession.selectList(NAMESPACE+".getPhoto", paramMap);
     }
 
-    @Override
+
+	/**
+	 *  사진 리스트 가져오기(상품 번호로)
+	 */
+	@Override
     public List<Photo> getPhotoList(int product_no) {
 
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
@@ -52,7 +64,11 @@ public class ProductDaoImple implements ProductDao {
         return sqlSession.selectList(NAMESPACE+".getPhotoList", paramMap);
     }
 
-    @Override
+
+	/**
+	 *  상품 개수 가져오기
+	 */
+	@Override
     public int productListCount(int subcategory_no) {
 
         Map<String, Integer> paramMap = new HashMap<String, Integer>();
@@ -61,7 +77,11 @@ public class ProductDaoImple implements ProductDao {
         return sqlSession.selectOne(NAMESPACE+".productListCount", paramMap);
     }
 
-    @Override
+
+	/**
+	 *  사진 등록
+	 */
+	@Override
     public int insertPhoto(int product_no, HashMap<String, Object> map, int imageLen) {
 
         List<Photo> list = new ArrayList<Photo>();
@@ -77,11 +97,14 @@ public class ProductDaoImple implements ProductDao {
         return sqlSession.insert(NAMESPACE+".insertPhoto", list);
     }
 
-    @Override
-    public HashMap<String, Object> newProduct(HashMap<String, Object> map, int imageLen) {
-        HashMap<String, Object> paramMap = new HashMap<String, Object>();
 
-        // 1. 상품 등록 먼저
+	/**
+	 *  상품 등록
+	 */
+	@Override
+    public HashMap<String, Object> newProduct(HashMap<String, Object> map, int imageLen) {
+
+        // 상품 정보 등록
         Product product = new Product();
         product.setProduct_name(String.valueOf(map.get("product_name")));
         product.setProduct_detail(String.valueOf(map.get("product_detail")));
@@ -92,9 +115,8 @@ public class ProductDaoImple implements ProductDao {
         HashMap<String, Object> resultMap = new HashMap<String, Object>();
         int success = 0;
 
-        // useGeneratedKey를 이용해 insert 후 product_no 값을 Product 객체에 담음
-        if(sqlSession.insert(NAMESPACE+".newProduct", product) > 0) {
-            // 2. 사진 등록
+        if(sqlSession.insert(NAMESPACE+".newProduct", product) > 0) {   // useGeneratedKey를 이용해 insert 후 product_no 값을 Product 객체에 담음
+            // 사진 등록
             if(insertPhoto(product.getProduct_no(), map, imageLen) > 0) {
                 success = 1;
                 resultMap.put("product_no", product.getProduct_no());
@@ -106,7 +128,11 @@ public class ProductDaoImple implements ProductDao {
         return resultMap;
     }
 
-    @Override
+
+	/**
+	 *  상품 정보 가져오기(1개)
+	 */
+	@Override
     public Product productDetail(int product_no) {
 
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
@@ -114,6 +140,4 @@ public class ProductDaoImple implements ProductDao {
 
         return sqlSession.selectOne(NAMESPACE+".productDetail", paramMap);
     }
-
-
 }

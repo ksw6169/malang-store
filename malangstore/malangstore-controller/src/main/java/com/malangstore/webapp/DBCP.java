@@ -2,7 +2,6 @@ package com.malangstore.webapp;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-
 public class DBCP extends BasicDataSource {
 
     public DBCP() {

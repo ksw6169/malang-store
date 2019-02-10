@@ -25,7 +25,11 @@ public class MemberServiceImple implements MemberService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Override
+
+	/**
+	 *  로그인
+	 */
+	@Override
     public ModelAndView login(HashMap<String, Object> map, HttpSession session) {
 	    HashMap<String, Object> result = memberDao.login(map);
 
@@ -46,8 +50,13 @@ public class MemberServiceImple implements MemberService {
         return mav;
     }
 
-    @Override
+
+	/**
+	 *  회원가입
+	 */
+	@Override
     public HashMap<String, Integer> join(HashMap<String, Object> map) {
+
         Member member = new Member();
 
         member.setMember_id(String.valueOf(map.get("id")));
@@ -61,7 +70,11 @@ public class MemberServiceImple implements MemberService {
         return resultMap;
     }
 
-    @Override
+
+	/**
+	 *  ID 중복 검사
+	 */
+	@Override
     public HashMap<String, Object> isDuplicate(String id) {
 
         boolean isDuplicate = false;

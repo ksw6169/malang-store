@@ -18,16 +18,26 @@ public class OrderlistDaoImple implements OrderlistDao {
     @Autowired
     SqlSessionTemplate sqlSession;
 
+
+	/**
+	 *  상품 가져오기
+	 */
     @Override
     public Product getProduct(int product_no) {
+
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("product_no", product_no);
 
         return sqlSession.selectOne(NAMESPACE+".getProduct", paramMap);
     }
 
-    @Override
+
+	/**
+	 *  장바구니 담기
+	 */
+	@Override
     public int insertCart(Product product, String member_id, int orderlist_count) {
+
     	HashMap<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("member_id", member_id);
         paramMap.put("product", product);
@@ -36,16 +46,26 @@ public class OrderlistDaoImple implements OrderlistDao {
         return sqlSession.insert(NAMESPACE+".insertCart", paramMap);
     }
 
-    @Override
+
+	/**
+	 *  장바구니 내역 가져오기
+	 */
+	@Override
     public List<Orderlist> cartList(String member_id) {
+
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("member_id", member_id);
 
         return sqlSession.selectList(NAMESPACE+".cartList", paramMap);
     }
 
+
+	/**
+	 *  주문 번호 가져오기
+	 */
 	@Override
 	public int getOrderlistNo(String member_id, int product_no) {
+
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("member_id", member_id);
 		paramMap.put("product_no", product_no);
@@ -53,16 +73,26 @@ public class OrderlistDaoImple implements OrderlistDao {
     	return sqlSession.selectOne(NAMESPACE+".getOrderlistNo", paramMap);
 	}
 
+
+	/**
+	 *  주문 내역 삭제(1개)
+	 */
 	@Override
     public int deleteOrder(int orderlist_no) {
+
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("orderlist_no", orderlist_no);
 
         return sqlSession.delete(NAMESPACE+".deleteOrder", paramMap);
     }
 
+
+	/**
+	 *  주문하기(cartView.jsp)
+	 */
 	@Override
 	public List<Orderlist> order(List<Integer> orderlist) {
+
     	HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("orderlist", orderlist);
 
@@ -71,32 +101,52 @@ public class OrderlistDaoImple implements OrderlistDao {
     	return list;
 	}
 
+
+	/**
+	 *  주문할 내역 가져오기(order.jsp)
+	 */
 	@Override
 	public Orderlist getOrderlist(int orderlistNo) {
+
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("orderlistNo", orderlistNo);
 
     	return sqlSession.selectOne(NAMESPACE+".getOrderlist", paramMap);
 	}
 
+
+	/**
+	 *  주문하기
+	 */
 	@Override
 	public int directOrder(List<Integer> orderlist) {
+
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("orderlist", orderlist);
 
     	return sqlSession.update(NAMESPACE+".directOrder", paramMap);
 	}
 
+
+	/**
+	 *  주문 조회
+	 */
 	@Override
 	public List<Orderlist> orderView(String member_id) {
+
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("member_id", member_id);
 
     	return sqlSession.selectList(NAMESPACE+".orderView", paramMap);
 	}
 
+
+	/**
+	 *  주문 취소
+	 */
 	@Override
 	public int orderCancel(List<Integer> orderlist) {
+
 		HashMap<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("orderlist", orderlist);
 

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -21,23 +20,32 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    // 완
-    @RequestMapping(value="/", method=RequestMethod.GET)
+
+	/**
+	 *  초기 페이지로 이동
+	 */
+	@RequestMapping(value="/", method=RequestMethod.GET)
     public String index(Model model) {
         logger.info("request url : /");
 
         return "index";
     }
 
-    // 완
-    @RequestMapping(value="/loginForm")
+
+	/**
+	 *  로그인 폼으로 이동
+	 */
+	@RequestMapping(value="/loginForm")
     public String loginForm(Model model) {
         logger.info("request url : /loginForm");
 
         return "loginForm";
     }
 
-    // 완
+
+	/**
+	 *  로그인
+	 */
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public ModelAndView login(@RequestParam HashMap<String, Object> map, HttpSession session) {
         logger.info("request url : /login");
@@ -52,39 +60,59 @@ public class MemberController {
         return memberService.login(map, session);
     }
 
-    // 완
+
+	/**
+	 *  로그아웃
+	 */
     @RequestMapping(value="/logout")
     public ModelAndView logout(HttpSession session) {
-        logger.info("request url : /logout");
+	    logger.info("request url : /logout");
 
-        session.removeAttribute("loginId");
-	    session.removeAttribute("authority");
+	    ModelAndView mav = new ModelAndView();
 
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("msg", "로그아웃 되었습니다.");
-        mav.setViewName("/loginForm");
+	    Object loginState = session.getAttribute("loginId");
+
+	    if(loginState != null) {
+			session.removeAttribute("loginId");
+			session.removeAttribute("authority");
+
+			mav.addObject("msg", "로그아웃 되었습니다.");
+			mav.setViewName("/loginForm");
+		} else {
+			mav.addObject("msg", "현재 로그인 상태가 아닙니다.");
+			mav.setViewName("/");
+		}
 
         return mav;
     }
 
-    // 완
-    @RequestMapping(value="/joinForm")
-    public String joinForm(Model model) {
+
+	/**
+	 *  회원가입 페이지로 이동
+	 */
+	@RequestMapping(value="/joinForm")
+    public String joinForm() {
         logger.info("request url : /joinForm");
 
         return "joinForm";
     }
 
-    // 완
-    @RequestMapping(value="/join")
+
+	/**
+	 *  회원가입
+	 */
+	@RequestMapping(value="/join", method = RequestMethod.POST)
     public @ResponseBody HashMap<String, Integer> join(@RequestParam HashMap<String, Object> map) {
         logger.info("request url : /join");
 
         return memberService.join(map);
     }
 
-    // 완
-    @RequestMapping(value="/isDuplicate", method=RequestMethod.POST)
+
+	/**
+	 *  ID 중복 검사
+	 */
+	@RequestMapping(value="/isDuplicate", method=RequestMethod.POST)
     public @ResponseBody HashMap<String, Object> isDuplicate(@RequestParam("id") String id) {
         logger.info("request url : /isDuplicate");
 
