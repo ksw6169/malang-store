@@ -87,7 +87,6 @@ public class ProductDaoImple implements ProductDao {
         product.setProduct_detail(String.valueOf(map.get("product_detail")));
         product.setProduct_price(Integer.valueOf(String.valueOf(map.get("product_price"))));
         product.setProduct_delivery(Integer.valueOf(String.valueOf(map.get("product_delivery"))));
-        product.setProduct_count(Integer.valueOf(String.valueOf(map.get("product_count"))));
         product.setSubcategory_no(Integer.valueOf(String.valueOf(map.get("subcategory_no"))));
 
         HashMap<String, Object> resultMap = new HashMap<String, Object>();

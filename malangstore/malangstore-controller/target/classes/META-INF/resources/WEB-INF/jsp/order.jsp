@@ -79,6 +79,25 @@
                 alert(msg);
             }
 
+			var orderlistNo = "${param.orderlistNo}";
+
+			if(orderlistNo != "") {
+				$.ajax({
+                    type : "get",
+                    url : "./getOrderlist",
+                    data : {
+                        orderlist_no : orderlistNo
+                    },
+                    dataType : "json",
+                    success : function(data) {
+                        appendOrderlistOne(data.orderlist);
+                    },
+                    error : function(error) {
+                        console.log(error);
+                    }
+                });
+			}
+
 			appendOrderlist();
         });
 
@@ -102,14 +121,32 @@
             }
         }
 
+		/* 주문 내역 1개 추가 */
+		function appendOrderlistOne(orderlist) {
+			var str = "";
+
+            str += "<tr id='order-data"+orderlist.orderlist_no+"'>";
+            str += "<td class='table-data'><input type='checkbox' name='row-check' value='"+orderlist.orderlist_no+"'/></td>";
+            str += "<td class='table-data'><a href='#'>"+orderlist.product_name+"</a></td>";
+            str += "<td class='table-data'>"+orderlist.orderlist_count+"</td>";
+            str += "<td class='table-data' id='row-delivery"+orderlist.orderlist_no+"'>"+orderlist.product_delivery+"원</td>";
+            str += "<td class='table-data' id='row-price${item.orderlist_no}'>"+orderlist.product_price+"원</td>";
+            str += "<td class='table-data cart-delete-btn' onclick='deleteOrder("+orderlist.orderlist_no+", "+orderlist.product_price+", "+orderlist.product_delivery+")'>삭제</td>";
+            str += "</tr>";
+
+            $(".first-context").append(str);
+			$(".second-context tr").remove();
+            appendOrderlistAll(orderlist.product_price * orderlist.orderlist_count, orderlist.product_delivery);
+		}
+
 
 		/* 주문 내역 추가 */
 		function appendOrderlist() {
             var str = "";
 
 			<c:forEach items="${orderlist}" var="item">
-				productPriceSum += Number(${item.product_delivery});
-                deliveryChargeSum = Number(${item.product_price});
+				productPriceSum += (Number(${item.product_price}) * Number(${item.orderlist_count}));
+                deliveryChargeSum = Number(${item.product_delivery});
 
 				str += "<tr id='order-data${item.orderlist_no}'>";
                 str += "<td class='table-data'><input type='checkbox' name='row-check' value='${item.orderlist_no}'/></td>";
@@ -122,7 +159,6 @@
 			</c:forEach>
 
             $(".first-context").append(str);
-
             appendOrderlistAll(productPriceSum, deliveryChargeSum);
 		}
 

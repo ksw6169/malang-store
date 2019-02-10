@@ -5,7 +5,6 @@ public class Product {
     private String product_name;
     private int product_price;
     private int product_delivery;
-    private int product_count;
     private String product_detail;
     private String product_reg_date;
     private int subcategory_no;
@@ -40,14 +39,6 @@ public class Product {
 
     public void setProduct_delivery(int product_delivery) {
         this.product_delivery = product_delivery;
-    }
-
-    public int getProduct_count() {
-        return product_count;
-    }
-
-    public void setProduct_count(int product_count) {
-        this.product_count = product_count;
     }
 
     public String getProduct_detail() {

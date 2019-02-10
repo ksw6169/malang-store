@@ -80,15 +80,6 @@
 
                 <div class="row" style="margin-bottom: 30px;">
                     <span class="col-md-2 input-title">
-                        <b class="product-header">상품 수량</b>
-                    </span>
-                    <span class="col-md-10">
-                        <input class="inputBox" name="product-count" type="text" maxlength="8" numberonly />
-                    </span>
-                </div>
-
-                <div class="row" style="margin-bottom: 30px;">
-                    <span class="col-md-2 input-title">
                         <b class="product-header">1차 분류</b>
                     </span>
                     <span class="col-md-10">
@@ -213,8 +204,6 @@
                 alert("상품 판매가를 입력해주세요.");
             } else if($("input[name='product-delivery']").val() == "") {
                 alert("배송비를 입력해주세요.");
-            } else if($("input[name='product-count']").val() == "") {
-                alert("상품 수량을 입력해주세요.");
             } else {
 				var form = $('#uploadForm')[0];
                 var formData = new FormData(form);
@@ -227,7 +216,6 @@
                 formData.append("product_detail",  $("#write-content").val());                  // 상품 상세 내용
                 formData.append("product_price", $("input[name='product-price']").val());       // 상품 판매가
                 formData.append("product_delivery", $("input[name='product-delivery']").val()); // 상품 배송비
-                formData.append("product_count", $("input[name='product-count']").val());       // 상품 수량
                 formData.append("subcategory_no", $("#subcategory option:selected").val());     // 서브 카테고리 번호
 
                 $.ajax({

@@ -11,13 +11,19 @@
 
     <insert id="insertCart" parameterType="map">
         INSERT INTO orderlist(orderlist_no, member_id, product_name, product_no, product_price, product_delivery, orderlist_check, orderlist_count)
-            VALUES (NEXTVAL('seq_orderlist_no'), #{member_id}, #{product.product_name}, #{product.product_no}, #{product.product_price}, #{product.product_delivery}, 'n', 1)
+            VALUES (NEXTVAL('seq_orderlist_no'), #{member_id}, #{product.product_name}, #{product.product_no}, #{product.product_price}, #{product.product_delivery}, 'n', #{orderlist_count})
     </insert>
 
     <select id="cartList" parameterType="String" resultType="com.malangstore.beans.Orderlist">
         SELECT * FROM orderlist
             WHERE member_id = #{member_id} AND orderlist_check = 'n'
     </select>
+
+	<select id="getOrderlistNo" parameterType="map" resultType="int">
+		SELECT orderlist_no FROM orderlist
+			WHERE product_no = #{product_no} AND member_id = #{member_id}
+				ORDER BY orderlist_no DESC LIMIT 1
+	</select>
 
     <delete id="deleteOrder" parameterType="int">
         DELETE FROM orderlist
@@ -32,6 +38,11 @@
 			</foreach>
 	</select>
 
+	<select id="getOrderlist" parameterType="int" resultType="com.malangstore.beans.Orderlist">
+		SELECT * FROM orderlist
+			WHERE orderlist_no = #{orderlistNo}
+	</select>
+	
 	<update id="directOrder" parameterType="java.util.List">
 		UPDATE orderlist
 			SET orderlist_check = 'y', orderlist_date = CURRENT_TIMESTAMP(0)

@@ -75,6 +75,9 @@
                     <li>
                         <a href="./moveOrderView" class="drop-btn">주문조회</a>
                     </li>
+                    <li>
+                        <a href="./registProducts" class="drop-btn">상품 등록</a>
+                    </li>
                 </ul>
             </div>
         </nav>

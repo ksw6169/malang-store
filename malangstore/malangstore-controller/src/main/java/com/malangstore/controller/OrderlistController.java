@@ -1,9 +1,11 @@
 package com.malangstore.controller;
 
+import com.malangstore.beans.Orderlist;
 import com.malangstore.service.OrderlistService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +25,7 @@ public class OrderlistController {
 
 
     @RequestMapping(value="/insertCart")
-    public @ResponseBody HashMap<String, Integer> insertCart(@RequestParam HashMap<String, String> map) {
+    public @ResponseBody HashMap<String, Object> insertCart(@RequestParam HashMap<String, String> map) {
         logger.info("request url : /insertCart");
 
         return orderlistService.insertCart(map);
@@ -57,6 +59,19 @@ public class OrderlistController {
 		return orderlistService.order(request.getParameterValues("row-check"));
 	}
 
+	@RequestMapping(value="/moveOrder")
+	public String moveOrder() {
+		logger.info("request url : /moveOrder");
+
+		return "order";
+	}
+
+	@RequestMapping(value="/getOrderlist", method=RequestMethod.GET)
+	public @ResponseBody HashMap<String, Object> getOrderlist(@RequestParam HashMap<String, Object> map) {
+		logger.info("request url : /getOrderlist");
+
+		return orderlistService.getOrderlist(map);
+	}
 
 	@RequestMapping(value="/directOrder", method=RequestMethod.POST)
 	public ModelAndView directOrder(HttpServletRequest request) {

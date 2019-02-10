@@ -117,7 +117,7 @@
 
             for(var i=0; i<list.length; i++) {
                 deliveryChargeSum = list[i].product_delivery;
-                productPriceSum += list[i].product_price;
+                productPriceSum += (list[i].product_price * list[i].orderlist_count);
 
                 str += "<tr id='order-data"+list[i].orderlist_no+"'>";
                 str += "<td class='table-data'><input type='checkbox' name='row-check' value='"+list[i].orderlist_no+"'/></td>";

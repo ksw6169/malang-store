@@ -20,14 +20,18 @@ public class OrderlistServiceImple implements OrderlistService {
     @Autowired
     OrderlistDao orderlistDao;
 
-    // Transactional 설정할 것
+
     @Override
-    public HashMap<String, Integer> insertCart(HashMap<String, String> map) {
+    public HashMap<String, Object> insertCart(HashMap<String, String> map) {
 
         Product product = orderlistDao.getProduct(Integer.valueOf(map.get("product_no")));
 
-        HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
-        resultMap.put("success", orderlistDao.insertCart(product, String.valueOf(map.get("id"))));
+        String id = String.valueOf(map.get("id"));
+        int orderlistCount = Integer.valueOf(String.valueOf(map.get("orderlist_count")));
+
+        HashMap<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("success", orderlistDao.insertCart(product, id, orderlistCount));
+		resultMap.put("orderlistNo", orderlistDao.getOrderlistNo(String.valueOf(map.get("id")), Integer.valueOf(map.get("product_no"))));
 
         return resultMap;
     }
@@ -70,6 +74,18 @@ public class OrderlistServiceImple implements OrderlistService {
 		mav.setViewName("order");
 
 		return mav;
+	}
+
+	@Override
+	public HashMap<String, Object> getOrderlist(HashMap<String, Object> map) {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+
+		int orderlistNo = Integer.valueOf(String.valueOf(map.get("orderlist_no")));
+
+		Orderlist orderlist = orderlistDao.getOrderlist(orderlistNo);
+		resultMap.put("orderlist", orderlist);
+
+    	return resultMap;
 	}
 
 	@Override

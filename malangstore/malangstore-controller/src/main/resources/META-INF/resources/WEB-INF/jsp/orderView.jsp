@@ -116,7 +116,7 @@
             var str = "";
 
             for(var i=0; i<list.length; i++) {
-                productPriceSum += list[i].product_price;
+                productPriceSum += (list[i].product_price * list[i].orderlist_count);
                 deliveryChargeSum = list[i].product_delivery;
 
                 str += "<tr id='order-data"+list[i].orderlist_no+"'>";

@@ -10,6 +10,10 @@
 
         <link href="./res/css/main.css" rel="stylesheet">
 
+		<style>
+            .custom-modal-content { text-align: center; font-family: 'NanumsquareR'; font-weight: 600; font-size: 18px; padding: 30px 15px 30px 15px; margin: 0px; }
+            .custom-modal-button { text-align: center; font-family: 'NanumsquareR'; font-weight: 600; font-size: 15px; background-color: white; border: 0.1px solid #e72e71; color: #e72e71; padding: 20px; margin: 0px 0px 30px 0px; width: 200px; line-height: 0px; cursor: pointer; }
+		</style>
     </head>
     <body>
         <jsp:include page="nav-bar.jsp" flush="false"/>
@@ -35,18 +39,29 @@
                         <div class="col-md-12 product-name"></div>
                         <div class="col-md-12 product-price"></div>
                         <div class="col-md-12 product-quantity-div">
-                            <span class="col-md-2 quantity-minus">-</span>
-                            <span class="col-md-8 quantity-input">1</span>
-                            <span class="col-md-2 quantity-plus">+</span>
+                            <span class="col-md-2 quantity-minus" onclick="minusQuantity()">-</span>
+                            <input type="text" class="col-md-8 quantity-input" value="1" maxlength="3" style="border: 0.1px solid #e6e6e6;" onkeyup="inputQuantity()" numberOnly/>
+                            <span class="col-md-2 quantity-plus" onclick="plusQuantity()">+</span>
                         </div>
                         <div class="col-md-12 product-btn-group" style="margin: 0px; padding: 0px;">
-                            <div class="col-md-6 cart-btn">장바구니</div>
-                            <div class="col-md-6 order-btn">주문하기</div>
+                            <div class="col-md-6 cart-btn" onclick="insertCart(${param.product_no}, 1)" data-toggle="modal" data-target="#product-cart-modal">장바구니</div>
+                            <div class="col-md-6 order-btn" onclick="insertCart(${param.product_no}, 2)">주문하기</div>
                         </div>
                     </div>
 
                     <div class="product-content">
                         <div class="col-md-12"></div>
+                    </div>
+
+                    <div class="modal" id="product-cart-modal" tabindex="-1" role="dialog" style="top: 30%;">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="custom-modal-content">상품이 장바구니에 담겼습니다.</div>
+                                    <div class="custom-modal-button center-block" onclick="cartView()" data-dismiss="modal">장바구니 바로가기</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,6 +76,7 @@
     <script>
         $('.carousel').carousel();
 
+		var currentPrice;
 
         $(document).ready(function() {
             var productNo = "${param.product_no}";
@@ -85,6 +101,8 @@
 
         /* 상품 정보 추가 */
         function appendProduct(product) {
+            currentPrice = product.product_price;
+
             $(".product-name").text(product.product_name);
             $(".product-price").text(product.product_price);
             $(".product-content").text(product.product_detail);
@@ -111,5 +129,80 @@
             $(".carousel-inner").append(str1);
             $(".carousel-indicators").append(str2);
         }
+
+
+		/* 장바구니에 담기 */
+        function insertCart(productNo, page) {
+            $.ajax({
+                type : "get",
+                url : "./insertCart",
+                data : {
+                    id : "${sessionScope.loginId}",
+                    product_no : productNo,
+                    orderlist_count : $(".quantity-input").val()
+                },
+                dataType : "json",
+                success : function(data) {
+                    if(page == 2) {
+                        location.href = "./moveOrder?orderlistNo="+data.orderlistNo;
+                    }
+                },
+                error : function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+
+		/* 장바구니 바로 가기 */
+        function cartView() {
+            location.href = "./cartView";
+        }
+
+
+		/* 수량 감소 */
+		function minusQuantity() {
+			var currentQuantity = Number($(".quantity-input").val())-1;
+
+			if(currentQuantity <= 0) {
+				currentQuantity = 1;
+			}
+
+			$(".quantity-input").val(currentQuantity);
+			$(".product-price").text(currentPrice*currentQuantity);
+		}
+
+
+		/* 수량 증가 */
+		function plusQuantity() {
+			var currentQuantity = Number($(".quantity-input").val())+1;
+
+			if(currentQuantity >= 999) {
+                currentQuantity = 999;
+            }
+
+			$(".quantity-input").val(currentQuantity);
+			$(".product-price").text(currentPrice*currentQuantity);
+		}
+
+
+		/* 수량 입력 */
+		function inputQuantity() {
+			var currentQuantity = Number($(".quantity-input").val());
+
+			if(currentQuantity <= 0) {
+                currentQuantity = 1;
+            } else if(currentQuantity >= 999) {
+				currentQuantity = 999;
+            }
+
+			$(".product-price").text(currentPrice*currentQuantity);
+		}
+
+
+        /* 숫자가 아닌 나머지 문자를 공백으로 처리 */
+        $("input:text[numberOnly]").on("keyup", function() {
+            $(this).val($(this).val().replace(/[^0-9]/g,""));
+        });
     </script>
 </html>

@@ -27,10 +27,11 @@ public class OrderlistDaoImple implements OrderlistDao {
     }
 
     @Override
-    public int insertCart(Product product, String member_id) {
-        HashMap<String, Object> paramMap = new HashMap<String, Object>();
+    public int insertCart(Product product, String member_id, int orderlist_count) {
+    	HashMap<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("member_id", member_id);
         paramMap.put("product", product);
+	    paramMap.put("orderlist_count", orderlist_count);
 
         return sqlSession.insert(NAMESPACE+".insertCart", paramMap);
     }
@@ -43,7 +44,16 @@ public class OrderlistDaoImple implements OrderlistDao {
         return sqlSession.selectList(NAMESPACE+".cartList", paramMap);
     }
 
-    @Override
+	@Override
+	public int getOrderlistNo(String member_id, int product_no) {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("member_id", member_id);
+		paramMap.put("product_no", product_no);
+
+    	return sqlSession.selectOne(NAMESPACE+".getOrderlistNo", paramMap);
+	}
+
+	@Override
     public int deleteOrder(int orderlist_no) {
         HashMap<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("orderlist_no", orderlist_no);
@@ -59,6 +69,14 @@ public class OrderlistDaoImple implements OrderlistDao {
 		List<Orderlist> list = sqlSession.selectList(NAMESPACE+".order", paramMap);
 
     	return list;
+	}
+
+	@Override
+	public Orderlist getOrderlist(int orderlistNo) {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("orderlistNo", orderlistNo);
+
+    	return sqlSession.selectOne(NAMESPACE+".getOrderlist", paramMap);
 	}
 
 	@Override
