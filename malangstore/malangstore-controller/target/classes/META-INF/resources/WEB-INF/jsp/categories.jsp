@@ -120,7 +120,7 @@
                 str += "<div class='thumbnail'>";
                 str += "<div class='img-div'>";
                 str += "<a href='./products?product_no="+list[i].product_no+"'>";
-                str += "<img src='/res/img/"+photoList[i].photo_name+"' alt='...' style='width: 100%; height: 100%;'>";
+                str += "<img src='/res/img/"+photoList[list.length-1-i].photo_name+"' alt='...' style='width: 100%; height: 100%;'>";
                 str += "</a></div>";
                 str += "<div class='col-md-12 product-name'>"+list[i].product_name+"</div>";
                 str += "<div class='col-md-12 product-price'>"+list[i].product_price+"원</div>";

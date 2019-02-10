@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -82,17 +84,6 @@ public class ProductServiceImple implements ProductService {
 			for(MultipartFile image : images) {
 				String originalFileName = image.getOriginalFilename();	// 파일명 추출
 
-				// 파일명 확장자 검사
-				/*if(!isValidExtension(originalFileName)) {
-
-				}*/
-
-				// 파일 용량 검사
-				/*sizeSum += image.getSize();
-				if(sizeSum >= 10*1024*1024) {   // 10MB가 넘을 경우
-
-				}*/
-
 				String newFileName = System.currentTimeMillis()+originalFileName.substring(originalFileName.lastIndexOf("."));	// 새 파일명 추출
 
 				imageLen++;
@@ -132,23 +123,5 @@ public class ProductServiceImple implements ProductService {
 		resultMap.put("photoList", photolist);
 
     	return resultMap;
-	}
-
-
-	/**
-	 *  파일 확장자 검사
-	 */
-	private boolean isValidExtension(String originalFileName) {
-
-		String originalFileNameExtension = originalFileName.substring(originalFileName.lastIndexOf(".")+1);
-
-		switch (originalFileNameExtension) {
-			case "jpg":
-			case "png":
-			case "gif":
-				return true;
-		}
-
-		return false;
 	}
 }

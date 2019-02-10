@@ -13,7 +13,7 @@
     <body>
         <jsp:include page="nav-bar.jsp" flush="false"/>
 
-        <div class="container-fluid" style="padding: 0px;">
+        <div class="container-fluid" style="padding: 0px; ">
             <div id="carousel-example-generic" class="carousel slide">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -23,13 +23,13 @@
 
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/res/img/slide1.png" alt="First slide" class="img-fluid img-responsive main-slide"/>
+                        <img src="/res/img/main-slide1.png" alt="First slide" class="img-fluid img-responsive main-slide" style="width: 100%; background-size: cover;"/>
                     </div>
                     <div class="item">
-                        <img src="/res/img/slide2.png" alt="Second slide" class="img-fluid img-responsive main-slide"/>
+                        <img src="/res/img/main-slide2.png" alt="Second slide" class="img-fluid img-responsive main-slide" style="width: 100%; background-size: cover;"/>
                     </div>
                     <div class="item">
-                        <img src="/res/img/slide3.png" alt="Third slide" class="img-fluid img-responsive main-slide"/>
+                        <img src="/res/img/main-slide3.png" alt="Third slide" class="img-fluid img-responsive main-slide" style="width: 100%; background-size: cover;"/>
                     </div>
                 </div>
 

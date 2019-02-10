@@ -133,9 +133,25 @@
         /* image Preview */
         function addPreview(input) {
             if (input[0].files) {
+                var sizeSum = 0;
+                var maxSize = Number(100*1024*1024);     // 100MB
+
                 // 파일 선택이 여러 개라면,
                 for (var fileIndex = 0; fileIndex < input[0].files.length; fileIndex++) {
                     var file = input[0].files[fileIndex];
+
+					if(input[0].files.length >= 3) {
+						$("#preview").css("display", "none");
+                        alert("이미지는 최대 3장까지 첨부 가능합니다.");
+                        break;
+                    }
+
+					sizeSum += file.size;
+					if(sizeSum >= maxSize) {
+						$("#preview").css("display", "none");
+                        alert("파일 용량 합계가 100MB를 초과하면 업로드가 불가능합니다.");
+                        break;
+					}
 
 					// 파일 이름 유효성 검사
                     if (validation(file.name)) {
