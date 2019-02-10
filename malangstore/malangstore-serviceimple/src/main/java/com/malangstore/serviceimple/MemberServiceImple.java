@@ -6,24 +6,13 @@ import com.malangstore.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 @Service("memberService")
 public class MemberServiceImple implements MemberService {
@@ -38,21 +27,21 @@ public class MemberServiceImple implements MemberService {
 
     @Override
     public ModelAndView login(HashMap<String, Object> map, HttpSession session) {
-        Member member = new Member();
-        member.setMember_id(String.valueOf(map.get("id")));
-        member.setMember_pw(String.valueOf(map.get("pw")));
+	    HashMap<String, Object> result = memberDao.login(map);
 
+	    ModelAndView mav = new ModelAndView();
+	    String msg = "아이디와 비밀번호가 일치하지 않습니다.";
 
-        ModelAndView mav = new ModelAndView();
-        String msg = "아이디와 비밀번호가 일치하지 않습니다.";
-        mav.setViewName("loginForm");
-        if(memberDao.login(member)) {
-            msg = "로그인 성공";
-            session.setAttribute("loginId", member.getMember_id());
-            mav.setViewName("redirect:/");
-        }
+	    if((boolean)result.get("loginSuccess") == false) {
+			mav.setViewName("loginForm");
+	    } else {
+		    msg = "로그인 성공";
+		    session.setAttribute("loginId", map.get("id"));
+		    session.setAttribute("authority", result.get("authority"));
+		    mav.setViewName("redirect:/");
+	    }
 
-        mav.addObject("msg", msg);
+		mav.addObject("msg", msg);
 
         return mav;
     }

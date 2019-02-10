@@ -1,12 +1,8 @@
 package com.malangstore.serviceimple;
 
-import com.malangstore.beans.Category;
-import com.malangstore.beans.Product;
 import com.malangstore.beans.Subcategory;
 import com.malangstore.dao.CategoryDao;
-import com.malangstore.dao.ProductDao;
 import com.malangstore.service.CategoryService;
-import com.malangstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

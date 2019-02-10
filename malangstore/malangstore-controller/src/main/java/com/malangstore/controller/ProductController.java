@@ -37,7 +37,7 @@ public class ProductController {
 
 	@RequestMapping(value="/registProducts")
 	public String registProducts() {
-		logger.info("request url : /registProduct");
+		logger.info("request url : /registProducts");
 
 		return "registProducts";
 	}

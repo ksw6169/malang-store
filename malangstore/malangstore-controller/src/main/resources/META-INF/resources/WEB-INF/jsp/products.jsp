@@ -44,7 +44,7 @@
                             <span class="col-md-2 quantity-plus" onclick="plusQuantity()">+</span>
                         </div>
                         <div class="col-md-12 product-btn-group" style="margin: 0px; padding: 0px;">
-                            <div class="col-md-6 cart-btn" onclick="insertCart(${param.product_no}, 1)" data-toggle="modal" data-target="#product-cart-modal">장바구니</div>
+                            <div class="col-md-6 cart-btn" onclick="insertCart(${param.product_no}, 1)" data-toggle="modal">장바구니</div>
                             <div class="col-md-6 order-btn" onclick="insertCart(${param.product_no}, 2)">주문하기</div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
             currentPrice = product.product_price;
 
             $(".product-name").text(product.product_name);
-            $(".product-price").text(product.product_price);
+            $(".product-price").text((product.product_price)+"원");
             $(".product-content").text(product.product_detail);
         }
 
@@ -133,24 +133,32 @@
 
 		/* 장바구니에 담기 */
         function insertCart(productNo, page) {
-            $.ajax({
-                type : "get",
-                url : "./insertCart",
-                data : {
-                    id : "${sessionScope.loginId}",
-                    product_no : productNo,
-                    orderlist_count : $(".quantity-input").val()
-                },
-                dataType : "json",
-                success : function(data) {
-                    if(page == 2) {
-                        location.href = "./moveOrder?orderlistNo="+data.orderlistNo;
-                    }
-                },
-                error : function(error) {
-                    console.log(error);
-                }
-            });
+            var id = "${sessionScope.loginId}";
+
+            if(id == "") {
+				alert("로그인이 필요한 서비스입니다.");
+            } else {
+	            $.ajax({
+	                type : "get",
+	                url : "./insertCart",
+	                data : {
+	                    id : "${sessionScope.loginId}",
+	                    product_no : productNo,
+	                    orderlist_count : $(".quantity-input").val()
+	                },
+	                dataType : "json",
+	                success : function(data) {
+	                    if(page == 1) {
+							$("#product-cart-modal").modal();
+	                    } else if(page == 2) {
+	                        location.href = "./moveOrder?orderlistNo="+data.orderlistNo;
+	                    }
+	                },
+	                error : function(error) {
+	                    console.log(error);
+	                }
+	            });
+            }
         }
 
 
@@ -169,7 +177,7 @@
 			}
 
 			$(".quantity-input").val(currentQuantity);
-			$(".product-price").text(currentPrice*currentQuantity);
+			$(".product-price").text((currentPrice*currentQuantity)+"원");
 		}
 
 
@@ -182,7 +190,7 @@
             }
 
 			$(".quantity-input").val(currentQuantity);
-			$(".product-price").text(currentPrice*currentQuantity);
+			$(".product-price").text((currentPrice*currentQuantity)+"원");
 		}
 
 
@@ -196,7 +204,7 @@
 				currentQuantity = 999;
             }
 
-			$(".product-price").text(currentPrice*currentQuantity);
+			$(".product-price").text((currentPrice*currentQuantity)+"원");
 		}
 
 

@@ -23,18 +23,28 @@ public class MemberDaoImple implements MemberDao {
     PasswordEncoder passwordEncoder;
 
     @Override
-    public boolean login(Member member) {
+    public HashMap<String, Object> login(HashMap<String, Object> map) {
 
         Map<String, Object> paramMap = new HashMap<String, Object>();
-        paramMap.put("member", member);
+        paramMap.put("member_id", map.get("id"));
 
-        String member_pw = sqlSession.selectOne(NAMESPACE+".login", paramMap);
+	    Member member = sqlSession.selectOne(NAMESPACE+".login", paramMap);     // id에 해당하는 비밀번호, 권한 가져옴
 
-        if(member_pw == null) {
-        	return false;
+	    boolean loginSuccess;
+		String authority = null;
+
+        if(member == null) {
+			loginSuccess = false;
+        } else {
+			loginSuccess = passwordEncoder.matches(String.valueOf(map.get("pw")), member.getMember_pw());
+			authority = member.getMember_authority();
         }
 
-        return passwordEncoder.matches(member.getMember_pw(), member_pw);
+	    HashMap<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("loginSuccess", loginSuccess);
+		resultMap.put("authority", authority);
+
+		return resultMap;
     }
 
     @Override

@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="malangstore-beans" />
-        <module name="malangstore-common" />
         <module name="malangstore-controller" />
         <module name="malangstore-dao" />
         <module name="malangstore-daoimple" />
@@ -16,6 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="malangstore-common" target="1.8" />
       <module name="malangstorecontroller" target="1.5" />
     </bytecodeTargetLevel>
   </component>

@@ -59,13 +59,6 @@
                 <version>${MALANG_RESTFUL_VERSION}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.malangstore</groupId>
-                <artifactId>malangstore-common</artifactId>
-                <version>${MALANG_RESTFUL_VERSION}</version>
-            </dependency>
-
-
             <!--
                 spring boot
             -->
@@ -119,7 +112,7 @@
             </dependency>
 
             <!--
-                jsp setting / jasper -> ?
+                jsp setting / jasper
             -->
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -132,7 +125,6 @@
                 <artifactId>tomcat-embed-jasper</artifactId>
                 <version>8.5.23</version>
             </dependency>
-
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -180,13 +172,6 @@
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>2.0.2.RELEASE</version>
             </dependency>
-
-            <!-- <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-taglibs</artifactId>
-                <version>3.1.3.RELEASE</version>
-            </dependency>-->
-
         </dependencies>
     </dependencyManagement>
 
@@ -200,6 +185,5 @@
         <module>./malangstore-dao</module>
         <module>./malangstore-daoimple</module>
         <module>./malangstore-beans</module>
-        <module>./malangstore-common</module>
     </modules>
 </project>

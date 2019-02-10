@@ -126,7 +126,7 @@
                 str += "<div class='col-md-12 product-price'>"+list[i].product_price+"원</div>";
                 str += "<div class='col-md-12' style='padding: 0px;'>";
 
-                str += "<div class='col-md-6 cart-btn' onclick='insertCart("+list[i].product_no+", 1)' data-toggle='modal' data-target='#cart-modal'><a href='#' style='color: #e72e71; text-decoration: none;'>장바구니</a></div>";
+                str += "<div class='col-md-6 cart-btn' onclick='insertCart("+list[i].product_no+", 1)' data-toggle='modal'><a href='#' style='color: #e72e71; text-decoration: none;'>장바구니</a></div>";
                 str += "<div class='col-md-6 order-btn'><a href='#' style='color: white; text-decoration: none;' onclick='insertCart("+list[i].product_no+", 2)'>주문하기</a></div>";
                 str += "</div></div></div>";
             }
@@ -241,26 +241,32 @@
 
 		/* 장바구니에 추가 */
         function insertCart(productNo, page) {
-            $.ajax({
-                type : "get",
-                url : "./insertCart",
-                data : {
-                    id : "${sessionScope.loginId}",
-                    product_no : productNo,
-                    orderlist_count : 1
-                },
-                dataType : "json",
-                success : function(data) {
-                    console.log(data);
+            var id = "${sessionScope.loginId}";
 
-					if(page == 2) {
-						location.href = "./moveOrder?orderlistNo="+data.orderlistNo;
-					}
-                },
-                error : function(error) {
-                    console.log(error);
-                }
-            });
+            if(id == "") {
+				alert("로그인이 필요한 서비스입니다.");
+            } else {
+	            $.ajax({
+	                type : "get",
+	                url : "./insertCart",
+	                data : {
+	                    id : "${sessionScope.loginId}",
+	                    product_no : productNo,
+	                    orderlist_count : 1
+	                },
+	                dataType : "json",
+	                success : function(data) {
+						if(page == 1) {
+							$("#cart-modal").modal();
+						} else if(page == 2) {
+							location.href = "./moveOrder?orderlistNo="+data.orderlistNo;
+						}
+	                },
+	                error : function(error) {
+	                    console.log(error);
+	                }
+	            });
+            }
         }
 
 		/* 장바구니 바로 가기 */

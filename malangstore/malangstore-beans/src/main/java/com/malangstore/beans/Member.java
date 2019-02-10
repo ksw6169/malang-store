@@ -1,14 +1,12 @@
 package com.malangstore.beans;
 
-import org.springframework.security.core.userdetails.UserDetails;
-
 public class Member {
     private String member_id;
     private String member_pw;
     private String member_name;
     private String member_email;
     private String member_join_date;
-    private String member_login_date;
+    private String member_authority;
 
     public String getMember_id() { return member_id; }
 
@@ -48,13 +46,11 @@ public class Member {
         this.member_join_date = member_join_date;
     }
 
-    public String getMember_login_date() {
-        return member_login_date;
-    }
+	public String getMember_authority() {
+		return member_authority;
+	}
 
-    public void setMember_login_date(String member_login_date) {
-        this.member_login_date = member_login_date;
-    }
-
-
+	public void setMember_authority(String member_authority) {
+		this.member_authority = member_authority;
+	}
 }

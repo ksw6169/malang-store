@@ -66,7 +66,7 @@
                         <div class="dropdown-content">
                             <a id="login-column" href="./loginForm">로그인</a>
                             <a id="join-column" href="./joinForm">회원가입</a>
-                            <a id="logout-column" href="./logout">로그아웃</a>
+                            <a id="logout-column" href="./logout" style="display: none;">로그아웃</a>
                         </div>
                     </li>
                     <li>
@@ -76,7 +76,7 @@
                         <a href="./moveOrderView" class="drop-btn">주문조회</a>
                     </li>
                     <li>
-                        <a href="./registProducts" class="drop-btn">상품 등록</a>
+                        <a id="regist-column" href="./registProducts" class="drop-btn" style="display: none;">상품 등록</a>
                     </li>
                 </ul>
             </div>
@@ -84,15 +84,20 @@
     </body>
     <script>
         var loginId = "${sessionScope.loginId}";
+        var authority = "${sessionScope.authority}";
 
         $(document).ready(function() {
-            if(loginId == "") {
+            if(authority == "") {
                 $("#login-column").css("display", "block");
                 $("#join-column").css("display", "block");
-                $("#logout-column").css("display", "none");
-            } else {
+            } else if(authority == "user") {
                 $("#login-column").css("display", "none");
                 $("#join-column").css("display", "none");
+                $("#logout-column").css("display", "block");
+            } else if(authority == "admin") {
+                $("#login-column").css("display", "none");
+                $("#join-column").css("display", "none");
+                $("#regist-column").css("display", "block");
                 $("#logout-column").css("display", "block");
             }
         });

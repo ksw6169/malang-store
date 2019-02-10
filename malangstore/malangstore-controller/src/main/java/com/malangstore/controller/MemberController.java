@@ -42,6 +42,13 @@ public class MemberController {
     public ModelAndView login(@RequestParam HashMap<String, Object> map, HttpSession session) {
         logger.info("request url : /login");
 
+        if(map.get("id") == "" || map.get("pw") == "") {
+        	ModelAndView mav = new ModelAndView();
+        	mav.addObject("msg", "아이디나 비밀번호를 입력해주세요.");
+	        mav.setViewName("loginForm");
+        	return mav;
+        }
+
         return memberService.login(map, session);
     }
 
@@ -51,6 +58,7 @@ public class MemberController {
         logger.info("request url : /logout");
 
         session.removeAttribute("loginId");
+	    session.removeAttribute("authority");
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("msg", "로그아웃 되었습니다.");
@@ -76,7 +84,7 @@ public class MemberController {
     }
 
     // 완
-    @RequestMapping(value="/isDuplicate")
+    @RequestMapping(value="/isDuplicate", method=RequestMethod.POST)
     public @ResponseBody HashMap<String, Object> isDuplicate(@RequestParam("id") String id) {
         logger.info("request url : /isDuplicate");
 

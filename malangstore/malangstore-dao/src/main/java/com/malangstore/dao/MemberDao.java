@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface MemberDao {
-    public boolean login(Member member);
+    public HashMap<String, Object> login(HashMap<String, Object> map);
     public int join(Member member);
     public int isDuplicate(String id);
 }

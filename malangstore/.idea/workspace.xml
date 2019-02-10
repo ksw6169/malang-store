@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1de35c15-4287-4686-b57c-d74f6f76f213" name="Default Changelist" comment="" />
+    <list default="true" id="1de35c15-4287-4686-b57c-d74f6f76f213" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/AuthorityInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Authority.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-beans/target/classes/com/malangstore/beans/Authority.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-beans/target/classes/com/malangstore/beans/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-beans/target/classes/com/malangstore/beans/Member.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-common/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/categories.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/nav-bar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/nav-bar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/products.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/target/classes/META-INF/resources/WEB-INF/jsp/nav-bar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/target/classes/META-INF/resources/WEB-INF/jsp/nav-bar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-controller/target/classes/com/malangstore/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-controller/target/classes/com/malangstore/controller/MemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/MemberDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-dao/target/classes/com/malangstore/dao/MemberDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-dao/target/classes/com/malangstore/dao/MemberDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/MemberDaoImple.java" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/MemberDaoImple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/MemberDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/MemberDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-daoimple/target/classes/com/malangstore/dao/MemberDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-daoimple/target/classes/com/malangstore/dao/MemberDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-daoimple/target/classes/com/malangstore/daoimple/MemberDaoImple.class" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-daoimple/target/classes/com/malangstore/daoimple/MemberDaoImple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/CategoryServiceImple.java" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/CategoryServiceImple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/MemberServiceImple.java" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/MemberServiceImple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-serviceimple/target/classes/com/malangstore/serviceimple/CategoryServiceImple.class" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-serviceimple/target/classes/com/malangstore/serviceimple/CategoryServiceImple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malangstore-serviceimple/target/classes/com/malangstore/serviceimple/MemberServiceImple.class" beforeDir="false" afterPath="$PROJECT_DIR$/malangstore-serviceimple/target/classes/com/malangstore/serviceimple/MemberServiceImple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/malangstore-controller/target/" />
@@ -20,138 +52,52 @@
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="825219">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="13" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="4" />
-          <entry key="project.open.time.5" value="3" />
-          <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="14" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="SampleDao" value="2" />
-          <entry key="class" value="2" />
-          <entry key="css" value="11" />
-          <entry key="hello" value="1" />
-          <entry key="iml" value="2" />
-          <entry key="java" value="287" />
-          <entry key="jsp" value="93" />
-          <entry key="properties" value="17" />
-          <entry key="sample1" value="1" />
-          <entry key="test1" value="1" />
-          <entry key="test2" value="1" />
-          <entry key="xml" value="121" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="2" />
-          <entry key="CSS" value="11" />
-          <entry key="DTD" value="1" />
-          <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="287" />
-          <entry key="JSP" value="95" />
-          <entry key="Properties" value="17" />
-          <entry key="XML" value="124" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="SampleDao" value="3" />
-          <entry key="css" value="1083" />
-          <entry key="dummy" value="39" />
-          <entry key="hello" value="45" />
-          <entry key="java" value="25116" />
-          <entry key="jsp" value="21123" />
-          <entry key="properties" value="490" />
-          <entry key="sample1" value="22" />
-          <entry key="xml" value="2416" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="1083" />
-          <entry key="JAVA" value="25116" />
-          <entry key="JSP" value="21190" />
-          <entry key="PLAIN_TEXT" value="39" />
-          <entry key="Properties" value="490" />
-          <entry key="XML" value="2419" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="1685624144">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="css" value="5" />
-          <entry key="java" value="3885" />
-          <entry key="jsp" value="4740" />
-          <entry key="xml" value="1257" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="5" />
-          <entry key="JAVA" value="3885" />
-          <entry key="JSP" value="4740" />
-          <entry key="XML" value="1257" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="1" />
-          <entry key="java" value="34" />
-          <entry key="jsp" value="12" />
-          <entry key="xml" value="7" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="1" />
-          <entry key="JAVA" value="34" />
-          <entry key="JSP" value="12" />
-          <entry key="XML" value="7" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/Main.java">
+        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/WebMvcConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+            <state relative-caret-position="166">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1064#1065#0" expanded="true" />
-                <element signature="e#1113#1114#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/OrderlistController.java">
+        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/loginForm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="891">
-              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="352">
+              <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Member.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/categories.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="258" column="39" lean-forward="true" selection-start-line="258" selection-start-column="39" selection-end-line="259" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/WebSecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -159,65 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/MemberController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-672">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/OrderlistDaoImple.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/ProductController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/MemberDaoImple.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-121">
-              <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/OrderlistServiceImple.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-              <folding>
-                <element signature="e#1164#1180#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/ProductServiceImple.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="278">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -225,8 +114,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/MemberServiceImple.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-539">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="102">
+              <caret line="29" column="62" lean-forward="true" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -235,10 +124,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/MemberDao.xml">
+        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="288">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/LoginInterceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="37" column="146" lean-forward="true" selection-start-line="37" selection-start-column="146" selection-end-line="38" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/AuthorityInterceptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -256,36 +169,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>col-md-4</find>
-      <find>backgrou</find>
-      <find>background</find>
-      <find>border</find>
-      <find>color</find>
-      <find>자</find>
-      <find>장바구니</find>
-      <find>product_no</find>
-      <find>insertCart</find>
-      <find>modal</find>
       <find>cartView</find>
-      <find>tbody</find>
+      <find>modal</find>
+      <find>주문</find>
+      <find>insert</find>
+      <find>insertcar</find>
+      <find>insertCa</find>
+      <find>orderlist</find>
+      <find>document</find>
+      <find>appendOrderlist</find>
+      <find>quantity</find>
       <find>append</find>
-      <find>detailView</find>
-      <find>table-data-group</find>
-      <find>addContext2</find>
-      <find>addContext1</find>
-      <find>allC</find>
-      <find>rowCheck</find>
-      <find>th</find>
-      <find>제거</find>
-      <find>삭제</find>
-      <find>cart_delete_btn</find>
-      <find>delete</find>
-      <find>order</find>
-      <find>선택</find>
-      <find>deleteOrder</find>
-      <find>conso</find>
-      <find>console.log</find>
       <find>logger</find>
+      <find>common</find>
+      <find>lo</find>
+      <find>logout</find>
+      <find>com</find>
+      <find>session</find>
+      <find>productDetail</find>
+      <find>reg</find>
+      <find>cart-modal</find>
+      <find>장바구니</find>
+      <find>cart-btn</find>
+      <find>insertC</find>
+      <find>product-price</find>
+      <find>insertCart</find>
+      <find>data-target</find>
+      <find>isDupli</find>
+      <find>isD</find>
+      <find>if(</find>
+      <find>login</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -294,57 +207,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/malangstore-service/pom.xml" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/FilterConfig.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/AuthFailureHandler.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/AuthSuccessHandler.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/SpringSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/Main.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/CustomProvider.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/AuthProvider.java" />
-        <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Product.java" />
-        <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Subcategory.java" />
-        <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Authority.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/pom.xml" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/loginForm.jsp" />
-        <option value="$PROJECT_DIR$/malangstore-beans/pom.xml" />
-        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/CustomAuthenticationProvider.java" />
         <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/DefaultDatabaseConfig.java" />
         <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/AuthProvider.java" />
-        <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Member.java" />
         <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/MemberDaoImple.java" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/MemberDao.xml" />
-        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/MemberServiceImple.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/joinForm.jsp" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/MemberController.java" />
         <option value="$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/MemberService.java" />
-        <option value="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/MemberDao.java" />
-        <option value="$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/ProductService.java" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/ProductDaoImple.java" />
-        <option value="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/ProductDao.java" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/ProductDao.xml" />
-        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/ProductServiceImple.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/mybatis/mybatis-config.xml" />
         <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Orderlist.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/nav-bar.jsp" />
-        <option value="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/OrderlistDao.java" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/OrderlistDao.xml" />
-        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/OrderlistDaoImple.java" />
-        <option value="$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/OrderlistService.java" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/OrderlistController.java" />
-        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/OrderlistServiceImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/CategoryService.java" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/mybatis/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Subcategory.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/writeProducts.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/ProductService.java" />
+        <option value="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/ProductDao.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/joinForm.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/CategoryDao.java" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/CategoryDaoImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/CategoryDao.xml" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/CategoryController.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/loginForm.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/ProductServiceImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Product.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/registProducts.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/ProductDaoImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/ProductDao.xml" />
         <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/css/main.css" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/OrderlistController.java" />
+        <option value="$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/OrderlistService.java" />
+        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/OrderlistServiceImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/OrderlistDao.java" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/OrderlistDaoImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/OrderlistDao.xml" />
         <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/cartView.jsp" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/index.jsp" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/categories.jsp" />
         <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/order.jsp" />
         <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/orderView.jsp" />
-        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/products.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/Main.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/CategoryServiceImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/MemberDao.xml" />
+        <option value="$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/MemberDao.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/nav-bar.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/MemberDaoImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/HttpInterceptor.java" />
         <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/ProductController.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/categories.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/products.jsp" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/AuthorityInterceptor.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/WebMvcConfig.java" />
+        <option value="$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/MemberController.java" />
+        <option value="$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/MemberServiceImple.java" />
+        <option value="$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Member.java" />
       </list>
     </option>
   </component>
@@ -371,10 +284,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="42" />
-    <option name="y" value="153" />
-    <option name="width" value="1920" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -408,7 +320,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -504,6 +415,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="malangstore" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
+              <item name="malangstore-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -531,148 +452,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-dao" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-dao" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-dao" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-dao" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="daoimple" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-daoimple" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
-              <item name="malangstore" type="462c0819:PsiDirectoryNode" />
-              <item name="malangstore-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="malangstore" type="b2602c69:ProjectViewProjectNode" />
@@ -713,20 +493,25 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/malangstore/malangstore-controller/src/main/resources/META-INF/resources/css/navbar.css&#10;Plugins&#9;ACTION&#9;WelcomeScreen.Plugins" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549014070319" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549795775049" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\malangstore\malangstore-controller\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\8781\Desktop\git\malangstore\malangstore-controller\src\main\resources\META-INF\resources\css" />
+      <recent name="C:\Users\8781\Desktop\git\malangstore\malangstore-daoimple\src\main\resources\com\malangstore\dao" />
+      <recent name="C:\Users\8781\Desktop\git\malangstore\malangstore-controller\src\main\resources\META-INF\resources\WEB-INF\jsp" />
+      <recent name="D:\git\malangstore\malangstore-daoimple\src\main\resources\com\malangstore\dao" />
+      <recent name="D:\malangstore\malangstore-daoimple\src\main\resources\com\malangstore\dao" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.malangstore.daoimple" />
@@ -734,12 +519,8 @@
       <recent name="com.malangstore.serviceimple" />
       <recent name="com.malangstore.service" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\git\malangstore\malangstore-daoimple\src\main\resources\com\malangstore\dao" />
-      <recent name="D:\malangstore\malangstore-daoimple\src\main\resources\com\malangstore\dao" />
-      <recent name="D:\malangstore\malangstore-controller\src\main\resources\META-INF\resources\WEB-INF\jsp" />
-      <recent name="D:\malangstore\malangstore-controller\src\main\resources\META-INF\resources\css" />
-      <recent name="D:\malangstore\malangstore-controller\src\main\resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\malangstore\malangstore-controller\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -795,8 +576,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -819,11 +600,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49923196" visible="true" weight="0.24147122" />
-      <window_info id="Structure" order="1" sideWeight="0.50076807" side_tool="true" weight="0.23817204" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49684212" visible="true" weight="0.2852349" />
+      <window_info id="Structure" order="1" sideWeight="0.5031579" side_tool="true" weight="0.24899329" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -832,15 +613,15 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3557484" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.3106383" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39858156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.12458655" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50067115" side_tool="true" weight="0.4141844" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.12340426" />
       <window_info anchor="bottom" id="Problems" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.18666667" />
@@ -850,192 +631,179 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.32995737" />
+      <window_info anchor="right" id="Maven" order="8" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Category.java">
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/CategoryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Authority.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Subcategory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Sample.java" />
-    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-dao/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/malangstore-controller.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="187" column="28" lean-forward="true" selection-start-line="187" selection-start-column="28" selection-end-line="187" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="92" selection-start-line="92" selection-end-line="99" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-beans/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="55" column="45" lean-forward="true" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/AuthProvider.java" />
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/DBCP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/MemberService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/ProductService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="9" column="75" lean-forward="true" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/ProductDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        <state relative-caret-position="295">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/DefaultDatabaseConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        <state relative-caret-position="320">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/MemberDao.java">
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/img/1549723172756.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/img/1549727715180.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/ProductDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="153">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/mybatis/mybatis-config.xml">
+    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/ProductDaoImple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        <state relative-caret-position="270">
+          <caret line="96" column="23" lean-forward="true" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1062#1078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/registProducts.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4688">
+          <caret line="293" selection-start-line="293" selection-end-line="293" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/ProductServiceImple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/ProductDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="197">
+          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/OrderlistService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/OrderlistServiceImple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="33" column="85" selection-start-line="33" selection-start-column="85" selection-end-line="33" selection-end-column="85" />
+          <folding>
+            <element signature="e#917#933#0" expanded="true" />
+            <element signature="e#2393#2409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/OrderlistDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/OrderlistDaoImple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/OrderlistDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/cartView.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="121" column="45" selection-start-line="121" selection-start-column="45" selection-end-line="121" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/order.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1488">
+          <caret line="210" column="18" selection-start-line="210" selection-start-column="18" selection-end-line="210" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/orderView.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/img/1549723172736.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/img/1549727715172.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-beans/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Orderlist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="560">
+          <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
           <folding>
             <element signature="e#716#717#0" expanded="true" />
             <element signature="e#751#752#0" expanded="true" />
@@ -1045,194 +813,224 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/OrderlistDao.xml">
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="321">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-service/src/main/java/com/malangstore/service/OrderlistService.java">
+    <entry file="file://$PROJECT_DIR$/malangstore-dao/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state relative-caret-position="204">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/OrderlistDao.java">
+    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+        <state relative-caret-position="159">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/css/main.css">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+        <state relative-caret-position="240">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/cartView.jsp">
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/DefaultDatabaseConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="163" column="31" selection-start-line="163" selection-start-column="20" selection-end-line="163" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="53" column="26" lean-forward="true" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/categories.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="236" column="7" lean-forward="true" selection-start-line="236" selection-start-column="7" selection-end-line="236" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/nav-bar.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/joinForm.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="295" column="35" selection-start-line="295" selection-start-column="24" selection-end-line="295" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/loginForm.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/order.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="101" column="36" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/orderView.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/products.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/ProductDaoImple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/MemberDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/OrderlistDaoImple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/MemberDaoImple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-121">
-          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/MemberServiceImple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-539">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/ProductServiceImple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/OrderlistServiceImple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-          <folding>
-            <element signature="e#1164#1180#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="189">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        <state relative-caret-position="269">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
             <element signature="e#1113#1114#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/OrderlistController.java">
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="64">
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/CategoryServiceImple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/MemberController.java">
+    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/mybatis/mybatis-config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="176">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/resources/com/malangstore/dao/MemberDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-dao/src/main/java/com/malangstore/dao/MemberDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/nav-bar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="89" column="26" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-daoimple/src/main/java/com/malangstore/daoimple/MemberDaoImple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/products.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="146" column="18" lean-forward="true" selection-start-line="146" selection-start-column="18" selection-end-line="146" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/joinForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="135" column="32" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/OrderlistController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1227">
+          <caret line="94" column="5" lean-forward="true" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="288">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/LoginInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="37" column="146" lean-forward="true" selection-start-line="37" selection-start-column="146" selection-end-line="38" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/categories.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="258" column="39" lean-forward="true" selection-start-line="258" selection-start-column="39" selection-end-line="259" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/webapp/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/AuthorityInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/interceptor/WebMvcConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/resources/META-INF/resources/WEB-INF/jsp/loginForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="90" column="13" lean-forward="true" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-controller/src/main/java/com/malangstore/controller/MemberController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-serviceimple/src/main/java/com/malangstore/serviceimple/MemberServiceImple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="29" column="62" lean-forward="true" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/malangstore-beans/src/main/java/com/malangstore/beans/Member.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
@@ -1299,7 +1097,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>malangstore-controller</last-edited>
+          <last-edited>malangstore-common</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
