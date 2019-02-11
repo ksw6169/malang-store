@@ -31,8 +31,6 @@
                                 Append Data
                             -->
                         </div>
-
-                        <!-- todo - 추후, Controls(Prev, Next) -->
                     </div>
 
                     <div class="product-thumbnail">
@@ -74,7 +72,9 @@
 
 
     <script>
-        $('.carousel').carousel();
+        $('.carousel').carousel({
+            interval: 2000
+        });
 
 		var currentPrice;
 
