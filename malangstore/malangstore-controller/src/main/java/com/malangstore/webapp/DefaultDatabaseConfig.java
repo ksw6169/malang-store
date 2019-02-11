@@ -23,7 +23,7 @@ public class DefaultDatabaseConfig {
         dataSource.setUsername("postgres");
         dataSource.setPassword("1234");
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/malangstore");
+        dataSource.setUrl("jdbc:postgresql://172.30.3.163:5432/malangstore");
 
         return dataSource;
     }

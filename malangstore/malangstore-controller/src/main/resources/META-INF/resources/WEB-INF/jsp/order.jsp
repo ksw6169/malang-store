@@ -127,7 +127,7 @@
 
             str += "<tr id='order-data"+orderlist.orderlist_no+"'>";
             str += "<td class='table-data'><input type='checkbox' name='row-check' value='"+orderlist.orderlist_no+"'/></td>";
-            str += "<td class='table-data'><a href='#'>"+orderlist.product_name+"</a></td>";
+            str += "<td class='table-data'><a href='./products?"+orderlist.product_no+"'>"+orderlist.product_name+"</a></td>";
             str += "<td class='table-data'>"+orderlist.orderlist_count+"</td>";
             str += "<td class='table-data' id='row-delivery"+orderlist.orderlist_no+"'>"+orderlist.product_delivery+"원</td>";
             str += "<td class='table-data' id='row-price${item.orderlist_no}'>"+orderlist.product_price+"원</td>";
@@ -150,7 +150,7 @@
 
 				str += "<tr id='order-data${item.orderlist_no}'>";
                 str += "<td class='table-data'><input type='checkbox' name='row-check' value='${item.orderlist_no}'/></td>";
-                str += "<td class='table-data'><a href='#'>${item.product_name}</a></td>";
+                str += "<td class='table-data'><a href='./products?product_no=${item.product_no}'>${item.product_name}</a></td>";
                 str += "<td class='table-data'>${item.orderlist_count}</td>";
                 str += "<td class='table-data' id='row-delivery${item.orderlist_no}'>${item.product_delivery}원</td>";
                 str += "<td class='table-data' id='row-price${item.orderlist_no}'>${item.product_price}원</td>";

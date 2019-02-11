@@ -5,20 +5,20 @@
 
     <select id="login" parameterType="String" resultType="com.malangstore.beans.Member">
         SELECT member_pw, member_authority
-	        FROM member
-	            WHERE member_id = #{member_id}
+        FROM member
+        WHERE member_id = #{member_id}
     </select>
 
     <insert id="join" parameterType="com.malangstore.beans.Member">
         INSERT INTO member
-            (member_id, member_pw, member_name, member_email, member_join_date, member_authority)
-                VALUES (#{member.member_id}, #{member.member_pw}, #{member.member_name}, #{member.member_email}, CURRENT_DATE, 'user')
+        (member_id, member_pw, member_name, member_email, member_join_date, member_authority)
+        VALUES (#{member.member_id}, #{member.member_pw}, #{member.member_name}, #{member.member_email}, CURRENT_DATE, 'user')
     </insert>
 
     <select id="isDuplicate" parameterType="String" resultType="int">
         SELECT COUNT(*)
-	        FROM member
-                WHERE member_id = #{member_id}
+        FROM member
+        WHERE member_id = #{member_id}
     </select>
 
 </mapper>

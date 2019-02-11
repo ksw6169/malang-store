@@ -121,7 +121,7 @@
 
                 str += "<tr id='order-data"+list[i].orderlist_no+"'>";
                 str += "<td class='table-data'><input type='checkbox' name='row-check' value='"+list[i].orderlist_no+"'/></td>";
-                str += "<td class='table-data'><a href='#'>"+list[i].product_name+"</a></td>";
+                str += "<td class='table-data'><a href='./products?product_no="+list[i].product_no+"'>"+list[i].product_name+"</a></td>";
                 str += "<td class='table-data'>"+list[i].orderlist_count+"</td>";
                 str += "<td class='table-data' id='row-delivery"+list[i].orderlist_no+"'>"+list[i].product_delivery+"원</td>";
                 str += "<td class='table-data' id='row-price"+list[i].orderlist_no+"'>"+list[i].product_price+"원</td>";

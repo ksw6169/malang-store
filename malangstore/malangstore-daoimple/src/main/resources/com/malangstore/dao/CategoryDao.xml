@@ -5,14 +5,14 @@
 
 	<select id="getSubCategories" parameterType="int" resultType="com.malangstore.beans.Subcategory">
 		SELECT subcategory_no, subcategory_name
-			FROM subcategory
-				WHERE category_no = #{category_no};
+		FROM subcategory
+		WHERE category_no = #{category_no};
 	</select>
 
 	<select id="getCategoryName" parameterType="int" resultType="String">
 		SELECT subcategory_name
-			FROM subcategory
-				WHERE subcategory_no = #{subcategory_no}
+		FROM subcategory
+		WHERE subcategory_no = #{subcategory_no}
 	</select>
 
 </mapper>

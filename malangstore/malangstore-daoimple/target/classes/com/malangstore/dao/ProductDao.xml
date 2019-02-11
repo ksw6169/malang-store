@@ -5,50 +5,50 @@
 
     <select id="productList" parameterType="int" resultType="com.malangstore.beans.Product">
         SELECT * FROM product
-            WHERE subcategory_no = #{subcategory_no}
-                ORDER BY product_reg_date DESC
-                    LIMIT 20 OFFSET #{page}
+        WHERE subcategory_no = #{subcategory_no}
+        ORDER BY product_reg_date DESC
+        LIMIT 20 OFFSET #{page}
     </select>
 
     <select id="getPhoto" parameterType="com.malangstore.beans.Product" resultType="com.malangstore.beans.Photo">
-	    SELECT DISTINCT ON(product_no) product_no, photo_no, photo_name
-	        FROM photo
-                WHERE product_no IN
-	            <foreach collection="productList" open="(" close=")" item="item" separator=",">
-		            #{item.product_no}
-	            </foreach>
-                ORDER BY product_no, photo_no
+        SELECT DISTINCT ON(product_no) product_no, photo_no, photo_name
+        FROM photo
+        WHERE product_no IN
+        <foreach collection="productList" open="(" close=")" item="item" separator=",">
+            #{item.product_no}
+        </foreach>
+        ORDER BY product_no, photo_no
     </select>
 
     <select id="getPhotoList" parameterType="int" resultType="com.malangstore.beans.Photo">
         SELECT *
-	        FROM photo
-                WHERE product_no = #{product_no}
+        FROM photo
+        WHERE product_no = #{product_no}
     </select>
 
     <select id="productListCount" parameterType="int" resultType="int">
         SELECT COUNT(*)
-	        FROM product
-                WHERE subcategory_no = #{subcategory_no}
+        FROM product
+        WHERE subcategory_no = #{subcategory_no}
     </select>
 
     <insert id="newProduct" parameterType="com.malangstore.beans.Product" useGeneratedKeys="true" keyProperty="product_no">
         INSERT INTO product
-	        VALUES (NEXTVAL('seq_product_no'), #{product_name}, #{product_price}, #{product_delivery}, #{product_detail}, CURRENT_TIMESTAMP(0), #{subcategory_no})
+        VALUES (NEXTVAL('seq_product_no'), #{product_name}, #{product_price}, #{product_delivery}, #{product_detail}, CURRENT_TIMESTAMP(0), #{subcategory_no})
     </insert>
 
     <insert id="insertPhoto" parameterType="java.util.List">
         INSERT INTO photo
-            VALUES
-            <foreach collection="list" item="item" index="index" separator=",">
-                (NEXTVAL('seq_photo_no'), #{item.photo_name}, #{item.product_no})
-            </foreach>
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (NEXTVAL('seq_photo_no'), #{item.photo_name}, #{item.product_no})
+        </foreach>
     </insert>
 
     <select id="productDetail" parameterType="int" resultType="com.malangstore.beans.Product">
         SELECT *
-	        FROM product
-                WHERE product_no = #{product_no}
+        FROM product
+        WHERE product_no = #{product_no}
     </select>
 
 </mapper>

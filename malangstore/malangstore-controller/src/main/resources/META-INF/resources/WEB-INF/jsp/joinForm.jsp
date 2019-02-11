@@ -33,7 +33,7 @@
                                 <span id="user-id-msg" class="warn">　</span>
                             </span>
                             <span class="col-md-2" style="padding-left: 0px;">
-                                <button class="btn-custom" onclick="isDuplicate()">중복 체크</button>
+                                <button class="btn-custom" onclick="isDuplicate()">중복 확인</button>
                             </span>
                         </div>
 
@@ -119,7 +119,7 @@
                 msg.html("4~12자리 영문, 숫자 혼합만 가능합니다.");
                 msg.css("color", "red");
             } else {
-                msg.html("아이디 중복 체크를 해주세요.");
+                msg.html("아이디 중복 확인을 해주세요.");
                 msg.css("color", "red");
                 idCheck = true;
             }
